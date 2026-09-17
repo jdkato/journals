@@ -22,7 +22,7 @@ Requires Vale 3.22.0 or later. The package depends on
 
 ```ini
 StylesPath = styles
-Packages = https://github.com/jdkato/journals/releases/latest/download/Journals.zip
+Packages = Journals
 Vocab = Journals
 
 [*.{md,qmd,Rmd}]
@@ -33,8 +33,12 @@ BasedOnStyles = Journals, IMRaD, PLOS
 $ vale sync
 ```
 
-`Journals` is the core and is always on. Add a structure, a journal, or a
-checklist next to it.
+`Journals` is in the [package library](https://vale.sh/explorer), so the
+name is enough. To pin a version, give a release URL instead:
+`https://github.com/jdkato/journals/releases/download/v0.1.0/Journals.zip`.
+
+`Journals` is also the core style and is always on. Add a structure, a
+journal, or a checklist next to it.
 
 | Style | What it checks |
 | ----- | -------------- |
