@@ -1,0 +1,27 @@
+# "Titles do not normally include numbers, acronyms, abbreviations or
+# punctuation."
+extends: existence
+message: "A Nature title avoids numbers, acronyms, abbreviations, and punctuation: '%s'."
+link: https://www.nature.com/nature/for-authors/formatting-guide
+level: warning
+scope: heading.h1
+nonword: true
+raw:
+  - '\d+|\b[A-Z]{2,}\b|[:;,!?()]'
+
+tests:
+  - name: fires
+    input: |
+      # CRISPR editing of 3 genes: a study
+
+      Body.
+    want: |
+      1:3:Nature.TitleContent:A Nature title avoids numbers, acronyms, abbreviations, and punctuation: 'CRISPR'.
+      1:21:Nature.TitleContent:A Nature title avoids numbers, acronyms, abbreviations, and punctuation: '3'.
+      1:28:Nature.TitleContent:A Nature title avoids numbers, acronyms, abbreviations, and punctuation: ':'.
+  - name: clean
+    input: |
+      # Gene editing of three loci in a study
+
+      Body.
+    want: ""

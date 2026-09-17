@@ -1,0 +1,27 @@
+# A word budget for the abstract; 250 is the common one, and a journal style
+# sets its own. The heading line is not counted.
+extends: occurrence
+message: "Abstract runs %d words."
+level: warning
+scope: 'doc(section:haschild(h1:contains("Abstract"),h2:contains("Abstract")))'
+token: '(?m)(?<!\A[^\n]*)\b\w+\b'
+max: 250
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      ## Abstract
+
+      w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w
+    want: |
+      5:1:IMRaD.AbstractLength:Abstract runs 251 words.
+  - name: clean
+    input: |
+      # Title
+
+      ## Abstract
+
+      Short.
+    want: ""

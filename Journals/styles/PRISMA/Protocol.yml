@@ -1,0 +1,23 @@
+# Item 24b: where the protocol can be accessed, or that one was not prepared.
+extends: occurrence
+message: "Say where the protocol can be accessed, or that one was not prepared (item 24b)."
+link: https://doi.org/10.1136/bmj.n71
+level: warning
+scope: raw
+token: '(?i)\bprotocol\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.Protocol:Say where the protocol can be accessed, or that one was not prepared (item 24b).
+  - name: clean
+    input: |
+      # Title
+
+      The protocol is on OSF.
+    want: ""

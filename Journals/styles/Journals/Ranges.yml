@@ -1,0 +1,20 @@
+# A range of numbers takes an en dash. A date, a hyphenated modifier, and a
+# negative number are left alone.
+extends: existence
+message: "Use an en dash in a range: '%s'."
+level: suggestion
+nonword: true
+raw:
+  - '(?<![\w-])\d+(?:\.\d+)?-\d+(?:\.\d+)?(?![\w-])'
+
+tests:
+  - name: fires
+    input: |
+      Ages 18-65 years, pages 10-20.
+    want: |
+      1:6:Journals.Ranges:Use an en dash in a range: '18-65'.
+      1:25:Journals.Ranges:Use an en dash in a range: '10-20'.
+  - name: clean
+    input: |
+      Ages 18–65 years; the 2024-01-05 release and a 2-fold change.
+    want: ""

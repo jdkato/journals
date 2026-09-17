@@ -1,0 +1,37 @@
+# An abstract stands alone in indexes, where a reference number points at
+# nothing. Numbered, superscript, author-year, and Pandoc citations.
+extends: existence
+message: "The abstract stands alone; cite in the body, not '%s'."
+level: warning
+scope: 'doc(section:haschild(h1:contains("Abstract"),h2:contains("Abstract")))'
+nonword: true
+raw:
+  - '\[\d+(?:[,–-]\s?\d+)*\]|\^\d+(?:[,–-]\d+)*\^|\([A-Z][A-Za-z-]+(?: et al\.| and [A-Z][A-Za-z-]+)?,? \d{4}[a-z]?\)|\[@[\w:-]+\]'
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      ## Abstract
+
+      Prior work [1] showed it (Smith et al., 2020).
+
+      ## Introduction
+
+      Prior work [1] is cited here.
+    want: |
+      5:12:IMRaD.AbstractCitations:The abstract stands alone; cite in the body, not '[1]'.
+      5:26:IMRaD.AbstractCitations:The abstract stands alone; cite in the body, not '(Smith et al., 2020)'.
+  - name: clean
+    input: |
+      # Title
+
+      ## Abstract
+
+      Prior work showed it.
+
+      ## Introduction
+
+      Prior work [1] is cited here.
+    want: ""

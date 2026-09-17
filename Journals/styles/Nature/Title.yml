@@ -1,0 +1,25 @@
+# "Titles do not exceed two lines in print. This equates to 75 characters
+# (including spaces)."
+extends: existence
+message: "Title runs past 75 characters, including spaces."
+link: https://www.nature.com/nature/for-authors/formatting-guide
+level: error
+scope: heading.h1
+nonword: true
+raw:
+  - '^.{76,}'
+
+tests:
+  - name: fires
+    input: |
+      # A title that keeps going well past the two lines Nature allows in print for it
+
+      Body.
+    want: |
+      1:3:Nature.Title:Title runs past 75 characters, including spaces.
+  - name: clean
+    input: |
+      # A title that fits
+
+      Body.
+    want: ""

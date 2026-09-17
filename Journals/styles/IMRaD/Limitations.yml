@@ -1,0 +1,35 @@
+# A discussion that names what the study could not show.
+extends: occurrence
+message: "The Discussion names the study's limitations."
+level: suggestion
+scope: 'doc(section:haschild(h1:contains("Discussion"),h2:contains("Discussion")))'
+token: '(?i)\blimitations?\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Discussion
+
+      Something else.
+    want: |
+      3:4:IMRaD.Limitations:The Discussion names the study's limitations.
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:IMRaD.Limitations:The Discussion names the study's limitations.
+  - name: clean
+    input: |
+      # Title
+
+      ## Discussion
+
+      One limitation is the sample.
+    want: ""

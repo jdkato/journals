@@ -1,0 +1,24 @@
+# "Avoid specialist abbreviations" in the title.
+extends: existence
+message: "Avoid specialist abbreviations in the title: '%s'."
+link: https://journals.plos.org/plosone/s/submission-guidelines#loc-title
+level: suggestion
+scope: heading.h1
+nonword: true
+raw:
+  - '\b[A-Z]{3,}\b'
+
+tests:
+  - name: fires
+    input: |
+      # GWAS of a trait
+
+      Body.
+    want: |
+      1:3:PLOS.TitleAbbreviations:Avoid specialist abbreviations in the title: 'GWAS'.
+  - name: clean
+    input: |
+      # A genome-wide association study of a trait
+
+      Body.
+    want: ""

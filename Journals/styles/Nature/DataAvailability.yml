@@ -1,0 +1,26 @@
+# "Please provide separate Data Availability and Code Availability
+# statements after the main text."
+extends: occurrence
+message: "A Data Availability statement."
+link: https://www.nature.com/nature/for-authors/formatting-guide
+level: error
+scope: raw
+token: '(?i)\bdata availability\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:Nature.DataAvailability:A Data Availability statement.
+  - name: clean
+    input: |
+      # Title
+
+      ## Data availability
+
+      Deposited.
+    want: ""

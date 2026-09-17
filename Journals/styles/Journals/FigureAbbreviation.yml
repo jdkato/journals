@@ -1,0 +1,18 @@
+# The journal styles pick one; the core only asks that the manuscript does.
+extends: consistency
+message: "Inconsistent figure label: '%s'."
+level: suggestion
+nonword: true
+either:
+  'Fig\.?\s+\d': 'Figure\s+\d'
+
+tests:
+  - name: fires
+    input: |
+      Fig. 1 shows it, and Figure 2 confirms.
+    want: |
+      1:22:Journals.FigureAbbreviation:Inconsistent figure label: 'Figure 2'.
+  - name: clean
+    input: |
+      Fig. 1 shows it, and Fig. 2 confirms.
+    want: ""

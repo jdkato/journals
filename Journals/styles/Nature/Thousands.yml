@@ -1,0 +1,20 @@
+# "Thousands should be separated by commas (1,000)." Four digits are left
+# alone: a year looks the same.
+extends: existence
+message: "Separate thousands with commas: '%s'."
+link: https://www.nature.com/nature/for-authors/formatting-guide
+level: suggestion
+nonword: true
+raw:
+  - '(?<![\w.,:/-])\d{5,}(?![\w.,/-])'
+
+tests:
+  - name: fires
+    input: |
+      We sequenced 12000 cells in 2024.
+    want: |
+      1:14:Nature.Thousands:Separate thousands with commas: '12000'.
+  - name: clean
+    input: |
+      We sequenced 12,000 cells in 2024; accession GSE123456 and doi:10.1000/182.
+    want: ""

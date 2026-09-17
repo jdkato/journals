@@ -1,0 +1,23 @@
+# Item 27: which data, code, and materials are publicly available, and where.
+extends: occurrence
+message: "Say which data, code, and materials are available and where (item 27)."
+link: https://doi.org/10.1136/bmj.n71
+level: warning
+scope: raw
+token: '(?i)data (?:availability|sharing)|publicly available|available (?:at|from|on|in)|\bOSF\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.Availability:Say which data, code, and materials are available and where (item 27).
+  - name: clean
+    input: |
+      # Title
+
+      Data are available on OSF.
+    want: ""

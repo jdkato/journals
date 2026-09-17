@@ -1,0 +1,28 @@
+# "Articles start with a fully referenced summary paragraph, ideally of no
+# more than 200 words." It is the paragraph after the title.
+extends: occurrence
+message: "The summary paragraph runs %d words; ideally no more than 200."
+link: https://www.nature.com/nature/for-authors/formatting-guide
+level: warning
+scope: 'text & doc(h1 + p)'
+token: '\b\w+\b'
+max: 200
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w
+
+      The body.
+    want: |
+      3:1:Nature.Summary:The summary paragraph runs 201 words; ideally no more than 200.
+  - name: clean
+    input: |
+      # Title
+
+      Here we show a short summary.
+
+      The body.
+    want: ""

@@ -1,0 +1,36 @@
+# Item 12: the effect measure for each outcome.
+extends: occurrence
+message: "Methods specify the effect measure for each outcome (item 12)."
+link: https://doi.org/10.1136/bmj.n71
+level: warning
+scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+token: '(?i)risk ratio|odds ratio|hazard ratio|mean difference|standardi[sz]ed mean difference|\bSMD\b|relative risk|effect (?:measure|size)'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:PRISMA.EffectMeasures:Methods specify the effect measure for each outcome (item 12).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.EffectMeasures:Methods specify the effect measure for each outcome (item 12).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      We used the risk ratio.
+    want: ""

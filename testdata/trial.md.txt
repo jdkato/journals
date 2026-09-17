@@ -1,0 +1,63 @@
+fixtures/trial.md:1:1:CONSORT.Conflicts:Declare competing interests (item 5b).
+fixtures/trial.md:1:1:CONSORT.DataSharing:State whether and where participant-level data and code are available (item 4).
+fixtures/trial.md:1:1:CONSORT.Funding:Name the sources of funding and their role (item 5a).
+fixtures/trial.md:1:1:CONSORT.Harms:Describe how harms were assessed and report them (items 15 and 27).
+fixtures/trial.md:1:1:CONSORT.PrimaryOutcome:Define the primary outcome and report it (items 14 and 26).
+fixtures/trial.md:1:1:CONSORT.Protocol:Say where the protocol and statistical analysis plan can be accessed (item 3).
+fixtures/trial.md:1:1:CONSORT.PublicInvolvement:Describe how patients or the public were involved, or that they were not (item 8).
+fixtures/trial.md:1:1:CONSORT.Registration:Give the trial registry and registration number (item 2).
+fixtures/trial.md:1:1:PLOS.DataAvailability:A Data Availability Statement.
+fixtures/trial.md:1:3:PLOS.TitleCase:Write the title in sentence case: 'A Novel Randomized Trial Of Zetaprol Versus Placebo In Adults With Hypertension: The XYZ Study'.
+fixtures/trial.md:1:5:Journals.Hype:Let the result carry the weight; cut 'Novel'.
+fixtures/trial.md:1:88:Journals.Acronyms:Spell out 'XYZ' on first use.
+fixtures/trial.md:1:88:PLOS.TitleAbbreviations:Avoid specialist abbreviations in the title: 'XYZ'.
+fixtures/trial.md:5:17:Journals.Intensifiers:Intensifier 'very' adds nothing a number would not.
+fixtures/trial.md:5:42:Journals.Hype:Let the result carry the weight; cut 'novel'.
+fixtures/trial.md:5:76:Journals.SentenceNumeral:Spell out a number that starts a sentence, or recast it: '120'.
+fixtures/trial.md:5:108:Journals.DataPlural:'data' is plural in a manuscript: 'data are', not 'data was'.
+fixtures/trial.md:5:131:IMRaD.AbstractAbbreviations:Avoid abbreviations in the abstract: 'ANOVA'.
+fixtures/trial.md:5:156:Journals.Significant:'significant' without a statistic in the sentence: give the test, or say 'large'.
+fixtures/trial.md:5:168:IMRaD.AbstractCitations:The abstract stands alone; cite in the body, not '[1]'.
+fixtures/trial.md:5:193:Journals.UnitSpacing:Put a space between the number and the unit: '12mmHg'.
+fixtures/trial.md:5:201:Journals.PValueSpacing:Space the operator: 'p = 0.03', not 'p=0.000'.
+fixtures/trial.md:5:201:Journals.PValueZero:Report 'p=0.000' as 'p < 0.001'; a p-value is never zero.
+fixtures/trial.md:9:12:PLOS.Citations:PLOS cites by number in square brackets, not '(Smith et al., 2020)'.
+fixtures/trial.md:9:33:Journals.Prove:Results show or support; 'proves' claims more than data can.
+fixtures/trial.md:9:60:Journals.Wordy:Use 'to' instead of 'in order to'.
+fixtures/trial.md:9:94:Journals.Hype:Let the result carry the weight; cut 'groundbreaking'.
+fixtures/trial.md:9:118:Journals.Positional:Cite the figure by number, not by position: 'figure below'.
+fixtures/trial.md:11:4:CONSORT.Blinding:Methods say who was blinded, or that the trial was open label (item 13).
+fixtures/trial.md:11:4:CONSORT.Concealment:Methods describe how allocation was concealed until assignment (item 12a).
+fixtures/trial.md:11:4:CONSORT.Eligibility:Methods state the eligibility criteria for participants (item 6a).
+fixtures/trial.md:11:4:CONSORT.Randomization:Methods describe how the allocation sequence was generated (item 11).
+fixtures/trial.md:11:4:CONSORT.SampleSize:Methods say how the sample size was determined (item 16).
+fixtures/trial.md:11:4:PLOS.Alpha:Methods state the threshold for significance (alpha).
+fixtures/trial.md:11:4:PLOS.SampleSize:Methods give the sample sizes and how they were determined.
+fixtures/trial.md:11:4:PLOS.Software:Methods name the software package and its version.
+fixtures/trial.md:13:45:Journals.UnitSpacing:Put a space between the number and the unit: '5mg'.
+fixtures/trial.md:13:52:Journals.UnitSpacing:Put a space between the number and the unit: '10mg'.
+fixtures/trial.md:13:69:Journals.UnitSymbols:Write the unit as '°C', not 'degrees C'.
+fixtures/trial.md:13:83:Journals.Wordy:Use 'use' instead of 'utilize'.
+fixtures/trial.md:13:91:Journals.Acronyms:Spell out 'SPSS' on first use.
+fixtures/trial.md:13:118:Journals.Ranges:Use an en dash in a range: '18-65'.
+fixtures/trial.md:15:4:CONSORT.Analyzed:Results give the number analyzed in each group and the analysis population (items 19 and 21).
+fixtures/trial.md:15:4:CONSORT.Baseline:Results present baseline characteristics for each group (item 18).
+fixtures/trial.md:17:1:PLOS.FigureLabel:Cite a figure as 'Fig ', not 'Figure '.
+fixtures/trial.md:17:33:PLOS.FigureLabel:Cite a figure as 'Fig ', not 'Fig. '.
+fixtures/trial.md:17:67:Journals.Symbols:Use '±', not '+/-'.
+fixtures/trial.md:17:79:Journals.Symbols:Use '×', not 'x'.
+fixtures/trial.md:17:95:PLOS.SupportingInformation:Name supporting information 'S1 Fig', 'S1 Table', 'S1 Appendix': 'Supplementary Figure 1'.
+fixtures/trial.md:17:109:Journals.FigureAbbreviation:Inconsistent figure label: 'Figure 1'.
+fixtures/trial.md:17:109:PLOS.FigureLabel:Cite a figure as 'Fig ', not 'Figure '.
+fixtures/trial.md:17:136:PLOS.PValues:Report the exact p-value at or above 0.001, not 'p < 0.05'.
+fixtures/trial.md:17:151:Journals.PValueCase:Inconsistent case for the p-value: 'P = 0.0'.
+fixtures/trial.md:17:166:Journals.LabelCase:Capitalize a numbered label: 'table 1'.
+fixtures/trial.md:19:4:CONSORT.Limitations:Discussion addresses the trial's limitations (item 28).
+fixtures/trial.md:19:4:IMRaD.Limitations:The Discussion names the study's limitations.
+fixtures/trial.md:21:15:Journals.Hype:Let the result carry the weight; cut 'unprecedented'.
+fixtures/trial.md:21:33:Journals.Intensifiers:Intensifier 'clearly' adds nothing a number would not.
+fixtures/trial.md:21:41:Journals.Prove:Results show or support; 'proves' claims more than data can.
+fixtures/trial.md:21:66:Journals.DoubleHedge:One hedge is enough: 'may possibly'.
+fixtures/trial.md:21:90:PLOS.Footnotes:Footnotes are not permitted; move '[^1]' into the text.
+fixtures/trial.md:27:13:Journals.EtAl:Write 'et al.', not 'et. al.'.
+fixtures/trial.md:27:45:Journals.Ranges:Use an en dash in a range: '1-2'.

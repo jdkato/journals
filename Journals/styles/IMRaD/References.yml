@@ -1,0 +1,25 @@
+extends: occurrence
+message: "A References section."
+level: error
+scope: 'doc(section:haschild(h1:contains("References"),h2:contains("References")))'
+token: '(?s).'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      ## Other
+
+      Body.
+    want: |
+      1:1:IMRaD.References:A References section.
+  - name: clean
+    input: |
+      # Title
+
+      ## References
+
+      Body.
+    want: ""

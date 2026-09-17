@@ -1,0 +1,15 @@
+fixtures/notebook.ipynb:7:6:IMRaD.Methods:A Methods section: a heading containing 'Method' opens it.
+fixtures/notebook.ipynb:7:6:IMRaD.References:A References section.
+fixtures/notebook.ipynb:7:10:Journals.Hype:Let the result carry the weight; cut 'Novel'.
+fixtures/notebook.ipynb:16:10:Journals.DataPlural:'data' is plural in a manuscript: 'data are', not 'data was'.
+fixtures/notebook.ipynb:16:19:Journals.Intensifiers:Intensifier 'very' adds nothing a number would not.
+fixtures/notebook.ipynb:16:30:IMRaD.AbstractCitations:The abstract stands alone; cite in the body, not '[1]'.
+fixtures/notebook.ipynb:16:35:Journals.SentenceNumeral:Spell out a number that starts a sentence, or recast it: '10'.
+fixtures/notebook.ipynb:16:54:Journals.UnitSymbols:Write the unit as 'h', not 'hrs'.
+fixtures/notebook.ipynb:25:34:Journals.Positional:Cite the figure by number, not by position: 'figure below'.
+fixtures/notebook.ipynb:43:21:Journals.Significant:'significant' without a statistic in the sentence: give the test, or say 'large'.
+fixtures/notebook.ipynb:43:34:Journals.Placeholder:Placeholder left in the manuscript: 'TODO'.
+fixtures/notebook.ipynb:43:63:Journals.FigureAbbreviation:Inconsistent figure label: 'Fig. 2'.
+fixtures/notebook.ipynb:50:9:IMRaD.Limitations:The Discussion names the study's limitations.
+fixtures/notebook.ipynb:52:11:Journals.Prove:Results show or support; 'proves' claims more than data can.
+fixtures/notebook.ipynb:52:36:Journals.DoubleHedge:One hedge is enough: 'may possibly'.

@@ -1,0 +1,36 @@
+# Item 12a: how allocation was concealed until assignment.
+extends: occurrence
+message: "Methods describe how allocation was concealed until assignment (item 12a)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: error
+scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+token: '(?i)conceal'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:CONSORT.Concealment:Methods describe how allocation was concealed until assignment (item 12a).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.Concealment:Methods describe how allocation was concealed until assignment (item 12a).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Allocation was concealed in envelopes.
+    want: ""

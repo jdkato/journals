@@ -1,0 +1,23 @@
+# Items 15 and 27: how harms were assessed, and the harms observed.
+extends: occurrence
+message: "Describe how harms were assessed and report them (items 15 and 27)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: warning
+scope: raw
+token: '(?i)\badverse\b|\bharms?\b|side[- ]effects?'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.Harms:Describe how harms were assessed and report them (items 15 and 27).
+  - name: clean
+    input: |
+      # Title
+
+      Adverse events were recorded.
+    want: ""

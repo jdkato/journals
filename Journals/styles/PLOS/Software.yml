@@ -1,0 +1,36 @@
+# Methods report "the name and version of any software package used".
+extends: occurrence
+message: "Methods name the software package and its version."
+link: https://journals.plos.org/plosone/s/submission-guidelines#loc-statistical-reporting
+level: suggestion
+scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+token: '(?i)\bversion\b|\bv\d+(?:\.\d+)+\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:PLOS.Software:Methods name the software package and its version.
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PLOS.Software:Methods name the software package and its version.
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      We used R version 4.3.
+    want: ""

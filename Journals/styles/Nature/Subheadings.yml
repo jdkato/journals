@@ -1,0 +1,30 @@
+# "Subheadings may be up to 40 characters (including spaces)."
+extends: existence
+message: "Subheading runs past 40 characters: '%s'."
+link: https://www.nature.com/nature/for-authors/formatting-guide
+level: warning
+scope:
+  - heading.h2
+  - heading.h3
+nonword: true
+raw:
+  - '^.{41,}'
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      ## A subheading that is much longer than forty characters
+
+      Body.
+    want: |
+      3:4:Nature.Subheadings:Subheading runs past 40 characters: 'A subheading that is much longer than forty characters'.
+  - name: clean
+    input: |
+      # Title
+
+      ## A short subheading
+
+      Body.
+    want: ""

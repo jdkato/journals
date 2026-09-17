@@ -1,0 +1,31 @@
+fixtures/article.Rmd:1:1:Nature.CodeAvailability:A Code Availability statement.
+fixtures/article.Rmd:1:1:Nature.DataAvailability:A Data Availability statement.
+fixtures/article.Rmd:6:3:Nature.Title:Title runs past 75 characters, including spaces.
+fixtures/article.Rmd:6:3:Nature.TitleContent:A Nature title avoids numbers, acronyms, abbreviations, and punctuation: 'CRISPR'.
+fixtures/article.Rmd:6:21:Nature.TitleContent:A Nature title avoids numbers, acronyms, abbreviations, and punctuation: '3'.
+fixtures/article.Rmd:6:53:Nature.TitleContent:A Nature title avoids numbers, acronyms, abbreviations, and punctuation: ':'.
+fixtures/article.Rmd:6:84:Nature.TitleContent:A Nature title avoids numbers, acronyms, abbreviations, and punctuation: '2024'.
+fixtures/article.Rmd:8:1:Nature.HereWeShow:Introduce the main conclusion with 'Here we show' or an equivalent.
+fixtures/article.Rmd:8:11:Nature.SummaryContent:The summary paragraph avoids numbers, abbreviations, and measurements unless essential: '3'.
+fixtures/article.Rmd:8:22:Nature.SummaryContent:The summary paragraph avoids numbers, abbreviations, and measurements unless essential: '40'.
+fixtures/article.Rmd:8:35:Nature.SummaryContent:The summary paragraph avoids numbers, abbreviations, and measurements unless essential: 'CRISPR'.
+fixtures/article.Rmd:8:57:Nature.SummaryContent:The summary paragraph avoids numbers, abbreviations, and measurements unless essential: '20'.
+fixtures/article.Rmd:8:59:Nature.Degree:A single space between the number and the unit: '%'.
+fixtures/article.Rmd:8:68:Nature.Citations:Nature sets reference numbers as superscripts, not in brackets: '[1]'.
+fixtures/article.Rmd:8:83:Journals.Hype:Let the result carry the weight; cut 'novel'.
+fixtures/article.Rmd:8:90:Journals.Hype:Let the result carry the weight; cut 'cutting-edge'.
+fixtures/article.Rmd:10:4:Nature.Subheadings:Subheading runs past 40 characters: 'A subheading that is much longer than forty characters allows'.
+fixtures/article.Rmd:12:12:Nature.Thousands:Separate thousands with commas: '12000'.
+fixtures/article.Rmd:12:37:Nature.Degree:A single space between the number and the unit: '°C'.
+fixtures/article.Rmd:12:41:Nature.FigureLabel:Cite a figure as 'Fig. ', not 'Figure '.
+fixtures/article.Rmd:12:54:Nature.FigureLabel:Cite a figure as 'Fig. ', not 'Fig '.
+fixtures/article.Rmd:12:71:Nature.ExtendedData:Cite an online-only figure as 'Extended Data Fig. ', not 'Supplementary Fig. '.
+fixtures/article.Rmd:12:106:Nature.ExtendedData:Cite an online-only figure as 'Extended Data Fig. ', not 'Extended Data Figure '.
+fixtures/article.Rmd:12:120:Journals.FigureAbbreviation:Inconsistent figure label: 'Figure 3'.
+fixtures/article.Rmd:12:138:Nature.Citations:Nature sets reference numbers as superscripts, not in brackets: '[2,3]'.
+fixtures/article.Rmd:24:23:Nature.Acknowledgements:Thank for assistance, not 'excellent' assistance; cut 'excellent'.
+fixtures/article.Rmd:24:52:Nature.Acknowledgements:Thank for assistance, not 'excellent' assistance; cut 'anonymous referees'.
+fixtures/article.Rmd:24:75:Nature.Acknowledgements:Thank for assistance, not 'excellent' assistance; cut 'insightful'.
+fixtures/article.Rmd:28:29:Journals.Ranges:Use an en dash in a range: '1-2'.
+fixtures/article.Rmd:29:30:Journals.Ranges:Use an en dash in a range: '3-4'.
+fixtures/article.Rmd:30:27:Journals.Ranges:Use an en dash in a range: '5-6'.

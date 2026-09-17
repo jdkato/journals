@@ -1,0 +1,21 @@
+# References are "numbered in the order that they appear in the text", and
+# cited by "the reference number in square brackets".
+extends: existence
+message: "PLOS cites by number in square brackets, not '%s'."
+link: https://journals.plos.org/plosone/s/submission-guidelines#loc-references
+level: warning
+nonword: true
+raw:
+  - '\^\d+(?:[,–-]\d+)*\^|\([A-Z][A-Za-z-]+(?: et al\.| and [A-Z][A-Za-z-]+)?,? \d{4}[a-z]?\)'
+
+tests:
+  - name: fires
+    input: |
+      A claim^1^ and another (Smith et al., 2020).
+    want: |
+      1:8:PLOS.Citations:PLOS cites by number in square brackets, not '^1^'.
+      1:24:PLOS.Citations:PLOS cites by number in square brackets, not '(Smith et al., 2020)'.
+  - name: clean
+    input: |
+      A claim [1] and another [2].
+    want: ""

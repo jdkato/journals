@@ -1,0 +1,24 @@
+# Item 24a: registration information, or a statement that the review was not
+# registered.
+extends: occurrence
+message: "Give the registration and registry, or say the review was not registered (item 24a)."
+link: https://doi.org/10.1136/bmj.n71
+level: warning
+scope: raw
+token: '(?i)PROSPERO|CRD\d{11}|\bregist(?:ered|ration)\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.Registration:Give the registration and registry, or say the review was not registered (item 24a).
+  - name: clean
+    input: |
+      # Title
+
+      Registered in PROSPERO.
+    want: ""

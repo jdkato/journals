@@ -1,0 +1,23 @@
+# Item 3: where the protocol and statistical analysis plan can be accessed.
+extends: occurrence
+message: "Say where the protocol and statistical analysis plan can be accessed (item 3)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: warning
+scope: raw
+token: '(?i)\bprotocol\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.Protocol:Say where the protocol and statistical analysis plan can be accessed (item 3).
+  - name: clean
+    input: |
+      # Title
+
+      The protocol is at the registry.
+    want: ""

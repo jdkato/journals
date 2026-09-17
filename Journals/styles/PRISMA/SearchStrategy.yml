@@ -1,0 +1,36 @@
+# Item 7: the full search strategy for at least one database.
+extends: occurrence
+message: "Methods present the full search strategy for at least one source (item 7)."
+link: https://doi.org/10.1136/bmj.n71
+level: error
+scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+token: '(?i)search (?:strateg|string|terms|syntax)|\bsearched\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:PRISMA.SearchStrategy:Methods present the full search strategy for at least one source (item 7).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.SearchStrategy:Methods present the full search strategy for at least one source (item 7).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      The search strategy is in S1.
+    want: ""

@@ -1,0 +1,33 @@
+# An abstract is read without the paper, so an abbreviation defined in the
+# body is undefined here. A registry identifier is not an abbreviation.
+extends: existence
+message: "Avoid abbreviations in the abstract: '%s'."
+level: suggestion
+scope: 'doc(section:haschild(h1:contains("Abstract"),h2:contains("Abstract")))'
+nonword: true
+raw:
+  - '\b(?!(?:NCT|ISRCTN|ACTRN|CRD|DNA|RNA|HIV|PROSPERO)\b)[A-Z]{3,}\b'
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      ## Abstract
+
+      Using GWAS and MRI, registered as NCT01234567.
+    want: |
+      5:7:IMRaD.AbstractAbbreviations:Avoid abbreviations in the abstract: 'GWAS'.
+      5:16:IMRaD.AbstractAbbreviations:Avoid abbreviations in the abstract: 'MRI'.
+  - name: clean
+    input: |
+      # Title
+
+      ## Abstract
+
+      Using imaging.
+
+      ## Methods
+
+      Using MRI.
+    want: ""

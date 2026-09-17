@@ -1,0 +1,79 @@
+# "As a guideline, articles typically have no more than 50 references."
+# An entry is a line of the reference list with a year or a DOI in it.
+extends: occurrence
+message: "%d references; Articles typically have no more than 50."
+link: https://www.nature.com/nature/for-authors/formatting-guide
+level: warning
+scope: 'doc(section:haschild(h1:contains("References"),h2:contains("References")))'
+token: '(?m)^.*(?:\b(?:19|20)\d{2}\b|\bdoi\b|arXiv).*$'
+max: 50
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      ## References
+
+      1. A. 2001.
+      2. A. 2001.
+      3. A. 2001.
+      4. A. 2001.
+      5. A. 2001.
+      6. A. 2001.
+      7. A. 2001.
+      8. A. 2001.
+      9. A. 2001.
+      10. A. 2001.
+      11. A. 2001.
+      12. A. 2001.
+      13. A. 2001.
+      14. A. 2001.
+      15. A. 2001.
+      16. A. 2001.
+      17. A. 2001.
+      18. A. 2001.
+      19. A. 2001.
+      20. A. 2001.
+      21. A. 2001.
+      22. A. 2001.
+      23. A. 2001.
+      24. A. 2001.
+      25. A. 2001.
+      26. A. 2001.
+      27. A. 2001.
+      28. A. 2001.
+      29. A. 2001.
+      30. A. 2001.
+      31. A. 2001.
+      32. A. 2001.
+      33. A. 2001.
+      34. A. 2001.
+      35. A. 2001.
+      36. A. 2001.
+      37. A. 2001.
+      38. A. 2001.
+      39. A. 2001.
+      40. A. 2001.
+      41. A. 2001.
+      42. A. 2001.
+      43. A. 2001.
+      44. A. 2001.
+      45. A. 2001.
+      46. A. 2001.
+      47. A. 2001.
+      48. A. 2001.
+      49. A. 2001.
+      50. A. 2001.
+      51. A. 2001.
+    want: |
+      5:4:Nature.References:51 references; Articles typically have no more than 50.
+  - name: clean
+    input: |
+      # Title
+
+      ## References
+
+      1. A. 2001.
+      2. B. doi:10.1/x.
+    want: ""

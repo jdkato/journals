@@ -1,0 +1,23 @@
+# Item 25: the sources of support and the funders' role.
+extends: occurrence
+message: "Describe the sources of support and the funders' role (item 25)."
+link: https://doi.org/10.1136/bmj.n71
+level: warning
+scope: raw
+token: '(?i)\bfund(?:ed|ing)\b|\bsupported by\b|\bgrant\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.Funding:Describe the sources of support and the funders' role (item 25).
+  - name: clean
+    input: |
+      # Title
+
+      Funded by a council.
+    want: ""

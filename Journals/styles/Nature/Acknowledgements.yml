@@ -1,0 +1,40 @@
+# "Acknowledgements should be brief, and should not include thanks to
+# anonymous referees and editors, inessential words, or effusive comments."
+extends: existence
+message: "Thank for assistance, not 'excellent' assistance; cut '%s'."
+link: https://www.nature.com/nature/for-authors/formatting-guide
+level: suggestion
+ignorecase: true
+scope: 'doc(section:haschild(h1:contains("cknowledg"),h2:contains("cknowledg")))'
+tokens:
+  - excellent
+  - insightful
+  - invaluable
+  - generous
+  - tireless
+  - anonymous (?:referees|reviewers)
+  - the editors?
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      ## Acknowledgements
+
+      We thank A. Smith for excellent assistance and the anonymous referees.
+    want: |
+      5:23:Nature.Acknowledgements:Thank for assistance, not 'excellent' assistance; cut 'excellent'.
+      5:52:Nature.Acknowledgements:Thank for assistance, not 'excellent' assistance; cut 'anonymous referees'.
+  - name: clean
+    input: |
+      # Title
+
+      ## Acknowledgements
+
+      We thank A. Smith for assistance.
+
+      ## Discussion
+
+      The excellent result.
+    want: ""

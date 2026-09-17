@@ -1,0 +1,31 @@
+# "Limit manuscript sections and sub-sections to 3 heading levels." The
+# title is the first, so a fifth level is one too many.
+extends: existence
+message: "PLOS allows three heading levels below the title: '%s'."
+link: https://journals.plos.org/plosone/s/submission-guidelines#loc-manuscript-organization
+level: warning
+scope:
+  - heading.h5
+  - heading.h6
+nonword: true
+raw:
+  - '.+'
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      ##### Deep
+
+      Body.
+    want: |
+      3:7:PLOS.Headings:PLOS allows three heading levels below the title: 'Deep'.
+  - name: clean
+    input: |
+      # Title
+
+      #### Fine
+
+      Body.
+    want: ""

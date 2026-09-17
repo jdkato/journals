@@ -1,0 +1,20 @@
+# Tables are cited as "Table 1", never abbreviated.
+extends: substitution
+message: "Cite a table as '%s', not '%s'."
+link: https://journals.plos.org/plosone/s/submission-guidelines#loc-figures-and-tables
+level: warning
+nonword: true
+swap:
+  '\bTab\.? (?=\d)': 'Table '
+
+tests:
+  - name: fires
+    input: |
+      See Tab. 1 and Tab 2.
+    want: |
+      1:5:PLOS.TableLabel:Cite a table as 'Table ', not 'Tab. '.
+      1:16:PLOS.TableLabel:Cite a table as 'Table ', not 'Tab '.
+  - name: clean
+    input: |
+      See Table 1 and Table 2.
+    want: ""

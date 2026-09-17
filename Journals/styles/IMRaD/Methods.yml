@@ -1,0 +1,25 @@
+extends: occurrence
+message: "A Methods section: a heading containing 'Method' opens it."
+level: error
+scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+token: '(?s).'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      ## Other
+
+      Body.
+    want: |
+      1:1:IMRaD.Methods:A Methods section: a heading containing 'Method' opens it.
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Body.
+    want: ""

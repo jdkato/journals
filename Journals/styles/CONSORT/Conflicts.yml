@@ -1,0 +1,23 @@
+# Item 5b: competing interests.
+extends: occurrence
+message: "Declare competing interests (item 5b)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: warning
+scope: raw
+token: '(?i)competing interests?|conflicts? of interest|declarations? of interest'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.Conflicts:Declare competing interests (item 5b).
+  - name: clean
+    input: |
+      # Title
+
+      Competing interests: none.
+    want: ""

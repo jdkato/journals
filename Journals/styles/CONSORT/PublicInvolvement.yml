@@ -1,0 +1,23 @@
+# Item 8: how patients or the public were involved in the trial.
+extends: occurrence
+message: "Describe how patients or the public were involved, or that they were not (item 8)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: suggestion
+scope: raw
+token: '(?i)patient and public involvement|public involvement|\bPPI\b|patient partners?'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.PublicInvolvement:Describe how patients or the public were involved, or that they were not (item 8).
+  - name: clean
+    input: |
+      # Title
+
+      Patient and public involvement: none.
+    want: ""

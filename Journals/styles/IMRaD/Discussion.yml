@@ -1,0 +1,25 @@
+extends: occurrence
+message: "A Discussion section."
+level: error
+scope: 'doc(section:haschild(h1:contains("Discussion"),h2:contains("Discussion")))'
+token: '(?s).'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      ## Other
+
+      Body.
+    want: |
+      1:1:IMRaD.Discussion:A Discussion section.
+  - name: clean
+    input: |
+      # Title
+
+      ## Discussion
+
+      Body.
+    want: ""

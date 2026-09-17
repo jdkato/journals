@@ -1,0 +1,30 @@
+---
+title: "Exercise and sleep: a review"
+format: html
+---
+
+# Effects of exercise on sleep: a review
+
+## Abstract
+
+We reviewed trials of exercise and sleep. 30 trials were included. The data was pooled and the effect was significant.
+
+## Introduction
+
+Exercise is very important (Doe et al., 2019).
+
+## Methods
+
+We looked at papers we knew about and picked the good ones.
+
+## Results
+
+Thirty trials were found. Exercise improved sleep.
+
+## Discussion
+
+Exercise clearly works. This proves it.
+
+## References
+
+1. Doe A. A review. Sleep. 2019;1:1-2.

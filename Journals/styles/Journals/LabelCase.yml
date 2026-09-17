@@ -1,0 +1,18 @@
+extends: existence
+message: "Capitalize a numbered label: '%s'."
+level: warning
+nonword: true
+raw:
+  - '\b(?:figure|fig\.?|table|equation|eq\.)\s+\d'
+
+tests:
+  - name: fires
+    input: |
+      See figure 2 and table 1.
+    want: |
+      1:5:Journals.LabelCase:Capitalize a numbered label: 'figure 2'.
+      1:18:Journals.LabelCase:Capitalize a numbered label: 'table 1'.
+  - name: clean
+    input: |
+      See Figure 2 and Table 1; the figure is small.
+    want: ""

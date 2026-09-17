@@ -1,0 +1,23 @@
+# Items 13e and 20c: how heterogeneity was explored, and what was found.
+extends: occurrence
+message: "Describe how heterogeneity was explored and report it (items 13e and 20c)."
+link: https://doi.org/10.1136/bmj.n71
+level: warning
+scope: raw
+token: '(?i)heterogeneity|I\^?2|I²|τ²|tau²'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.Heterogeneity:Describe how heterogeneity was explored and report it (items 13e and 20c).
+  - name: clean
+    input: |
+      # Title
+
+      Heterogeneity was low.
+    want: ""

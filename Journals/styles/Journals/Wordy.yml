@@ -1,0 +1,47 @@
+# From plainlanguage.gov's "Use simple words and phrases", a work of the US
+# Government in the public domain, kept to the entries a manuscript uses.
+extends: substitution
+message: "Use '%s' instead of '%s'."
+link: https://www.plainlanguage.gov/guidelines/words/use-simple-words-phrases/
+level: suggestion
+ignorecase: true
+action:
+  name: replace
+swap:
+  utilize: use
+  utilization: use
+  utilized: used
+  methodology: method
+  in order to: to
+  prior to: before
+  subsequent to: after
+  subsequently: later
+  due to the fact that: because
+  a number of: some
+  in the event (?:that|of): if
+  at the present time: now
+  in close proximity to: near
+  as a means of: to
+  in an effort to: to
+  with the exception of: except for
+  in lieu of: instead of
+  sufficient: enough
+  numerous: many
+  commence: begin
+  terminate: end
+  endeavor: try
+  comprised of: composed of
+
+tests:
+  - name: fires
+    input: |
+      We utilize a methodology in order to measure prior to dosing.
+    want: |
+      1:4:Journals.Wordy:Use 'use' instead of 'utilize'.
+      1:14:Journals.Wordy:Use 'method' instead of 'methodology'.
+      1:26:Journals.Wordy:Use 'to' instead of 'in order to'.
+      1:46:Journals.Wordy:Use 'before' instead of 'prior to'.
+  - name: clean
+    input: |
+      We use a method to measure before dosing.
+    want: ""

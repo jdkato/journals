@@ -1,0 +1,31 @@
+# A sentence that opens with a numeral. The boundary is found in the
+# paragraph rather than taken from the sentence splitter, which ends a
+# sentence at "Fig." and at a journal's name in a reference; a number that
+# runs into ';' or ':' is a reference's volume and page, and one followed by
+# a capitalized word, or nothing, is a footnote marker, which the text keeps
+# as a digit.
+extends: existence
+message: "Spell out a number that starts a sentence, or recast it: '%s'."
+level: warning
+nonword: true
+raw:
+  - '(?<=\A|(?<!\b(?:Fig|Figs|Eq|Eqs|Tab|No|vs|al|ca|vol|pp|ch|sec|etc|St|Dr|Mr|Ms|Mrs|Prof|[A-Z]))[.!?]\s+)\d+(?:[.,]\d+)*\b(?![.,]?\d*[:;])(?!\s+[A-Z]|\s*$)'
+
+tests:
+  - name: fires
+    input: |
+      Rats were weighed. 24 animals survived.
+    want: |
+      1:20:Journals.SentenceNumeral:Spell out a number that starts a sentence, or recast it: '24'.
+  - name: opens a paragraph
+    input: |
+      24 animals survived.
+    want: |
+      1:1:Journals.SentenceNumeral:Spell out a number that starts a sentence, or recast it: '24'.
+  - name: clean
+    about: "a label's period, a journal's period, and a footnote are not sentence ends"
+    input: |
+      Rats were weighed. Twenty-four animals survived, and 24 did not. See Fig. 2 and Eq. 3, or Smith J. A paper. Sleep. 2019;1:1–2. A claim.[^1]
+
+      [^1]: Note.
+    want: ""

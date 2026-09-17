@@ -1,0 +1,25 @@
+extends: existence
+message: "Intensifier '%s' adds nothing a number would not."
+level: suggestion
+ignorecase: true
+tokens:
+  - very
+  - extremely
+  - really
+  - quite
+  - obviously
+  - clearly
+  - of course
+  - undoubtedly
+
+tests:
+  - name: fires
+    input: |
+      The effect was very clear and obviously real.
+    want: |
+      1:16:Journals.Intensifiers:Intensifier 'very' adds nothing a number would not.
+      1:31:Journals.Intensifiers:Intensifier 'obviously' adds nothing a number would not.
+  - name: clean
+    input: |
+      The effect was 2.4-fold.
+    want: ""

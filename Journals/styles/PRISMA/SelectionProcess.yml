@@ -1,0 +1,36 @@
+# Item 8: how many reviewers screened each record, and whether independently.
+extends: occurrence
+message: "Methods say how many reviewers screened each record and whether they worked independently (item 8)."
+link: https://doi.org/10.1136/bmj.n71
+level: warning
+scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+token: '(?i)independently|two reviewers|in duplicate|\bscreen(?:ed|ing)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:PRISMA.SelectionProcess:Methods say how many reviewers screened each record and whether they worked independently (item 8).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.SelectionProcess:Methods say how many reviewers screened each record and whether they worked independently (item 8).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Two reviewers screened independently.
+    want: ""

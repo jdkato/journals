@@ -1,0 +1,18 @@
+extends: existence
+message: "'data' is plural in a manuscript: 'data are', not '%s'."
+level: suggestion
+ignorecase: true
+nonword: true
+raw:
+  - '\bdata (?:is|was|has|shows|suggests|indicates|demonstrates|reveals|supports)\b'
+
+tests:
+  - name: fires
+    input: |
+      The data was noisy.
+    want: |
+      1:5:Journals.DataPlural:'data' is plural in a manuscript: 'data are', not 'data was'.
+  - name: clean
+    input: |
+      The data were noisy, and the dataset is large.
+    want: ""

@@ -1,0 +1,50 @@
+# Std's first-use check, with the abbreviations a scientific reader knows
+# added to the ones a technical reader does.
+extends: Std.Abbreviations.Acronyms
+level: suggestion
+# A definition in a manuscript is lowercase and often hyphenated:
+# "genome-wide association study (GWAS)".
+second: '(?:\b[\w-]+ )+\(([A-Z]{3,5})\)'
+exceptions+:
+  - AIDS
+  - ANOVA
+  - ATP
+  - BMI
+  - CONSORT
+  - COVID
+  - DNA
+  - DOI
+  - FDA
+  - GRADE
+  - HIV
+  - IACUC
+  - ICU
+  - IQR
+  - IRB
+  - ISRCTN
+  - MRI
+  - NCT
+  - NIH
+  - ORCID
+  - PCR
+  - PLOS
+  - PRISMA
+  - PROSPERO
+  - RNA
+  - SARS
+  - SEM
+  - USA
+  - WHO
+  - cDNA
+  - mRNA
+
+tests:
+  - name: fires
+    input: |
+      We ran PCR and ANOVA, then a GWAS.
+    want: |
+      1:30:Journals.Acronyms:Spell out 'GWAS' on first use.
+  - name: clean
+    input: |
+      We ran a genome-wide association study (GWAS); the GWAS found nothing.
+    want: ""

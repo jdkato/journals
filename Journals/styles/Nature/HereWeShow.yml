@@ -1,0 +1,28 @@
+# The summary paragraph holds "a statement of the main conclusions
+# (introduced by the phrase 'Here we show' or its equivalent)".
+extends: occurrence
+message: "Introduce the main conclusion with 'Here we show' or an equivalent."
+link: https://www.nature.com/nature/for-authors/formatting-guide
+level: suggestion
+scope: 'text & doc(h1 + p)'
+token: '(?i)\bhere,? we (?:show|report|present|describe|demonstrate|find|find that)\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      A summary that never gets to the point.
+
+      The body.
+    want: |
+      3:1:Nature.HereWeShow:Introduce the main conclusion with 'Here we show' or an equivalent.
+  - name: clean
+    input: |
+      # Title
+
+      Here we show the point.
+
+      The body.
+    want: ""

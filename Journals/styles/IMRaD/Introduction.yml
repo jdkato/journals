@@ -1,0 +1,25 @@
+extends: occurrence
+message: "An Introduction section."
+level: error
+scope: 'doc(section:haschild(h1:contains("Introduction"),h2:contains("Introduction")))'
+token: '(?s).'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      ## Other
+
+      Body.
+    want: |
+      1:1:IMRaD.Introduction:An Introduction section.
+  - name: clean
+    input: |
+      # Title
+
+      ## Introduction
+
+      Body.
+    want: ""

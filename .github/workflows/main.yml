@@ -1,0 +1,60 @@
+name: Build + Test
+
+on: [push, pull_request]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      # The archive is what users install, so the license and the attribution
+      # for the paraphrased checklists travel inside it.
+      - run: cp LICENSE NOTICE Journals/
+
+      # GitHub serves the asset for `journals.zip` too, and Vale looks for a
+      # directory named after the URL, so the archive carries both spellings.
+      - run: cp -r Journals journals
+      - run: zip -r Journals.zip Journals journals -x "*.DS_Store"
+
+      - name: Upload style to release
+        uses: svenstaro/upload-release-action@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: Journals.zip
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # The rules read a manuscript's sections with `doc(...)` scopes and
+      # carry their cases in `tests:` blocks, both on Vale's v3 branch until
+      # the release that ships them -- built from source until then.
+      - uses: actions/checkout@v4
+        with:
+          repository: vale-cli/vale
+          ref: v3
+          path: vale-src
+      - uses: actions/checkout@v4
+        with:
+          repository: vale-cli/Std
+          path: std-src
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: vale-src/go.mod
+      - run: |
+          go build -o "$RUNNER_TEMP/bin/vale" ./cmd/vale
+          echo "$RUNNER_TEMP/bin" >> $GITHUB_PATH
+        working-directory: vale-src
+
+      # The Typst fixture goes through typst2vast, which Vale calls but does
+      # not ship; the runners carry a Rust toolchain.
+      - run: cargo install --locked typst2vast
+
+      - run: ./test.sh
+        env:
+          STD: ${{ github.workspace }}/std-src/Std

@@ -1,0 +1,36 @@
+# Item 9: how data were collected from reports.
+extends: occurrence
+message: "Methods describe how data were collected from reports (item 9)."
+link: https://doi.org/10.1136/bmj.n71
+level: warning
+scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+token: '(?i)extract(?:ed|ion)|data collection'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:PRISMA.DataCollection:Methods describe how data were collected from reports (item 9).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.DataCollection:Methods describe how data were collected from reports (item 9).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Data were extracted in duplicate.
+    want: ""

@@ -1,0 +1,36 @@
+# Item 16a: the search and selection process, ideally with a flow diagram.
+extends: occurrence
+message: "Results describe the search and selection, ideally with a flow diagram (item 16a)."
+link: https://doi.org/10.1136/bmj.n71
+level: error
+scope: 'doc(section:haschild(h1:contains("Results"),h2:contains("Results")))'
+token: '(?i)flow ?(?:diagram|chart)|records? (?:identified|screened)|studies (?:identified|screened|included)'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Results
+
+      Something else.
+    want: |
+      3:4:PRISMA.FlowDiagram:Results describe the search and selection, ideally with a flow diagram (item 16a).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.FlowDiagram:Results describe the search and selection, ideally with a flow diagram (item 16a).
+  - name: clean
+    input: |
+      # Title
+
+      ## Results
+
+      The flow diagram is Fig 1.
+    want: ""

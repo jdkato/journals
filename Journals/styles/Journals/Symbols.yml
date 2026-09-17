@@ -1,0 +1,23 @@
+# The typographic symbol for an operator written with keyboard characters.
+extends: substitution
+message: "Use '%s', not '%s'."
+level: suggestion
+nonword: true
+swap:
+  '\+/-': '±'
+  '(?<=\d\s?)x(?=\s?\d)': '×'
+  '<=': '≤'
+  '>=': '≥'
+
+tests:
+  - name: fires
+    input: |
+      The gel was 10 x 10 cm, mean 5 +/- 2, and n >= 3.
+    want: |
+      1:16:Journals.Symbols:Use '×', not 'x'.
+      1:32:Journals.Symbols:Use '±', not '+/-'.
+      1:45:Journals.Symbols:Use '≥', not '>='.
+  - name: clean
+    input: |
+      The gel was 10 × 10 cm, mean 5 ± 2, and n ≥ 3; a 10x speedup is a word.
+    want: ""

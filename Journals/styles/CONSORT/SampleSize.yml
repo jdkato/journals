@@ -1,0 +1,36 @@
+# Item 16: how the sample size was determined.
+extends: occurrence
+message: "Methods say how the sample size was determined (item 16)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: error
+scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+token: '(?i)sample size|power (?:calculation|analysis)|powered to'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:CONSORT.SampleSize:Methods say how the sample size was determined (item 16).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.SampleSize:Methods say how the sample size was determined (item 16).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      The sample size gave 80% power.
+    want: ""

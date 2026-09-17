@@ -1,0 +1,23 @@
+# Items 15 and 22: the certainty of evidence for each outcome.
+extends: occurrence
+message: "Assess and report the certainty of evidence for each outcome (items 15 and 22)."
+link: https://doi.org/10.1136/bmj.n71
+level: warning
+scope: raw
+token: '(?i)\bGRADE\b|certainty (?:of|in) (?:the )?evidence|confidence in (?:the )?(?:body of )?evidence'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.Certainty:Assess and report the certainty of evidence for each outcome (items 15 and 22).
+  - name: clean
+    input: |
+      # Title
+
+      Certainty of evidence was rated with GRADE.
+    want: ""

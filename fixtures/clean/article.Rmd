@@ -1,0 +1,41 @@
+---
+title: "Gene editing extends lifespan in mice"
+output: html_document
+---
+
+# Gene editing extends lifespan in mice
+
+Aging shortens life in every mammal studied^1^. Here we show that editing three genes extends the lifespan of mice by a fifth, without harm to their health^2^. The result points to a shared mechanism of aging.
+
+## Editing three genes
+
+Mice lived 1,000 days at 37 °C and 20 % oxygen (Fig. 1 and Extended Data Fig. 1); the full data are in Extended Data Table 1.
+
+```{r}
+x <- c(1, 2, 3)
+```
+
+## Methods
+
+Mice were housed in groups of five. Statistics are in the legend of Fig. 1.
+
+## Data availability
+
+Sequencing data are deposited under accession GSE000001.
+
+## Code availability
+
+Analysis code is on GitHub.
+
+## Acknowledgements
+
+We thank A. Smith for assistance.
+
+## Figure legends
+
+Fig. 1: Lifespan of edited and control mice. Error bars are the standard deviation.
+
+## References
+
+1. A. B. A paper. Nature 1, 1–2 (2001).
+2. C. D. Another. Science 2, 3–4 (2002).

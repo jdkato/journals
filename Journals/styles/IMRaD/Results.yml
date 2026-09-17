@@ -1,0 +1,25 @@
+extends: occurrence
+message: "A Results section."
+level: error
+scope: 'doc(section:haschild(h1:contains("Results"),h2:contains("Results")))'
+token: '(?s).'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      ## Other
+
+      Body.
+    want: |
+      1:1:IMRaD.Results:A Results section.
+  - name: clean
+    input: |
+      # Title
+
+      ## Results
+
+      Body.
+    want: ""

@@ -1,0 +1,30 @@
+# "Legends should be fewer than 300 words each." A legend is a paragraph of
+# the figure legends section.
+extends: occurrence
+message: "A figure legend runs %d words; fewer than 300 each."
+link: https://www.nature.com/nature/for-authors/formatting-guide
+level: warning
+scope: 'paragraph & doc(section:haschild(h1:contains("egend"),h2:contains("egend")))'
+token: '\b\w+\b'
+max: 299
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      ## Figure legends
+
+      w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w
+
+      Fig. 2: short.
+    want: |
+      5:1:Nature.Legends:A figure legend runs 300 words; fewer than 300 each.
+  - name: clean
+    input: |
+      # Title
+
+      ## Figure legends
+
+      Fig. 1: short.
+    want: ""

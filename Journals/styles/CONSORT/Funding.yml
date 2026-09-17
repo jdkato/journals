@@ -1,0 +1,23 @@
+# Item 5a: the sources of funding and their role.
+extends: occurrence
+message: "Name the sources of funding and their role (item 5a)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: warning
+scope: raw
+token: '(?i)\bfund(?:ed|ing)\b|\bsupported by\b|\bgrant\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.Funding:Name the sources of funding and their role (item 5a).
+  - name: clean
+    input: |
+      # Title
+
+      Funded by a council.
+    want: ""

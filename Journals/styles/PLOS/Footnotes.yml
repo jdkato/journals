@@ -1,0 +1,22 @@
+# "Footnotes are not permitted."
+extends: existence
+message: "Footnotes are not permitted; move '%s' into the text."
+link: https://journals.plos.org/plosone/s/submission-guidelines#loc-manuscript-organization
+level: error
+scope: raw
+nonword: true
+raw:
+  - '\[\^[^\]]+\](?!:)'
+
+tests:
+  - name: fires
+    input: |
+      A claim.[^1]
+
+      [^1]: A footnote.
+    want: |
+      1:9:PLOS.Footnotes:Footnotes are not permitted; move '[^1]' into the text.
+  - name: clean
+    input: |
+      A claim, with the note in the text.
+    want: ""

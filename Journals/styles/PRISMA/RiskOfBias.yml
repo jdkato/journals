@@ -1,0 +1,24 @@
+# Items 11 and 18: the risk of bias in included studies, assessed and
+# reported.
+extends: occurrence
+message: "Assess and report the risk of bias in included studies (items 11 and 18)."
+link: https://doi.org/10.1136/bmj.n71
+level: error
+scope: raw
+token: '(?i)risk of bias|RoB ?2|ROBINS|Newcastle|quality assessment|critical appraisal'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.RiskOfBias:Assess and report the risk of bias in included studies (items 11 and 18).
+  - name: clean
+    input: |
+      # Title
+
+      Risk of bias was assessed with RoB 2.
+    want: ""

@@ -1,0 +1,32 @@
+# The summary paragraph "avoids numbers, abbreviations, acronyms or
+# measurements unless essential." Superscript reference numbers are the
+# exception: the paragraph is fully referenced. A bracketed number is a
+# citation too, and Nature.Citations has it.
+extends: existence
+message: "The summary paragraph avoids numbers, abbreviations, and measurements unless essential: '%s'."
+link: https://www.nature.com/nature/for-authors/formatting-guide
+level: suggestion
+scope: 'text & doc(h1 + p)'
+nonword: true
+raw:
+  - '(?<![\^\[])\b\d+(?:\.\d+)?\b(?![\^\]])|\b[A-Z]{3,}\b'
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Here we show that 40 mice with a CRISPR edit lived^1^.
+
+      The body has 40 mice too.
+    want: |
+      3:19:Nature.SummaryContent:The summary paragraph avoids numbers, abbreviations, and measurements unless essential: '40'.
+      3:34:Nature.SummaryContent:The summary paragraph avoids numbers, abbreviations, and measurements unless essential: 'CRISPR'.
+  - name: clean
+    input: |
+      # Title
+
+      Here we show that forty mice with an edit lived^1^.
+
+      The body has 40 mice too.
+    want: ""

@@ -1,0 +1,36 @@
+# Item 6a: eligibility criteria for participants.
+extends: occurrence
+message: "Methods state the eligibility criteria for participants (item 6a)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: error
+scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+token: '(?i)eligib(?:le|ility)|inclusion criteria|exclusion criteria'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:CONSORT.Eligibility:Methods state the eligibility criteria for participants (item 6a).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.Eligibility:Methods state the eligibility criteria for participants (item 6a).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Adults were eligible.
+    want: ""

@@ -1,0 +1,23 @@
+# Titles are in "sentence case (only the first word of the text, proper
+# nouns, and genus names are capitalized)".
+extends: capitalization
+message: "Write the title in sentence case: '%s'."
+link: https://journals.plos.org/plosone/s/submission-guidelines#loc-title
+level: warning
+scope: heading.h1
+match: $sentence
+
+tests:
+  - name: fires
+    input: |
+      # A Title In Title Case
+
+      Body.
+    want: |
+      1:3:PLOS.TitleCase:Write the title in sentence case: 'A Title In Title Case'.
+  - name: clean
+    input: |
+      # A title in sentence case for Escherichia coli
+
+      Body.
+    want: ""

@@ -1,0 +1,23 @@
+# Item 26: competing interests of the review authors.
+extends: occurrence
+message: "Declare competing interests (item 26)."
+link: https://doi.org/10.1136/bmj.n71
+level: warning
+scope: raw
+token: '(?i)competing interests?|conflicts? of interest|declarations? of interest'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.Conflicts:Declare competing interests (item 26).
+  - name: clean
+    input: |
+      # Title
+
+      Competing interests: none.
+    want: ""

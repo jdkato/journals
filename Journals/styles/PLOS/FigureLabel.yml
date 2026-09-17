@@ -1,0 +1,21 @@
+# Figures are cited as "Fig 1, Fig 2, Fig 3", without a period.
+extends: substitution
+message: "Cite a figure as '%s', not '%s'."
+link: https://journals.plos.org/plosone/s/submission-guidelines#loc-figures-and-tables
+level: warning
+nonword: true
+swap:
+  '\bFigure (?=\d)': 'Fig '
+  '\bFig\. (?=\d)': 'Fig '
+
+tests:
+  - name: fires
+    input: |
+      See Figure 1 and Fig. 2.
+    want: |
+      1:5:PLOS.FigureLabel:Cite a figure as 'Fig ', not 'Figure '.
+      1:18:PLOS.FigureLabel:Cite a figure as 'Fig ', not 'Fig. '.
+  - name: clean
+    input: |
+      See Fig 1 and Fig 2; the figure is small.
+    want: ""

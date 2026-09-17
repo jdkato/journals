@@ -1,0 +1,23 @@
+# Item 1: the title identifies the report as a systematic review.
+extends: occurrence
+message: "Identify the report as a systematic review in the title (item 1)."
+link: https://doi.org/10.1136/bmj.n71
+level: error
+scope: heading.h1
+token: '(?i)systematic review|meta-analys[ie]s|scoping review|umbrella review'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # A study of a thing
+
+      Body.
+    want: |
+      1:3:PRISMA.Title:Identify the report as a systematic review in the title (item 1).
+  - name: clean
+    input: |
+      # A systematic review of a thing
+
+      Body.
+    want: ""

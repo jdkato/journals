@@ -1,0 +1,21 @@
+# In-text figure citations are abbreviated: "Fig. 1".
+extends: substitution
+message: "Cite a figure as '%s', not '%s'."
+link: https://www.nature.com/nature/for-authors/formatting-guide
+level: warning
+nonword: true
+swap:
+  '(?<!Data )\bFigure (?=\d)': 'Fig. '
+  '(?<!Data )\bFig (?=\d)': 'Fig. '
+
+tests:
+  - name: fires
+    input: |
+      See Figure 1 and Fig 2.
+    want: |
+      1:5:Nature.FigureLabel:Cite a figure as 'Fig. ', not 'Figure '.
+      1:18:Nature.FigureLabel:Cite a figure as 'Fig. ', not 'Fig '.
+  - name: clean
+    input: |
+      See Fig. 1 and Fig. 2; the figure is small.
+    want: ""

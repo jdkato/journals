@@ -1,0 +1,36 @@
+# Methods report "sample sizes" and how they were determined.
+extends: occurrence
+message: "Methods give the sample sizes and how they were determined."
+link: https://journals.plos.org/plosone/s/submission-guidelines#loc-statistical-reporting
+level: suggestion
+scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+token: '(?i)sample size|\bn\s*=\s*\d|power (?:calculation|analysis)'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:PLOS.SampleSize:Methods give the sample sizes and how they were determined.
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PLOS.SampleSize:Methods give the sample sizes and how they were determined.
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      The sample size was 40.
+    want: ""

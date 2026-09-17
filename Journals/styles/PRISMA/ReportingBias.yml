@@ -1,0 +1,24 @@
+# Items 14 and 21: the risk of bias from missing results, assessed and
+# reported.
+extends: occurrence
+message: "Assess the risk of bias from missing results and report it (items 14 and 21)."
+link: https://doi.org/10.1136/bmj.n71
+level: warning
+scope: raw
+token: '(?i)publication bias|funnel plot|Egger|reporting bias|small[- ]study effects'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.ReportingBias:Assess the risk of bias from missing results and report it (items 14 and 21).
+  - name: clean
+    input: |
+      # Title
+
+      A funnel plot showed no asymmetry.
+    want: ""

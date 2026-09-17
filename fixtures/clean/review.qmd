@@ -1,0 +1,34 @@
+---
+title: "Exercise and sleep: a systematic review and meta-analysis"
+format: html
+---
+
+# Exercise and sleep: a systematic review and meta-analysis
+
+## Abstract
+
+We reviewed randomized trials of exercise for adults with poor sleep. Thirty trials met the inclusion criteria. Exercise improved sleep quality (standardized mean difference 0.4, 95% confidence interval 0.2 to 0.6). Registered in PROSPERO as CRD42024000001.
+
+## Introduction
+
+Earlier reviews [1] disagreed on whether exercise improves sleep.
+
+## Methods
+
+The protocol is on the Open Science Framework (OSF). Inclusion criteria were randomized trials of exercise in adults; trials in children were excluded. We searched MEDLINE, Embase, and CENTRAL from inception to 1 March 2024; the full search strategy for MEDLINE is in S1 Appendix. Two reviewers screened records independently and extracted data in duplicate. Risk of bias was assessed with RoB 2. The effect measure was the standardized mean difference. We pooled results in a random-effects meta-analysis and explored heterogeneity with I². Publication bias was assessed with a funnel plot. Certainty of evidence was rated with GRADE.
+
+## Results
+
+The flow diagram is Fig 1: 1,240 records were screened and 30 trials were included. Five trials that looked eligible were excluded because they lacked a control group. Exercise improved sleep quality (standardized mean difference 0.4). Heterogeneity was moderate (I² = 45%). The funnel plot was symmetric, and certainty was moderate.
+
+## Discussion
+
+Exercise improves sleep quality in adults. One limitation of the evidence is short follow-up, and a limitation of the review is the English-only search.
+
+## Funding, competing interests, and data availability
+
+Funded by a research council, which had no role in the review. Competing interests: none. Extracted data are available on OSF.
+
+## References
+
+1. Doe A. A review. Sleep. 2019;1:1–2.

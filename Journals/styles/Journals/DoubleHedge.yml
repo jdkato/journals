@@ -1,0 +1,18 @@
+extends: existence
+message: "One hedge is enough: '%s'."
+level: suggestion
+ignorecase: true
+nonword: true
+raw:
+  - '\b(?:may|might|could)\s+(?:possibly|potentially|perhaps|conceivably)\b'
+
+tests:
+  - name: fires
+    input: |
+      This may possibly reflect noise.
+    want: |
+      1:6:Journals.DoubleHedge:One hedge is enough: 'may possibly'.
+  - name: clean
+    input: |
+      This may reflect noise.
+    want: ""

@@ -1,0 +1,20 @@
+# "Units should have a single space between the number and the unit."
+extends: existence
+message: "A single space between the number and the unit: '%s'."
+link: https://www.nature.com/nature/for-authors/formatting-guide
+level: suggestion
+nonword: true
+raw:
+  - '(?<=\d)°\s?[CF]\b|(?<=\d)%'
+
+tests:
+  - name: fires
+    input: |
+      Cells grew at 37°C in 5% oxygen.
+    want: |
+      1:17:Nature.Degree:A single space between the number and the unit: '°C'.
+      1:24:Nature.Degree:A single space between the number and the unit: '%'.
+  - name: clean
+    input: |
+      Cells grew at 37 °C in 5 % oxygen.
+    want: ""

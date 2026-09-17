@@ -1,0 +1,25 @@
+extends: occurrence
+message: "An Abstract section."
+level: error
+scope: 'doc(section:haschild(h1:contains("Abstract"),h2:contains("Abstract")))'
+token: '(?s).'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      ## Other
+
+      Body.
+    want: |
+      1:1:IMRaD.Abstract:An Abstract section.
+  - name: clean
+    input: |
+      # Title
+
+      ## Abstract
+
+      Body.
+    want: ""

@@ -1,0 +1,25 @@
+# Every submission carries a Data Availability Statement.
+extends: occurrence
+message: "A Data Availability Statement."
+link: https://journals.plos.org/plosone/s/submission-guidelines#loc-data-availability
+level: error
+scope: raw
+token: '(?i)\bdata availability\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PLOS.DataAvailability:A Data Availability Statement.
+  - name: clean
+    input: |
+      # Title
+
+      ## Data availability
+
+      Deposited.
+    want: ""

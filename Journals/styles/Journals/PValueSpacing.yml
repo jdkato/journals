@@ -1,0 +1,19 @@
+# Spaces on both sides of the operator: p = 0.03.
+extends: existence
+message: "Space the operator: 'p = 0.03', not '%s'."
+level: suggestion
+nonword: true
+raw:
+  - '(?<!\w)[pP](?:[<>=≤≥]\s*0?\.\d+|\s[<>=≤≥]0?\.\d+)'
+
+tests:
+  - name: fires
+    input: |
+      Groups differed (p=0.03) and again (p <0.04) but not here (p = 0.20).
+    want: |
+      1:18:Journals.PValueSpacing:Space the operator: 'p = 0.03', not 'p=0.03'.
+      1:37:Journals.PValueSpacing:Space the operator: 'p = 0.03', not 'p <0.04'.
+  - name: clean
+    input: |
+      Groups differed (p = 0.03) and again (P < 0.04).
+    want: ""

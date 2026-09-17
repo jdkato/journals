@@ -1,0 +1,13 @@
+# One document from a notebook's Markdown cells, so a section found in one
+# cell satisfies a rule reading another. The cells' lines are flattened into
+# one list and joined on newlines; the array literal is what hands `join` a
+# single list rather than one per cell. Each line ends with the newline it
+# carries in the file, so the join puts a blank line after every line: a
+# section and a list item read as they should, and a paragraph wrapped across
+# lines reads as one paragraph per line.
+engine: dasel
+scopes:
+  - name: cell
+    expr: '[cells.filter(cell_type == "markdown").map(source).flatten()]'
+    join: "\n"
+    type: md

@@ -1,0 +1,20 @@
+# Floats move in typesetting; a figure cited as 'below' may land above.
+extends: existence
+message: "Cite the figure by number, not by position: '%s'."
+level: warning
+ignorecase: true
+nonword: true
+raw:
+  - '\b(?:figure|fig\.?|table|image|graph|plot)s?\s+(?:below|above)\b|\b(?:following|preceding)\s+(?:figure|table|plot)\b|\bas (?:shown|seen) (?:below|above)\b'
+
+tests:
+  - name: fires
+    input: |
+      As shown in the figure below, values rose in the following table.
+    want: |
+      1:17:Journals.Positional:Cite the figure by number, not by position: 'figure below'.
+      1:50:Journals.Positional:Cite the figure by number, not by position: 'following table'.
+  - name: clean
+    input: |
+      As shown in Figure 2, values rose (Table 1).
+    want: ""

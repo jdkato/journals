@@ -1,0 +1,23 @@
+# Item 4: whether and where participant-level data and code are available.
+extends: occurrence
+message: "State whether and where participant-level data and code are available (item 4)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: warning
+scope: raw
+token: '(?i)data (?:availability|sharing)|individual participant data|de-?identified'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.DataSharing:State whether and where participant-level data and code are available (item 4).
+  - name: clean
+    input: |
+      # Title
+
+      Data sharing: on request.
+    want: ""

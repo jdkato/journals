@@ -1,0 +1,21 @@
+# Supporting information files are named with an S and a number: "S1
+# Appendix, S1 Table", "S1 Fig".
+extends: existence
+message: "Name supporting information 'S1 Fig', 'S1 Table', 'S1 Appendix': '%s'."
+link: https://journals.plos.org/plosone/s/submission-guidelines#loc-supporting-information
+level: warning
+nonword: true
+raw:
+  - '\bSupplementa(?:ry|l) (?:Fig(?:ure)?\.?|Table|Data|File|Appendix|Text|Video|Movie|Material)s?\s*S?\d*|\bS\d+ Figure\b'
+
+tests:
+  - name: fires
+    input: |
+      See Supplementary Figure 1 and S2 Figure.
+    want: |
+      1:5:PLOS.SupportingInformation:Name supporting information 'S1 Fig', 'S1 Table', 'S1 Appendix': 'Supplementary Figure 1'.
+      1:32:PLOS.SupportingInformation:Name supporting information 'S1 Fig', 'S1 Table', 'S1 Appendix': 'S2 Figure'.
+  - name: clean
+    input: |
+      See S1 Fig and S2 Table.
+    want: ""
