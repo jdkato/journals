@@ -53,7 +53,7 @@ run() { # <fixture path, relative to root> -> alerts on stdout, sorted
 		sort -t: -k2,2n -k3,3n -k4,4
 }
 
-for f in trial.md review.qmd article.Rmd notebook.ipynb trial.typ; do
+for f in trial.md review.qmd article.Rmd notebook.ipynb trial.typ cohort.myst; do
 	golden=$root/testdata/$f.txt
 	got=$(run "fixtures/$f")
 	if [ "$update" -eq 1 ]; then
@@ -78,6 +78,26 @@ for f in trial.md review.qmd article.Rmd notebook.ipynb trial.typ; do
 		echo "ok   clean/$f (clean)"
 	fi
 done
+
+# The vocabulary: every term in it is one the spell checker would otherwise
+# flag, and with the vocabulary on it flags none of them.
+got=$(run fixtures/vocabulary.md)
+if [ -n "$got" ]; then
+	echo "FAIL vocabulary: the spell checker still flags a listed term"
+	printf '%s\n' "$got"
+	status=1
+else
+	echo "ok   vocabulary (clean)"
+fi
+grep -v '^Vocab = ' "$work/.vale.ini" > "$work/novocab.ini"
+n=$(cd "$root" && "$vale" --config "$work/novocab.ini" --output=line --no-global fixtures/vocabulary.md 2>&1 | grep -c Spelling || true)
+terms=$(grep -cv '^#\|^$' "$root/Journals/styles/config/vocabularies/Journals/accept.txt")
+if [ "$n" -lt "$terms" ]; then
+	echo "FAIL vocabulary: $terms terms listed, but only $n are unknown to the dictionary"
+	status=1
+else
+	echo "ok   vocabulary ($terms terms, every one needed)"
+fi
 
 # Every rule has a case that expects an alert. A case that wants nothing
 # proves nothing on its own.

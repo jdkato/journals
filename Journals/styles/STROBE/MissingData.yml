@@ -1,0 +1,36 @@
+# Item 12c: how missing data were addressed.
+extends: occurrence
+message: "Methods explain how missing data were addressed (item 12c)."
+link: https://doi.org/10.1371/journal.pmed.0040296
+level: suggestion
+scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+token: '(?i)missing data|missing values|imputation|complete[- ]case'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:STROBE.MissingData:Methods explain how missing data were addressed (item 12c).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STROBE.MissingData:Methods explain how missing data were addressed (item 12c).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Missing data were imputed.
+    want: ""

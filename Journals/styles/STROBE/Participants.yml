@@ -1,0 +1,36 @@
+# Item 13: the numbers of individuals at each stage of the study.
+extends: occurrence
+message: "Results report the numbers of participants at each stage (item 13)."
+link: https://doi.org/10.1371/journal.pmed.0040296
+level: warning
+scope: 'doc(section:haschild(h1:contains("Results"),h2:contains("Results")))'
+token: '(?i)\beligible\b|\bincluded\b|analy[sz]ed|follow-up|\bexcluded\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Results
+
+      Something else.
+    want: |
+      3:4:STROBE.Participants:Results report the numbers of participants at each stage (item 13).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STROBE.Participants:Results report the numbers of participants at each stage (item 13).
+  - name: clean
+    input: |
+      # Title
+
+      ## Results
+
+      Of 500 eligible, 400 were included.
+    want: ""

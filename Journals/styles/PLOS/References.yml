@@ -1,0 +1,22 @@
+# References follow Vancouver style: "Author AA, Author BB. Title. Journal.
+# Year;Vol(Issue):pages." The check is the tail, where the style shows.
+extends: existence
+message: "Vancouver style ends 'Journal. Year;Vol(Issue):pages.', not '%s'."
+link: https://journals.plos.org/plosone/s/submission-guidelines#loc-references
+level: suggestion
+scope: 'list & doc(section:haschild(h1:contains("References"),h2:contains("References")))'
+nonword: true
+raw:
+  - '^(?!.*\. \d{4}(?: \w{3}(?: \d{1,2})?)?;\d+(?:\(\d+(?:[–-]\d+)?\))?:[\w–-]+\.?(?: doi:\S+)?$).+$'
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      ## References
+
+      1. Smith, J. & Doe, A. Nature style. Nature 1, 1–2 (2020).
+      2. Smith J, Doe A. Vancouver style. Lancet. 2020;395(10223):1054–62.
+    want: |
+      5:4:PLOS.References:Vancouver style ends 'Journal. Year;Vol(Issue):pages.', not 'Smith, J. & Doe, A. Nature style. Nature 1, 1–2 (2020).'.

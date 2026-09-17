@@ -1,0 +1,37 @@
+# Item 12: the statistical methods, including those used to control for
+# confounding.
+extends: occurrence
+message: "Methods describe the statistical methods, including those for confounding (item 12)."
+link: https://doi.org/10.1371/journal.pmed.0040296
+level: error
+scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+token: '(?i)regression|adjusted|confidence interval|statistical|\bmodel'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:STROBE.StatisticalMethods:Methods describe the statistical methods, including those for confounding (item 12).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STROBE.StatisticalMethods:Methods describe the statistical methods, including those for confounding (item 12).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Cox regression was adjusted for age.
+    want: ""

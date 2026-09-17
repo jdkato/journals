@@ -17,11 +17,15 @@ enforce. Each rule links to the passage it enforces. Sources and their terms:
     2021;372:n71, https://doi.org/10.1136/bmj.n71, published under CC BY 4.0.
     The PRISMA style paraphrases checklist items; item numbers refer to that
     table.
+  - STROBE statement: von Elm E, Altman DG, Egger M, et al. PLoS Med
+    2007;4(10):e296, https://doi.org/10.1371/journal.pmed.0040296, published
+    under the Creative Commons Attribution License. The STROBE style
+    paraphrases checklist items; item numbers refer to that table.
   - plainlanguage.gov, "Use simple words and phrases", a work of the United
     States Government in the public domain (CC0 1.0 worldwide). Entries in
     Journals.Wordy come from that list.
   - Std (MIT, Copyright (c) 2026 Joseph Kato and contributors):
     Journals.Acronyms extends Std.Abbreviations.Acronyms.
 
-CONSORT, PRISMA, Nature, and PLOS are the marks of their owners. This package
+CONSORT, PRISMA, STROBE, Nature, and PLOS are the marks of their owners. This package
 is not endorsed by or affiliated with any of them.

@@ -1,0 +1,36 @@
+# Item 10: how the study size was arrived at.
+extends: occurrence
+message: "Methods explain how the study size was arrived at (item 10)."
+link: https://doi.org/10.1371/journal.pmed.0040296
+level: warning
+scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+token: '(?i)study size|sample size|\bpower\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:STROBE.StudySize:Methods explain how the study size was arrived at (item 10).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STROBE.StudySize:Methods explain how the study size was arrived at (item 10).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      The study size gave 80% power.
+    want: ""

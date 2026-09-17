@@ -1,0 +1,36 @@
+# Item 8: the sources of data and the methods of assessment for each variable.
+extends: occurrence
+message: "Methods give the sources of data and the methods of measurement (item 8)."
+link: https://doi.org/10.1371/journal.pmed.0040296
+level: warning
+scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+token: '(?i)data sources?|measure(?:d|ment)|questionnaire|\brecords?\b|assessed'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:STROBE.DataSources:Methods give the sources of data and the methods of measurement (item 8).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STROBE.DataSources:Methods give the sources of data and the methods of measurement (item 8).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Smoking was measured by questionnaire.
+    want: ""

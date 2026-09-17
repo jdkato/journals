@@ -1,0 +1,24 @@
+# "All authors should be included in reference lists unless there are more
+# than five, in which case only the first author should be given, followed
+# by 'et al.'."
+extends: existence
+message: "Past five authors, give the first author et al.: '%s'."
+link: https://www.nature.com/nature/for-authors/formatting-guide
+level: warning
+scope: 'list & doc(section:haschild(h1:contains("References"),h2:contains("References")))'
+nonword: true
+raw:
+  - '^(?:[A-Z][\w-]+, [A-Z]\.(?: ?[A-Z]\.)*(?:, | & )){5,}[A-Z][\w-]+, [A-Z]\.(?: ?[A-Z]\.)*'
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      ## References
+
+      1. Smith, J., Doe, A., Roe, B., Poe, C., Coe, D. & Moe, E. Six. Nature 1, 1–2 (2001).
+      2. Smith, J., Doe, A., Roe, B., Poe, C. & Coe, D. Five. Nature 1, 1–2 (2001).
+      3. Smith, J. et al. Many. Nature 1, 1–2 (2001).
+    want: |
+      5:4:Nature.ReferenceAuthors:Past five authors, give the first author et al.: 'Smith, J., Doe, A., Roe, B., Poe, C., Coe, D. & Moe, E.'.

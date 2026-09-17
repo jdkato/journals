@@ -29,3 +29,5 @@ fixtures/article.Rmd:24:75:Nature.Acknowledgements:Thank for assistance, not 'ex
 fixtures/article.Rmd:28:29:Journals.Ranges:Use an en dash in a range: '1-2'.
 fixtures/article.Rmd:29:30:Journals.Ranges:Use an en dash in a range: '3-4'.
 fixtures/article.Rmd:30:27:Journals.Ranges:Use an en dash in a range: '5-6'.
+fixtures/article.Rmd:31:4:Nature.ReferenceShape:A Nature reference ends with the year in parentheses: 'G. H. No year. Cell 4, 7–8.'.
+fixtures/article.Rmd:32:4:Nature.ReferenceAuthors:Past five authors, give the first author et al.: 'Smith, J., Doe, A., Roe, B., Poe, C., Coe, D. & Moe, E.'.

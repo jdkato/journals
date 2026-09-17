@@ -7,6 +7,7 @@ fixtures/trial.md:1:1:CONSORT.Protocol:Say where the protocol and statistical an
 fixtures/trial.md:1:1:CONSORT.PublicInvolvement:Describe how patients or the public were involved, or that they were not (item 8).
 fixtures/trial.md:1:1:CONSORT.Registration:Give the trial registry and registration number (item 2).
 fixtures/trial.md:1:1:PLOS.DataAvailability:A Data Availability Statement.
+fixtures/trial.md:1:1:PLOS.Ethics:The study has human or animal subjects; name the committee that approved it.
 fixtures/trial.md:1:3:PLOS.TitleCase:Write the title in sentence case: 'A Novel Randomized Trial Of Zetaprol Versus Placebo In Adults With Hypertension: The XYZ Study'.
 fixtures/trial.md:1:5:Journals.Hype:Let the result carry the weight; cut 'Novel'.
 fixtures/trial.md:1:88:Journals.Acronyms:Spell out 'XYZ' on first use.
@@ -34,12 +35,14 @@ fixtures/trial.md:11:4:CONSORT.SampleSize:Methods say how the sample size was de
 fixtures/trial.md:11:4:PLOS.Alpha:Methods state the threshold for significance (alpha).
 fixtures/trial.md:11:4:PLOS.SampleSize:Methods give the sample sizes and how they were determined.
 fixtures/trial.md:11:4:PLOS.Software:Methods name the software package and its version.
-fixtures/trial.md:13:45:Journals.UnitSpacing:Put a space between the number and the unit: '5mg'.
-fixtures/trial.md:13:52:Journals.UnitSpacing:Put a space between the number and the unit: '10mg'.
-fixtures/trial.md:13:69:Journals.UnitSymbols:Write the unit as '°C', not 'degrees C'.
-fixtures/trial.md:13:83:Journals.Wordy:Use 'use' instead of 'utilize'.
-fixtures/trial.md:13:91:Journals.Acronyms:Spell out 'SPSS' on first use.
-fixtures/trial.md:13:118:Journals.Ranges:Use an en dash in a range: '18-65'.
+fixtures/trial.md:13:53:PLOS.Abbreviations:'(BP)' is defined but used fewer than three times; write it out instead.
+fixtures/trial.md:13:72:Journals.Species:Write a species name in italics: 'Escherichia coli'.
+fixtures/trial.md:13:114:Journals.UnitSpacing:Put a space between the number and the unit: '5mg'.
+fixtures/trial.md:13:121:Journals.UnitSpacing:Put a space between the number and the unit: '10mg'.
+fixtures/trial.md:13:138:Journals.UnitSymbols:Write the unit as '°C', not 'degrees C'.
+fixtures/trial.md:13:152:Journals.Wordy:Use 'use' instead of 'utilize'.
+fixtures/trial.md:13:160:Journals.Acronyms:Spell out 'SPSS' on first use.
+fixtures/trial.md:13:187:Journals.Ranges:Use an en dash in a range: '18-65'.
 fixtures/trial.md:15:4:CONSORT.Analyzed:Results give the number analyzed in each group and the analysis population (items 19 and 21).
 fixtures/trial.md:15:4:CONSORT.Baseline:Results present baseline characteristics for each group (item 18).
 fixtures/trial.md:17:1:PLOS.FigureLabel:Cite a figure as 'Fig ', not 'Figure '.
@@ -61,3 +64,5 @@ fixtures/trial.md:21:66:Journals.DoubleHedge:One hedge is enough: 'may possibly'
 fixtures/trial.md:21:90:PLOS.Footnotes:Footnotes are not permitted; move '[^1]' into the text.
 fixtures/trial.md:27:13:Journals.EtAl:Write 'et al.', not 'et. al.'.
 fixtures/trial.md:27:45:Journals.Ranges:Use an en dash in a range: '1-2'.
+fixtures/trial.md:28:4:PLOS.References:Vancouver style ends 'Journal. Year;Vol(Issue):pages.', not 'Smith, J. & Doe, A. Nature style. Nature 1, 1–2 (2020).'.
+fixtures/trial.md:29:4:PLOS.ReferenceAuthors:List the first six authors, then et al.: 'Smith J, Doe A, Roe B, Poe C, Coe D, Moe E, Zoe F.'.

@@ -1,0 +1,22 @@
+# A Nature reference ends with the year in parentheses: "Nature 1, 1–2
+# (2001)."
+extends: existence
+message: "A Nature reference ends with the year in parentheses: '%s'."
+link: https://www.nature.com/nature/for-authors/formatting-guide
+level: suggestion
+scope: 'list & doc(section:haschild(h1:contains("References"),h2:contains("References")))'
+nonword: true
+raw:
+  - '^(?!.*\(\d{4}\)\.?$).+$'
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      ## References
+
+      1. Smith, J. & Doe, A. A paper. Nature 1, 1–2 (2001).
+      2. Smith J, Doe A. A paper. Lancet. 2020;395:1054–62.
+    want: |
+      6:4:Nature.ReferenceShape:A Nature reference ends with the year in parentheses: 'Smith J, Doe A. A paper. Lancet. 2020;395:1054–62.'.

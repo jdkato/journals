@@ -1,0 +1,22 @@
+# "Do not use non-standard abbreviations unless they appear at least three
+# times in the text." An abbreviation is introduced in parentheses; the
+# backreference looks for two more uses after it.
+extends: existence
+message: "'%s' is defined but used fewer than three times; write it out instead."
+link: https://journals.plos.org/plosone/s/submission-guidelines#loc-abbreviations
+level: suggestion
+scope: raw
+nonword: true
+raw:
+  - '\(([A-Z][A-Za-z]{1,5})\)(?!(?s:.*\b\1\b.*\b\1\b))'
+
+tests:
+  - name: fires
+    input: |
+      We studied the disease (TDX) once.
+    want: |
+      1:24:PLOS.Abbreviations:'(TDX)' is defined but used fewer than three times; write it out instead.
+  - name: clean
+    input: |
+      We studied the disease (TDX) once, then TDX again, and TDX a third time.
+    want: ""

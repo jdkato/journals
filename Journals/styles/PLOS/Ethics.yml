@@ -1,0 +1,32 @@
+# A study of humans or animals names "the approving institutional review
+# board or equivalent committee". The whole document is read at once: the
+# first lookahead finds the subjects, the second the approval.
+extends: existence
+message: "The study has human or animal subjects; name the committee that approved it."
+link: https://journals.plos.org/plosone/s/submission-guidelines#loc-human-subjects-research
+level: error
+scope: raw
+nonword: true
+raw:
+  - '(?si)\A(?=.*\b(?:patients|participants|volunteers|healthy subjects|mice|rats|animals|zebrafish)\b)(?!.*\b(?:approved by|ethics committee|ethical committee|ethics board|review board|IRB|IACUC|animal care and use)\b).'
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      We enrolled 40 patients.
+    want: |
+      1:1:PLOS.Ethics:The study has human or animal subjects; name the committee that approved it.
+  - name: clean
+    input: |
+      # Title
+
+      We enrolled 40 patients. The protocol was approved by the University Ethics Committee.
+    want: ""
+  - name: no subjects
+    input: |
+      # Title
+
+      We simulated 40 lattices.
+    want: ""

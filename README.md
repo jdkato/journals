@@ -1,136 +1,132 @@
-# Journals: Vale styles for a manuscript
+# Journals
 
-A manuscript has a title, an abstract, the sections a reader expects, and a
-set of conventions for how a number, a unit, a p-value, and a figure are
-written. Each journal adds its own limits, and a reporting guideline adds a
-checklist. This package is those rules, written as [Vale](https://vale.sh)
-rules: a shared core, the [IMRaD](https://en.wikipedia.org/wiki/IMRAD)
-structure, [Nature](https://www.nature.com/nature/for-authors/formatting-guide)'s
-formatting guide, [PLOS ONE](https://journals.plos.org/plosone/s/submission-guidelines)'s
-submission guidelines, and the [CONSORT 2025](https://doi.org/10.1371/journal.pmed.1004587)
-and [PRISMA 2020](https://doi.org/10.1136/bmj.n71) checklists.
+[Vale](https://vale.sh) styles for scientific manuscripts: a shared core of
+conventions, the IMRaD section structure, the author guidelines of
+[Nature](https://www.nature.com/nature/for-authors/formatting-guide) and
+[PLOS ONE](https://journals.plos.org/plosone/s/submission-guidelines), and the
+[CONSORT 2025](https://doi.org/10.1371/journal.pmed.1004587),
+[STROBE](https://doi.org/10.1371/journal.pmed.0040296), and
+[PRISMA 2020](https://doi.org/10.1136/bmj.n71) reporting checklists.
 
-The linter that checks the docs checks the paper: in the editor, in CI, or
-on a pull request, for Markdown, Quarto, R Markdown, MyST, Typst, and the
-Markdown cells of a Jupyter notebook.
+Works on [Markdown](https://docs.vale.sh/formats/markdown),
+[Quarto](https://docs.vale.sh/formats/quarto),
+[R Markdown](https://docs.vale.sh/formats/rmarkdown),
+[MyST](https://docs.vale.sh/formats/myst),
+[Typst](https://docs.vale.sh/formats/typst), and
+[Jupyter notebooks](https://docs.vale.sh/formats/jupyter).
 
 ## Install
 
-> Journals requires Vale v3.22.0 or later, for the `doc(...)` scopes that
-> read a manuscript's sections and the rule inheritance the acronym rule
-> uses. It builds on [Std](https://github.com/vale-cli/Std), which sync
-> pulls in; Std stays present without being enabled.
+Requires Vale 3.22.0 or later. The package depends on
+[Std](https://github.com/vale-cli/Std), which `vale sync` fetches for you.
 
 ```ini
 StylesPath = styles
 Packages = https://github.com/jdkato/journals/releases/latest/download/Journals.zip
+Vocab = Journals
 
 [*.{md,qmd,Rmd}]
 BasedOnStyles = Journals, IMRaD, PLOS
-IMRaD.AbstractLength[max] = 300
-IMRaD.AbstractCitations = error
 ```
 
 ```console
 $ vale sync
 ```
 
-`Journals` is the core and is always on. Name the structure, the journal,
-and the guideline beside it.
+`Journals` is the core and is always on. Add a structure, a journal, or a
+checklist next to it.
 
-| Style | Enforces |
-| ----- | -------- |
-| `Journals` | The core: a space before a unit and the SI symbol for it, an en dash in a range, `±` and `×`, no numeral opening a sentence, `p = 0.03` spaced and never `p = 0.000`, one case for `p`, `significant` beside its test, `data are`, `et al.`, `Figure 2` capitalized and cited by number rather than position, an acronym spelled out on first use, no `[ref]` or `TODO` left behind, and the words a result does not need: `novel`, `prove`, `very`, `utilize` |
-| `IMRaD` | Abstract, Introduction, Methods, Results, Discussion, and References sections; an abstract within a word budget, without citations or abbreviations; a Discussion that names its limitations |
-| `Nature` | The [formatting guide](https://www.nature.com/nature/for-authors/formatting-guide): a 75-character title without numbers or acronyms, a 200-word summary paragraph with `Here we show`, 40-character subheadings, 50 references cited as superscripts, 300-word legends, 3,000 words of Methods, Data and Code Availability statements, `Fig. 1`, `Extended Data Fig. 1`, `1,000`, `37 °C` |
-| `PLOS` | The [submission guidelines](https://journals.plos.org/plosone/s/submission-guidelines): a 250-character title in sentence case, citations as `[1]`, `Fig 1` and `Table 1`, `S1 Fig`, no footnotes, three heading levels, exact p-values at or above 0.001, a Data Availability Statement, and Methods that give alpha, the software version, and the sample size |
-| `CONSORT` | Seventeen items of the [CONSORT 2025](https://doi.org/10.1371/journal.pmed.1004587) checklist a linter can see: `randomized` in the title, a registry number, protocol, funding, competing interests, eligibility, randomization, concealment, blinding, harms, sample size, the primary outcome, baseline, the number analyzed, limitations |
-| `PRISMA` | Twenty items of the [PRISMA 2020](https://doi.org/10.1136/bmj.n71) checklist: `systematic review` in the title, registration, protocol, eligibility, sources, the search strategy, screening, extraction, risk of bias, effect measures, synthesis, heterogeneity, reporting bias, certainty, the flow diagram, exclusions, limitations, funding, competing interests, availability |
+| Style | What it checks |
+| ----- | -------------- |
+| `Journals` | Units, numbers, statistics, figure references, citations, and filler words. See below. |
+| `IMRaD` | That the standard sections exist, the abstract is within budget and has no citations or abbreviations, and the Discussion mentions limitations. |
+| `Nature` | Title, summary paragraph, subheading, legend, Methods, and reference limits. Superscript citations, `Fig. 1`, `Extended Data Fig. 1`, `1,000`, `37 °C`. |
+| `PLOS` | Title and abstract limits, `[1]` citations, `Fig 1`, `S1 Fig`, no footnotes, exact p-values, Vancouver references, a named ethics committee, and required Methods content. |
+| `CONSORT` | 17 items from the checklist for randomized trials. |
+| `STROBE` | 15 items from the checklist for observational studies. |
+| `PRISMA` | 20 items from the checklist for systematic reviews. |
 
-Each rule file in [`Journals/styles`](Journals/styles) opens with what it
-reports, carries its level, and links the passage or checklist item it
-enforces. A checklist item is paraphrased; the item number is in the message.
+Checklist rules look for the things a regex can find, such as a registry
+number, a mention of blinding in Methods, or a limitations paragraph in the
+Discussion. Each message cites the item number.
 
-### A trial for PLOS ONE
+### Core rules
+
+| Group | Rules | Examples flagged |
+| ----- | ----- | ---------------- |
+| Units | `UnitSpacing`, `UnitSymbols` | `10mm`, `5 ml`, `37 degrees C`, `3 hrs` |
+| Numbers | `Ranges`, `Symbols`, `SentenceNumeral` | `18-65`, `+/-`, `3 x 4`, `>=`, a sentence starting with a digit |
+| Statistics | `PValueSpacing`, `PValueZero`, `PValueCase`, `Significant`, `DataPlural` | `p=0.03`, `p = 0.000`, mixed `p`/`P`, `significant` with no test, `data was` |
+| Figures | `LabelCase`, `FigureAbbreviation`, `Positional` | `figure 2`, `Fig. 1` and `Figure 2` in one paper, `the figure below` |
+| Citations | `EtAl`, `Acronyms`, `Species`, `Placeholder` | `et. al.`, undefined acronyms, `E. coli` not italic, `[ref]`, `TODO`, `??` |
+| Words | `Hype`, `Intensifiers`, `Prove`, `DoubleHedge`, `Wordy` | `novel`, `very`, `proves`, `may possibly`, `utilize` |
+
+Every rule file starts with a comment explaining what it checks and links to
+the guideline it comes from.
+
+## Configuration
 
 ```ini
+# Randomized trial for PLOS ONE
 [*.md]
 BasedOnStyles = Journals, IMRaD, PLOS, CONSORT
 IMRaD.AbstractLength[max] = 300
 IMRaD.AbstractCitations = error
-```
 
-### A systematic review
+# Cohort study
+[*.myst]
+BasedOnStyles = Journals, IMRaD, STROBE
 
-```ini
+# Systematic review
 [*.qmd]
 BasedOnStyles = Journals, IMRaD, PRISMA
-```
 
-### An Article for Nature
-
-```ini
+# Nature article. Nature has no Abstract heading, so leave IMRaD off.
 [*.Rmd]
 BasedOnStyles = Journals, Nature
-```
 
-Nature has no Abstract heading: the summary paragraph is the one after the
-title, and `IMRaD` stays off.
-
-## How a rule reads a manuscript
-
-A section is a level-one or level-two heading and what follows it, up to
-the next heading of that level. The Methods rules read the section whose
-heading contains `ethod`, so `Materials and methods` and `Methods` both
-count; Results, Discussion, Abstract, and References are matched by name.
-
-A title is the level-one heading. A Quarto or R Markdown title in the front
-matter is not a heading, so give the manuscript a level-one heading too when
-a title rule should see it. A Typst title is set in code mode, which the
-parser skips, and a Typst paper's sections are level-one headings; the
-package turns the title rules off for `.typ`, and a Markdown paper whose
-sections are level-one headings wants the same:
-
-```ini
-[*.md]
-BasedOnStyles = Journals, IMRaD, PLOS
-PLOS.Title = NO
-PLOS.TitleCase = NO
-PLOS.TitleAbbreviations = NO
-```
-
-A Jupyter notebook is read through the package's `Notebook` View, which
-joins the Markdown cells into one manuscript, so a section found in one cell
-satisfies a rule reading another:
-
-```ini
+# Notebook. The View joins the Markdown cells into one document.
 [*.ipynb]
 BasedOnStyles = Journals, IMRaD
 View = Notebook
 ```
 
-The join keeps each cell's lines as they are in the file, so a paragraph
-wrapped across lines reads as one paragraph per line.
-
-## Tune a rule
-
-Levels and toggles from your config, as for any Vale rule; a limit is a
-parameter:
+Limits are parameters, so you can change them without editing the rule:
 
 ```ini
 IMRaD.AbstractLength[max] = 150
 Nature.References[max] = 30
 Journals.Hype = NO
-Journals.Prove = error
 ```
 
-## Not carried
+## Notes
 
-What a linter cannot see stays with the reader: an ethics statement's
-committee name, a species name in italics, a reference list's punctuation,
-an abbreviation used fewer than three times, and whether a limitation named
-is the one that matters. STROBE is not here; its checklist carries no
-license that allows a paraphrase.
+**Sections.** A section starts at a level-one or level-two heading. Methods
+rules match any heading containing `ethod`, so `Materials and methods`
+works. Abstract, Results, Discussion, and References are matched by name.
+
+**Titles.** Title rules read the level-one heading. Quarto and R Markdown
+front-matter titles are not headings, so add one if you want those rules.
+Typst titles live in code mode and are skipped, and Typst sections are
+level-one headings, so the package disables title rules for `.typ`. Do the
+same for Markdown files where sections are level-one headings:
+
+```ini
+PLOS.Title = NO
+PLOS.TitleCase = NO
+PLOS.TitleAbbreviations = NO
+```
+
+**Notebooks.** Cell lines are joined as they appear in the file, so a
+paragraph wrapped across lines is treated as several paragraphs.
+
+**Spelling.** `Vocab = Journals` adds the terms Vale's dictionary lacks:
+units like `mmHg`, statisticians' names, model organisms, databases,
+software, and lab methods. All-caps words and registry numbers are already
+skipped. Add your own terms in a second vocabulary.
+
+**Species.** `Journals.Species` knows the common model organisms. Extend it
+with your own list if you need more.
 
 ## Tests
 
@@ -138,16 +134,12 @@ license that allows a paraphrase.
 $ ./test.sh
 ```
 
-Each rule carries its cases in a `tests:` block, run in isolation by `vale
-test`. One manuscript per format in [`fixtures`](fixtures) is checked under
-the config above and compared to a golden file in `testdata`, and its
-rewrite in [`fixtures/clean`](fixtures/clean) is required to produce no
-alerts at all. A rule with no case that expects an alert fails the run.
-`./test.sh -u` rewrites the golden files. The Typst fixture needs
-`typst2vast`, which Vale calls but does not ship: `cargo install --locked
-typst2vast`.
+Each rule has test cases in a `tests:` block, run by `vale test`. Each format
+also has a fixture in `fixtures/` with a golden file in `testdata/`, and a
+clean version in `fixtures/clean/` that must produce no alerts. A rule with no
+test that expects an alert fails the run. Use `./test.sh -u` to regenerate
+goldens. The Typst fixture needs `cargo install --locked typst2vast`.
 
 ## License
 
-MIT. The paraphrased checklists and the guides each rule cites are credited
-in [NOTICE](NOTICE).
+MIT. Sources for the paraphrased checklists are listed in [NOTICE](NOTICE).

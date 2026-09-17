@@ -1,0 +1,23 @@
+# Item 22: the source of funding and the role of the funders.
+extends: occurrence
+message: "Give the source of funding and the funders' role (item 22)."
+link: https://doi.org/10.1371/journal.pmed.0040296
+level: warning
+scope: raw
+token: '(?i)\bfund(?:ed|ing)\b|\bsupported by\b|\bgrant\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STROBE.Funding:Give the source of funding and the funders' role (item 22).
+  - name: clean
+    input: |
+      # Title
+
+      Funded by a council.
+    want: ""

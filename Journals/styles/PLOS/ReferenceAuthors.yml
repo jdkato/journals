@@ -1,0 +1,21 @@
+# A reference lists "the first six authors followed by et al."
+extends: existence
+message: "List the first six authors, then et al.: '%s'."
+link: https://journals.plos.org/plosone/s/submission-guidelines#loc-references
+level: warning
+scope: 'list & doc(section:haschild(h1:contains("References"),h2:contains("References")))'
+nonword: true
+raw:
+  - '^(?:[A-Z][\w-]+ [A-Z]{1,3}, ){6,}[A-Z][\w-]+ [A-Z]{1,3}[.,]'
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      ## References
+
+      1. Smith J, Doe A, Roe B, Poe C, Coe D, Moe E, Zoe F. Too many. Cell. 2019;2:4–5.
+      2. Smith J, Doe A, Roe B, Poe C, Coe D, Moe E, et al. Enough. Cell. 2019;2:4–5.
+    want: |
+      5:4:PLOS.ReferenceAuthors:List the first six authors, then et al.: 'Smith J, Doe A, Roe B, Poe C, Coe D, Moe E, Zoe F.'.

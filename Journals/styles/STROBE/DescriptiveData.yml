@@ -1,0 +1,37 @@
+# Item 14: the characteristics of participants and information on exposures
+# and confounders.
+extends: occurrence
+message: "Results give the characteristics of participants (item 14)."
+link: https://doi.org/10.1371/journal.pmed.0040296
+level: warning
+scope: 'doc(section:haschild(h1:contains("Results"),h2:contains("Results")))'
+token: '(?i)characteristics|\bbaseline\b|demographic'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Results
+
+      Something else.
+    want: |
+      3:4:STROBE.DescriptiveData:Results give the characteristics of participants (item 14).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STROBE.DescriptiveData:Results give the characteristics of participants (item 14).
+  - name: clean
+    input: |
+      # Title
+
+      ## Results
+
+      Baseline characteristics are in Table 1.
+    want: ""

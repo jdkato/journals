@@ -1,0 +1,24 @@
+# A binomial is set in italics. The raw scope keeps the markup, so a name
+# between emphasis markers, Markdown's or Typst's, is left alone. The list is
+# the organisms a manuscript names most; a project adds its own in a rule
+# that extends this one.
+extends: existence
+message: "Write a species name in italics: '%s'."
+link: https://journals.plos.org/plosone/s/submission-guidelines#loc-nomenclature
+level: warning
+scope: raw
+nonword: true
+raw:
+  - '(?<![*_\w])(?:Homo sapiens|Mus musculus|Rattus norvegicus|Danio rerio|Drosophila melanogaster|Caenorhabditis elegans|Saccharomyces cerevisiae|Escherichia coli|Arabidopsis thaliana|Xenopus laevis|Bacillus subtilis|Staphylococcus aureus|Pseudomonas aeruginosa|Plasmodium falciparum|Mycobacterium tuberculosis|Zea mays|Oryza sativa|Gallus gallus|Macaca mulatta|[HMRDCSEABXPZ]\. (?:sapiens|musculus|norvegicus|rerio|melanogaster|elegans|cerevisiae|coli|thaliana|laevis|subtilis|aureus|aeruginosa|falciparum|tuberculosis|mays|sativa))(?![*_\w])'
+
+tests:
+  - name: fires
+    input: |
+      We grew Mus musculus cells and E. coli.
+    want: |
+      1:9:Journals.Species:Write a species name in italics: 'Mus musculus'.
+      1:32:Journals.Species:Write a species name in italics: 'E. coli'.
+  - name: clean
+    input: |
+      We grew *Mus musculus* cells and _E. coli_.
+    want: ""

@@ -10,7 +10,7 @@ Prior work (Smith et al., 2020) proves that zetaprol works in order to lower pre
 
 ## Materials and methods
 
-Patients were recruited in 2023. Doses were 5mg or 10mg given at 37 degrees C. We utilize SPSS for analysis. Ages of 18-65 years were allowed.
+Patients were recruited in 2023, and blood pressure (BP) was measured; Escherichia coli was cultured. Doses were 5mg or 10mg given at 37 degrees C. We utilize SPSS for analysis. Ages of 18-65 years were allowed.
 
 ## Results
 
@@ -25,3 +25,5 @@ The result is unprecedented and clearly proves the mechanism. It may possibly ge
 ## References
 
 1. Smith J, et. al. A paper. Nature. 2020;1:1-2.
+2. Smith, J. & Doe, A. Nature style. Nature 1, 1–2 (2020).
+3. Smith J, Doe A, Roe B, Poe C, Coe D, Moe E, Zoe F. Too many. Cell. 2019;2:4–5.

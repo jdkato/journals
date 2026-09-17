@@ -1,0 +1,37 @@
+# Item 16: unadjusted and adjusted estimates with their precision, such as 95%
+# confidence intervals.
+extends: occurrence
+message: "Results give adjusted estimates with their precision, such as a confidence interval (item 16)."
+link: https://doi.org/10.1371/journal.pmed.0040296
+level: error
+scope: 'doc(section:haschild(h1:contains("Results"),h2:contains("Results")))'
+token: '(?i)confidence interval|95% CI|\bCI\b|adjusted'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Results
+
+      Something else.
+    want: |
+      3:4:STROBE.MainResults:Results give adjusted estimates with their precision, such as a confidence interval (item 16).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STROBE.MainResults:Results give adjusted estimates with their precision, such as a confidence interval (item 16).
+  - name: clean
+    input: |
+      # Title
+
+      ## Results
+
+      The adjusted hazard ratio was 1.4 (95% CI 1.1 to 1.8).
+    want: ""
