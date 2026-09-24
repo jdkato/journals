@@ -3,7 +3,7 @@ extends: occurrence
 message: "Discussion addresses the limitations of the evidence and of the review process (items 23b and 23c)."
 link: https://doi.org/10.1136/bmj.n71
 level: warning
-scope: 'doc(section:haschild(h1:contains("Discussion"),h2:contains("Discussion")))'
+scope: discussion
 token: '(?i)\blimitations?\b'
 min: 1
 

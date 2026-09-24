@@ -1,7 +1,7 @@
 extends: occurrence
 message: "A References section."
 level: error
-scope: 'doc(section:haschild(h1:contains("References"),h2:contains("References")))'
+scope: references
 token: '(?s).'
 min: 1
 

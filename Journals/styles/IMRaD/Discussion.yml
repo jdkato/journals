@@ -1,7 +1,7 @@
 extends: occurrence
 message: "A Discussion section."
 level: error
-scope: 'doc(section:haschild(h1:contains("Discussion"),h2:contains("Discussion")))'
+scope: discussion
 token: '(?s).'
 min: 1
 

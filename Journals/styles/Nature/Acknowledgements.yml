@@ -5,7 +5,7 @@ message: "Thank for assistance, not 'excellent' assistance; cut '%s'."
 link: https://www.nature.com/nature/for-authors/formatting-guide
 level: suggestion
 ignorecase: true
-scope: 'doc(section:haschild(h1:contains("cknowledg"),h2:contains("cknowledg")))'
+scope: acknowledgments
 tokens:
   - excellent
   - insightful

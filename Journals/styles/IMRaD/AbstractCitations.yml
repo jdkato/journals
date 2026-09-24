@@ -3,7 +3,7 @@
 extends: existence
 message: "The abstract stands alone; cite in the body, not '%s'."
 level: warning
-scope: 'doc(section:haschild(h1:contains("Abstract"),h2:contains("Abstract")))'
+scope: abstract
 nonword: true
 raw:
   - '\[\d+(?:[,–-]\s?\d+)*\]|\^\d+(?:[,–-]\d+)*\^|\([A-Z][A-Za-z-]+(?: et al\.| and [A-Z][A-Za-z-]+)?,? \d{4}[a-z]?\)|\[@[\w:-]+\]'

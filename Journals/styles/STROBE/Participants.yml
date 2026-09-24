@@ -3,7 +3,7 @@ extends: occurrence
 message: "Results report the numbers of participants at each stage (item 13)."
 link: https://doi.org/10.1371/journal.pmed.0040296
 level: warning
-scope: 'doc(section:haschild(h1:contains("Results"),h2:contains("Results")))'
+scope: results
 token: '(?i)\beligible\b|\bincluded\b|analy[sz]ed|follow-up|\bexcluded\b'
 min: 1
 

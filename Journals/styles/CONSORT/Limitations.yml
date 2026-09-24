@@ -3,7 +3,7 @@ extends: occurrence
 message: "Discussion addresses the trial's limitations (item 28)."
 link: https://doi.org/10.1371/journal.pmed.1004587
 level: warning
-scope: 'doc(section:haschild(h1:contains("Discussion"),h2:contains("Discussion")))'
+scope: discussion
 token: '(?i)\blimitations?\b'
 min: 1
 

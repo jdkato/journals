@@ -3,7 +3,7 @@ extends: occurrence
 message: "Methods specify the effect measure for each outcome (item 12)."
 link: https://doi.org/10.1136/bmj.n71
 level: warning
-scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+scope: methods
 token: '(?i)risk ratio|odds ratio|hazard ratio|mean difference|standardi[sz]ed mean difference|\bSMD\b|relative risk|effect (?:measure|size)'
 min: 1
 

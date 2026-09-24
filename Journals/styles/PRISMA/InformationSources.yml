@@ -4,7 +4,7 @@ extends: occurrence
 message: "Methods name the sources searched and the date last searched (item 6)."
 link: https://doi.org/10.1136/bmj.n71
 level: error
-scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+scope: methods
 token: '(?i)MEDLINE|PubMed|Embase|Scopus|Web of Science|CINAHL|PsycINFO|Cochrane|CENTRAL|Google Scholar|\bdatabases?\b|\bregisters?\b'
 min: 1
 

@@ -6,7 +6,7 @@ extends: existence
 message: "The summary paragraph avoids numbers, abbreviations, and measurements unless essential: '%s'."
 link: https://www.nature.com/nature/for-authors/formatting-guide
 level: suggestion
-scope: 'text & doc(h1 + p)'
+scope: lead
 nonword: true
 raw:
   - '(?<![\^\[])\b\d+(?:\.\d+)?\b(?![\^\]])|\b[A-Z]{3,}\b'

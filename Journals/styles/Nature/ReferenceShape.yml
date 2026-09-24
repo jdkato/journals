@@ -4,7 +4,7 @@ extends: existence
 message: "A Nature reference ends with the year in parentheses: '%s'."
 link: https://www.nature.com/nature/for-authors/formatting-guide
 level: suggestion
-scope: 'list & doc(section:haschild(h1:contains("References"),h2:contains("References")))'
+scope: list & references
 nonword: true
 raw:
   - '^(?!.*\(\d{4}\)\.?$).+$'

@@ -3,7 +3,7 @@ extends: occurrence
 message: "Results cite the studies that looked eligible but were excluded, and say why (item 16b)."
 link: https://doi.org/10.1136/bmj.n71
 level: warning
-scope: 'doc(section:haschild(h1:contains("Results"),h2:contains("Results")))'
+scope: results
 token: '(?i)\bexcluded\b'
 min: 1
 

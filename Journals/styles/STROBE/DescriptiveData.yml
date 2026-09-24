@@ -4,7 +4,7 @@ extends: occurrence
 message: "Results give the characteristics of participants (item 14)."
 link: https://doi.org/10.1371/journal.pmed.0040296
 level: warning
-scope: 'doc(section:haschild(h1:contains("Results"),h2:contains("Results")))'
+scope: results
 token: '(?i)characteristics|\bbaseline\b|demographic'
 min: 1
 

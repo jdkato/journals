@@ -3,7 +3,7 @@ extends: occurrence
 message: "Discussion addresses the generalizability of the results (item 21)."
 link: https://doi.org/10.1371/journal.pmed.0040296
 level: warning
-scope: 'doc(section:haschild(h1:contains("Discussion"),h2:contains("Discussion")))'
+scope: discussion
 token: '(?i)generali[sz]ab|external validity|apply to|applicab'
 min: 1
 

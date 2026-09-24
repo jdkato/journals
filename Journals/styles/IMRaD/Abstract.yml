@@ -1,7 +1,7 @@
 extends: occurrence
 message: "An Abstract section."
 level: error
-scope: 'doc(section:haschild(h1:contains("Abstract"),h2:contains("Abstract")))'
+scope: abstract
 token: '(?s).'
 min: 1
 

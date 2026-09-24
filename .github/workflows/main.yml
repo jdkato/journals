@@ -14,10 +14,7 @@ jobs:
       # for the paraphrased checklists travel inside it.
       - run: cp LICENSE NOTICE Journals/
 
-      # GitHub serves the asset for `journals.zip` too, and Vale looks for a
-      # directory named after the URL, so the archive carries both spellings.
-      - run: cp -r Journals journals
-      - run: zip -r Journals.zip Journals journals -x "*.DS_Store"
+      - run: zip -r Journals.zip Journals -x "*.DS_Store"
 
       - name: Upload style to release
         uses: svenstaro/upload-release-action@v2
@@ -31,9 +28,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # The rules read a manuscript's sections with `doc(...)` scopes and
-      # carry their cases in `tests:` blocks, both on Vale's v3 branch until
-      # the release that ships them -- built from source until then.
+      # The package needs Vale 3.23.0, which is on the v3 branch and not yet
+      # released -- built from source until it is.
       - uses: actions/checkout@v4
         with:
           repository: vale-cli/vale

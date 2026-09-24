@@ -17,7 +17,7 @@ Works on [Markdown](https://docs.vale.sh/formats/markdown),
 
 ## Install
 
-Requires Vale 3.22.0 or later. The package depends on
+Requires Vale 3.23.0 or later. The package depends on
 [Std](https://github.com/vale-cli/Std), which `vale sync` fetches for you.
 
 ```ini
@@ -46,9 +46,9 @@ journal, or a checklist next to it.
 | `IMRaD` | That the standard sections exist, the abstract is within budget and has no citations or abbreviations, and the Discussion mentions limitations. |
 | `Nature` | Title, summary paragraph, subheading, legend, Methods, and reference limits. Superscript citations, `Fig. 1`, `Extended Data Fig. 1`, `1,000`, `37 °C`. |
 | `PLOS` | Title and abstract limits, `[1]` citations, `Fig 1`, `S1 Fig`, no footnotes, exact p-values, Vancouver references, a named ethics committee, and required Methods content. |
-| `CONSORT` | 17 items from the checklist for randomized trials. |
-| `STROBE` | 15 items from the checklist for observational studies. |
-| `PRISMA` | 20 items from the checklist for systematic reviews. |
+| `CONSORT` | Randomized trials: 19 of the checklist's 30 items. |
+| `STROBE` | Observational studies: 14 of the checklist's 22 items. |
+| `PRISMA` | Systematic reviews: 21 of the checklist's 27 items. |
 
 Checklist rules look for the things a regex can find, such as a registry
 number, a mention of blinding in Methods, or a limitations paragraph in the

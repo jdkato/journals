@@ -4,7 +4,7 @@ extends: existence
 message: "Nature sets reference numbers as superscripts, not in brackets: '%s'."
 link: https://www.nature.com/nature/for-authors/formatting-guide
 level: warning
-scope: '~doc(section:haschild(h1:contains("References"),h2:contains("References")))'
+scope: ~references
 nonword: true
 raw:
   - '\[\d+(?:[,–-]\s?\d+)*\]'

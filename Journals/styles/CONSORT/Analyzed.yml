@@ -4,7 +4,7 @@ extends: occurrence
 message: "Results give the number analyzed in each group and the analysis population (items 19 and 21)."
 link: https://doi.org/10.1371/journal.pmed.1004587
 level: warning
-scope: 'doc(section:haschild(h1:contains("Results"),h2:contains("Results")))'
+scope: results
 token: '(?i)analy[sz]ed|intention[- ]to[- ]treat|per[- ]protocol'
 min: 1
 

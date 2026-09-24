@@ -3,7 +3,7 @@ extends: occurrence
 message: "Methods present the full search strategy for at least one source (item 7)."
 link: https://doi.org/10.1136/bmj.n71
 level: error
-scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+scope: methods
 token: '(?i)search (?:strateg|string|terms|syntax)|\bsearched\b'
 min: 1
 

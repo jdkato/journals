@@ -3,7 +3,7 @@ extends: occurrence
 message: "Methods say how many reviewers screened each record and whether they worked independently (item 8)."
 link: https://doi.org/10.1136/bmj.n71
 level: warning
-scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+scope: methods
 token: '(?i)independently|two reviewers|in duplicate|\bscreen(?:ed|ing)\b'
 min: 1
 

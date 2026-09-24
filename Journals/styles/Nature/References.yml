@@ -4,7 +4,7 @@ extends: occurrence
 message: "%d references; Articles typically have no more than 50."
 link: https://www.nature.com/nature/for-authors/formatting-guide
 level: warning
-scope: 'doc(section:haschild(h1:contains("References"),h2:contains("References")))'
+scope: references
 token: '(?m)^.*(?:\b(?:19|20)\d{2}\b|\bdoi\b|arXiv).*$'
 max: 50
 

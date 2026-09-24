@@ -4,7 +4,7 @@ extends: occurrence
 message: "Discussion addresses the study's limitations, including sources of bias (item 19)."
 link: https://doi.org/10.1371/journal.pmed.0040296
 level: warning
-scope: 'doc(section:haschild(h1:contains("Discussion"),h2:contains("Discussion")))'
+scope: discussion
 token: '(?i)\blimitations?\b'
 min: 1
 

@@ -1,6 +1,6 @@
 {
   "feed": "https://github.com/jdkato/journals/releases.atom",
-  "vale_version": ">=3.22.0",
+  "vale_version": ">=3.23.0",
   "license_files": [
     "LICENSE",
     "NOTICE"

@@ -1,7 +1,7 @@
 extends: occurrence
 message: "A Methods section: a heading containing 'Method' opens it."
 level: error
-scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+scope: methods
 token: '(?s).'
 min: 1
 

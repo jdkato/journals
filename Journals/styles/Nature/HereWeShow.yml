@@ -4,7 +4,7 @@ extends: occurrence
 message: "Introduce the main conclusion with 'Here we show' or an equivalent."
 link: https://www.nature.com/nature/for-authors/formatting-guide
 level: suggestion
-scope: 'text & doc(h1 + p)'
+scope: lead
 token: '(?i)\bhere,? we (?:show|report|present|describe|demonstrate|find|find that)\b'
 min: 1
 

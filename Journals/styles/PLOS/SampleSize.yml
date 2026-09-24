@@ -3,7 +3,7 @@ extends: occurrence
 message: "Methods give the sample sizes and how they were determined."
 link: https://journals.plos.org/plosone/s/submission-guidelines#loc-statistical-reporting
 level: suggestion
-scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+scope: methods
 token: '(?i)sample size|\bn\s*=\s*\d|power (?:calculation|analysis)'
 min: 1
 

@@ -4,7 +4,7 @@ extends: occurrence
 message: "The summary paragraph runs %d words; ideally no more than 200."
 link: https://www.nature.com/nature/for-authors/formatting-guide
 level: warning
-scope: 'text & doc(h1 + p)'
+scope: lead
 token: '\b\w+\b'
 max: 200
 

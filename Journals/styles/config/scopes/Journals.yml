@@ -1,0 +1,15 @@
+# The parts of a manuscript, by name. A section is the heading that opens
+# it and everything up to the next heading of the same level, at either of
+# the two levels a title leaves for it; `:contains` ignores case and reads
+# any part of the heading, so "Materials and Methods" is `methods` too.
+abstract: 'doc(section:has(> h1:contains("abstract"), > h2:contains("abstract")))'
+introduction: 'doc(section:has(> h1:contains("introduction"), > h2:contains("introduction")))'
+methods: 'doc(section:has(> h1:contains("method"), > h2:contains("method")))'
+results: 'doc(section:has(> h1:contains("results"), > h2:contains("results")))'
+discussion: 'doc(section:has(> h1:contains("discussion"), > h2:contains("discussion")))'
+references: 'doc(section:has(> h1:contains("references"), > h2:contains("references")))'
+acknowledgments: 'doc(section:has(> h1:contains("acknowledg"), > h2:contains("acknowledg")))'
+legends: 'doc(section:has(> h1:contains("legend"), > h2:contains("legend")))'
+
+# The paragraph after the title: Nature's summary paragraph.
+lead: text & doc(h1 + p)

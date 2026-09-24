@@ -3,7 +3,7 @@ extends: occurrence
 message: "Methods name the software package and its version."
 link: https://journals.plos.org/plosone/s/submission-guidelines#loc-statistical-reporting
 level: suggestion
-scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+scope: methods
 token: '(?i)\bversion\b|\bv\d+(?:\.\d+)+\b'
 min: 1
 

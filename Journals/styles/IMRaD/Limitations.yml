@@ -2,7 +2,7 @@
 extends: occurrence
 message: "The Discussion names the study's limitations."
 level: suggestion
-scope: 'doc(section:haschild(h1:contains("Discussion"),h2:contains("Discussion")))'
+scope: discussion
 token: '(?i)\blimitations?\b'
 min: 1
 

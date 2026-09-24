@@ -4,7 +4,7 @@ extends: occurrence
 message: "A figure legend runs %d words; fewer than 300 each."
 link: https://www.nature.com/nature/for-authors/formatting-guide
 level: warning
-scope: 'paragraph & doc(section:haschild(h1:contains("egend"),h2:contains("egend")))'
+scope: paragraph & legends
 token: '\b\w+\b'
 max: 299
 

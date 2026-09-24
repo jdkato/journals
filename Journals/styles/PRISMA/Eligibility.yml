@@ -3,7 +3,7 @@ extends: occurrence
 message: "Methods specify the inclusion and exclusion criteria (item 5)."
 link: https://doi.org/10.1136/bmj.n71
 level: error
-scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+scope: methods
 token: '(?i)eligib(?:le|ility)|inclusion criteria|exclusion criteria'
 min: 1
 

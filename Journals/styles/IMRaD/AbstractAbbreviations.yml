@@ -3,7 +3,7 @@
 extends: existence
 message: "Avoid abbreviations in the abstract: '%s'."
 level: suggestion
-scope: 'doc(section:haschild(h1:contains("Abstract"),h2:contains("Abstract")))'
+scope: abstract
 nonword: true
 raw:
   - '\b(?!(?:NCT|ISRCTN|ACTRN|CRD|DNA|RNA|HIV|PROSPERO)\b)[A-Z]{3,}\b'

@@ -5,7 +5,7 @@ extends: existence
 message: "Past five authors, give the first author et al.: '%s'."
 link: https://www.nature.com/nature/for-authors/formatting-guide
 level: warning
-scope: 'list & doc(section:haschild(h1:contains("References"),h2:contains("References")))'
+scope: list & references
 nonword: true
 raw:
   - '^(?:[A-Z][\w-]+, [A-Z]\.(?: ?[A-Z]\.)*(?:, | & )){5,}[A-Z][\w-]+, [A-Z]\.(?: ?[A-Z]\.)*'

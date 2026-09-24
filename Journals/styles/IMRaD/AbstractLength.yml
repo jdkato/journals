@@ -3,7 +3,7 @@
 extends: occurrence
 message: "Abstract runs %d words."
 level: warning
-scope: 'doc(section:haschild(h1:contains("Abstract"),h2:contains("Abstract")))'
+scope: abstract
 token: '(?m)(?<!\A[^\n]*)\b\w+\b'
 max: 250
 

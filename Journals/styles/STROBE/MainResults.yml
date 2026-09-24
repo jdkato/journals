@@ -4,7 +4,7 @@ extends: occurrence
 message: "Results give adjusted estimates with their precision, such as a confidence interval (item 16)."
 link: https://doi.org/10.1371/journal.pmed.0040296
 level: error
-scope: 'doc(section:haschild(h1:contains("Results"),h2:contains("Results")))'
+scope: results
 token: '(?i)confidence interval|95% CI|\bCI\b|adjusted'
 min: 1
 

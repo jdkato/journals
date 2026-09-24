@@ -3,7 +3,7 @@ extends: occurrence
 message: "Results describe the search and selection, ideally with a flow diagram (item 16a)."
 link: https://doi.org/10.1136/bmj.n71
 level: error
-scope: 'doc(section:haschild(h1:contains("Results"),h2:contains("Results")))'
+scope: results
 token: '(?i)flow ?(?:diagram|chart)|records? (?:identified|screened)|studies (?:identified|screened|included)'
 min: 1
 

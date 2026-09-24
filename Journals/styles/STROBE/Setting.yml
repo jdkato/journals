@@ -4,7 +4,7 @@ extends: occurrence
 message: "Methods describe the setting, locations, and dates (item 5)."
 link: https://doi.org/10.1371/journal.pmed.0040296
 level: warning
-scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+scope: methods
 token: '(?i)\bsetting\b|recruit|enrol|between \w+ \d{4} and|from \d{4} to \d{4}|follow-up'
 min: 1
 

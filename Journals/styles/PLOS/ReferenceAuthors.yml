@@ -3,7 +3,7 @@ extends: existence
 message: "List the first six authors, then et al.: '%s'."
 link: https://journals.plos.org/plosone/s/submission-guidelines#loc-references
 level: warning
-scope: 'list & doc(section:haschild(h1:contains("References"),h2:contains("References")))'
+scope: list & references
 nonword: true
 raw:
   - '^(?:[A-Z][\w-]+ [A-Z]{1,3}, ){6,}[A-Z][\w-]+ [A-Z]{1,3}[.,]'

@@ -3,7 +3,7 @@ extends: occurrence
 message: "Methods state the threshold for significance (alpha)."
 link: https://journals.plos.org/plosone/s/submission-guidelines#loc-statistical-reporting
 level: suggestion
-scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+scope: methods
 token: '(?i)\balpha\b|α|significance (?:level|threshold)|(?<!\w)p\s*[<≤]\s*0?\.05'
 min: 1
 

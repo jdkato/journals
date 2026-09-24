@@ -4,7 +4,7 @@ extends: occurrence
 message: "Methods runs %d words; typically no more than 3,000."
 link: https://www.nature.com/nature/for-authors/formatting-guide
 level: warning
-scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+scope: methods
 token: '(?m)(?<!\A[^\n]*)\b\w+\b'
 max: 3000
 

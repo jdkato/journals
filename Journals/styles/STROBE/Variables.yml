@@ -4,7 +4,7 @@ extends: occurrence
 message: "Methods define the outcomes, exposures, predictors, and confounders (item 7)."
 link: https://doi.org/10.1371/journal.pmed.0040296
 level: error
-scope: 'doc(section:haschild(h1:contains("ethod"),h2:contains("ethod")))'
+scope: methods
 token: '(?i)\bexposures?\b|\boutcomes?\b|confound|predictor|covariate'
 min: 1
 

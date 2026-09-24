@@ -1,7 +1,7 @@
 extends: occurrence
 message: "An Introduction section."
 level: error
-scope: 'doc(section:haschild(h1:contains("Introduction"),h2:contains("Introduction")))'
+scope: introduction
 token: '(?s).'
 min: 1
 
