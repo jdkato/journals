@@ -1,0 +1,36 @@
+# Item 25b: methods give the plans for promoting retention and complete follow-up.
+extends: occurrence
+message: "Methods give the plans for promoting retention and complete follow-up (item 25b)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: warning
+scope: methods
+token: '(?i)\b(?:retention|complete follow[- ]up|reminders?)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:SPIRIT.Retention:Methods give the plans for promoting retention and complete follow-up (item 25b).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Retention:Methods give the plans for promoting retention and complete follow-up (item 25b).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Retention will be promoted by reminders.
+    want: ""

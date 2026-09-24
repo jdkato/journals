@@ -1,0 +1,23 @@
+# Item 34: state the provisions for ancillary and post-trial care, and compensation for harm.
+extends: occurrence
+message: "State the provisions for ancillary and post-trial care, and compensation for harm (item 34)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: warning
+scope: raw
+token: '(?i)\b(?:post[- ]trial|ancillary care|compensation|insurance|indemnity)\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.PostTrialCare:State the provisions for ancillary and post-trial care, and compensation for harm (item 34).
+  - name: clean
+    input: |
+      # Title
+
+      Compensation for harm is covered by the sponsor's insurance.
+    want: ""

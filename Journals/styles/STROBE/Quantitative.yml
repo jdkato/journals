@@ -1,0 +1,36 @@
+# Item 11: methods explain how quantitative variables were handled, including any groupings.
+extends: occurrence
+message: "Methods explain how quantitative variables were handled, including any groupings (item 11)."
+link: https://doi.org/10.1371/journal.pmed.0040296
+level: warning
+scope: methods
+token: '(?i)\b(?:categori[sz]ed|quartiles?|tertiles?|quintiles?|cut[- ]?offs?|continuous|groupings?|per (?:unit|standard deviation|SD))\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:STROBE.Quantitative:Methods explain how quantitative variables were handled, including any groupings (item 11).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STROBE.Quantitative:Methods explain how quantitative variables were handled, including any groupings (item 11).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Age was analyzed as a continuous variable and in quartiles.
+    want: ""

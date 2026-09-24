@@ -1,0 +1,36 @@
+# Items 10b and 11: methods describe the reference standard, and why it was chosen.
+extends: occurrence
+message: "Methods describe the reference standard, and why it was chosen (items 10b and 11)."
+link: https://doi.org/10.1136/bmj.h5527
+level: error
+scope: methods
+token: '(?i)\breference standard\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:STARD.ReferenceStandard:Methods describe the reference standard, and why it was chosen (items 10b and 11).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STARD.ReferenceStandard:Methods describe the reference standard, and why it was chosen (items 10b and 11).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      The reference standard was PCR, chosen for its sensitivity.
+    want: ""

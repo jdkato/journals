@@ -1,0 +1,36 @@
+# Items 12a and 12b: methods define the positivity cut-offs or result categories, and whether they were prespecified.
+extends: occurrence
+message: "Methods define the positivity cut-offs or result categories, and whether they were prespecified (items 12a and 12b)."
+link: https://doi.org/10.1136/bmj.h5527
+level: error
+scope: methods
+token: '(?i)\b(?:cut[- ]?offs?|thresholds?|positiv(?:e|ity) (?:was|were) defined|result categories)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:STARD.Cutoffs:Methods define the positivity cut-offs or result categories, and whether they were prespecified (items 12a and 12b).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STARD.Cutoffs:Methods define the positivity cut-offs or result categories, and whether they were prespecified (items 12a and 12b).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      The cut-off was prespecified at 40 cycles.
+    want: ""

@@ -1,0 +1,36 @@
+# Item 18: the Discussion summarizes the key results with reference to the objectives.
+extends: occurrence
+message: "The Discussion summarizes the key results with reference to the objectives (item 18)."
+link: https://doi.org/10.1371/journal.pmed.0040296
+level: error
+scope: discussion
+token: '(?i)\b(?:in summary|we found|our (?:main|key) findings?|this study (?:found|shows|showed)|key results?)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Discussion
+
+      Something else.
+    want: |
+      3:4:STROBE.KeyResults:The Discussion summarizes the key results with reference to the objectives (item 18).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STROBE.KeyResults:The Discussion summarizes the key results with reference to the objectives (item 18).
+  - name: clean
+    input: |
+      # Title
+
+      ## Discussion
+
+      We found a higher risk in the exposed group.
+    want: ""

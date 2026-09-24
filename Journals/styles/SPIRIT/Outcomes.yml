@@ -1,0 +1,36 @@
+# Item 16: methods define the primary and secondary outcomes, with the measurement, metric, and time point.
+extends: occurrence
+message: "Methods define the primary and secondary outcomes, with the measurement, metric, and time point (item 16)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: methods
+token: '(?i)\b(?:primary outcomes?|secondary outcomes?)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:SPIRIT.Outcomes:Methods define the primary and secondary outcomes, with the measurement, metric, and time point (item 16).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Outcomes:Methods define the primary and secondary outcomes, with the measurement, metric, and time point (item 16).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      The primary outcome is systolic blood pressure at 12 weeks.
+    want: ""

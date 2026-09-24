@@ -1,0 +1,36 @@
+# Item 8: diagnostic Assessment gives the methods, challenges, diagnosis, and other diagnoses considered.
+extends: occurrence
+message: "Diagnostic Assessment gives the methods, challenges, diagnosis, and other diagnoses considered (item 8)."
+link: https://www.care-statement.org/checklist
+level: error
+scope: diagnosis
+token: '(?i)\b(?:differential|imaging|laboratory|biopsy|MRI|CT|ultrasound|x-ray|histolog\w*|diagnosed with|diagnosis (?:was|of))\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Diagnostic Assessment
+
+      Something else.
+    want: |
+      3:4:CARE.Diagnosis:Diagnostic Assessment gives the methods, challenges, diagnosis, and other diagnoses considered (item 8).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CARE.Diagnosis:Diagnostic Assessment gives the methods, challenges, diagnosis, and other diagnoses considered (item 8).
+  - name: clean
+    input: |
+      # Title
+
+      ## Diagnostic Assessment
+
+      The diagnosis was confirmed by CT.
+    want: ""

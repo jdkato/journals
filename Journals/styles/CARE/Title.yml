@@ -1,0 +1,23 @@
+# Item 1: the title names the diagnosis or intervention of focus, followed by the words 'case report'.
+extends: occurrence
+message: "The title names the diagnosis or intervention of focus, followed by the words 'case report' (item 1)."
+link: https://www.care-statement.org/checklist
+level: error
+scope: heading.h1
+token: '(?i)\bcase report\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:3:CARE.Title:The title names the diagnosis or intervention of focus, followed by the words 'case report' (item 1).
+  - name: clean
+    input: |
+      # Dens invaginatus managed without surgery: a case report
+
+      Body.
+    want: ""

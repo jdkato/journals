@@ -1,0 +1,36 @@
+# Item 10: follow-up and Outcomes give the assessed outcomes, adherence, and adverse events.
+extends: occurrence
+message: "Follow-up and Outcomes give the assessed outcomes, adherence, and adverse events (item 10)."
+link: https://www.care-statement.org/checklist
+level: error
+scope: followup
+token: '(?i)\b(?:at \d+ (?:weeks|months|years)|adherence|adverse|resolved|improved|recurr\w*|remission)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Follow-up and Outcomes
+
+      Something else.
+    want: |
+      3:4:CARE.FollowUp:Follow-up and Outcomes give the assessed outcomes, adherence, and adverse events (item 10).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CARE.FollowUp:Follow-up and Outcomes give the assessed outcomes, adherence, and adverse events (item 10).
+  - name: clean
+    input: |
+      # Title
+
+      ## Follow-up and Outcomes
+
+      At 6 months the pain had resolved.
+    want: ""

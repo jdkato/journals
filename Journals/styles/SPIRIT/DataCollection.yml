@@ -1,0 +1,36 @@
+# Item 25a: methods give the plans for collecting trial data and promoting its quality.
+extends: occurrence
+message: "Methods give the plans for collecting trial data and promoting its quality (item 25a)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: methods
+token: '(?i)\b(?:case report forms?|CRFs?|data (?:will be )?collected|questionnaires?|assessors? (?:will be )?trained|instruments?)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:SPIRIT.DataCollection:Methods give the plans for collecting trial data and promoting its quality (item 25a).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.DataCollection:Methods give the plans for collecting trial data and promoting its quality (item 25a).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Data will be collected on case report forms by trained assessors.
+    want: ""

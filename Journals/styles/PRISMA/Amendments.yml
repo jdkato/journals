@@ -1,0 +1,23 @@
+# Item 24c: describe any amendments to the registered protocol, or that there were none.
+extends: occurrence
+message: "Describe any amendments to the registered protocol, or that there were none (item 24c)."
+link: https://doi.org/10.1136/bmj.n71
+level: warning
+scope: raw
+token: '(?i)\b(?:amend(?:ed|ments?)|deviat(?:ed|ions?) from the protocol|no (?:changes|amendments)|as registered)\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.Amendments:Describe any amendments to the registered protocol, or that there were none (item 24c).
+  - name: clean
+    input: |
+      # Title
+
+      There were no amendments to the registered protocol.
+    want: ""

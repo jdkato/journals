@@ -1,0 +1,36 @@
+# Item 3: the Introduction states the objectives, including any hypotheses.
+extends: occurrence
+message: "The Introduction states the objectives, including any hypotheses (item 3)."
+link: https://doi.org/10.1371/journal.pmed.0040296
+level: error
+scope: introduction
+token: '(?i)\b(?:objectives?|aim(?:ed|s)?|hypothes[ie]s|we (?:tested|assessed|evaluated|compared|examined|investigated|estimated|reviewed))\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Introduction
+
+      Something else.
+    want: |
+      3:4:STROBE.Objectives:The Introduction states the objectives, including any hypotheses (item 3).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STROBE.Objectives:The Introduction states the objectives, including any hypotheses (item 3).
+  - name: clean
+    input: |
+      # Title
+
+      ## Introduction
+
+      We aimed to estimate the association.
+    want: ""

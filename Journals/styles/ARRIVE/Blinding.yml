@@ -1,0 +1,36 @@
+# Item 5: methods say who was aware of the group allocation at each stage.
+extends: occurrence
+message: "Methods say who was aware of the group allocation at each stage (item 5)."
+link: https://doi.org/10.1371/journal.pbio.3000410
+level: error
+scope: methods
+token: '(?i)\bblind|\bmask(?:ed|ing)\b|open[- ]label|\baware of\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:ARRIVE.Blinding:Methods say who was aware of the group allocation at each stage (item 5).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:ARRIVE.Blinding:Methods say who was aware of the group allocation at each stage (item 5).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      The outcome assessor was blinded to group allocation.
+    want: ""

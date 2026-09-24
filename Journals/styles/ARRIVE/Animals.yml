@@ -1,0 +1,36 @@
+# Item 8a: methods give the species, strain, sex, age, and weight of the animals.
+extends: occurrence
+message: "Methods give the species, strain, sex, age, and weight of the animals (item 8a)."
+link: https://doi.org/10.1371/journal.pbio.3000410
+level: error
+scope: methods
+token: '(?i)\b(?:strain|substrain|C57BL|Sprague|Wistar|BALB|male|female|weeks? old|weeks of age|weighing)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:ARRIVE.Animals:Methods give the species, strain, sex, age, and weight of the animals (item 8a).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:ARRIVE.Animals:Methods give the species, strain, sex, age, and weight of the animals (item 8a).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Male C57BL/6J mice, 8 weeks old.
+    want: ""

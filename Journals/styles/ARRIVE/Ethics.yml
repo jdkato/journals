@@ -1,0 +1,23 @@
+# Item 14: name the ethical review committee that approved the animal use, and any licence number.
+extends: occurrence
+message: "Name the ethical review committee that approved the animal use, and any licence number (item 14)."
+link: https://doi.org/10.1371/journal.pbio.3000410
+level: error
+scope: raw
+token: '(?i)\b(?:ethic(?:s|al) (?:committee|approval|review)|IACUC|animal (?:welfare|care and use) committee|licen[cs]e|Home Office|approved by)\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:ARRIVE.Ethics:Name the ethical review committee that approved the animal use, and any licence number (item 14).
+  - name: clean
+    input: |
+      # Title
+
+      Procedures were approved by the institutional animal care and use committee.
+    want: ""

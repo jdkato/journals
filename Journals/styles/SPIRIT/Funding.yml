@@ -1,0 +1,23 @@
+# Items 7a and 7b: state the sources of funding and the investigators' conflicts of interest.
+extends: occurrence
+message: "State the sources of funding and the investigators' conflicts of interest (items 7a and 7b)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: raw
+token: '(?i)\b(?:funded by|funding|grant|conflicts? of interest|competing interests?)\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Funding:State the sources of funding and the investigators' conflicts of interest (items 7a and 7b).
+  - name: clean
+    input: |
+      # Title
+
+      Funded by grant 123; the investigators declare no conflicts of interest.
+    want: ""

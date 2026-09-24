@@ -1,0 +1,36 @@
+# Item 6: clinical Findings describe the physical examination and the significant findings.
+extends: occurrence
+message: "Clinical Findings describe the physical examination and the significant findings (item 6)."
+link: https://www.care-statement.org/checklist
+level: error
+scope: findings
+token: '(?i)\b(?:examination|exam|revealed|noted|observed|palpable|tender|auscultation|vital signs)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Clinical Findings
+
+      Something else.
+    want: |
+      3:4:CARE.ClinicalFindings:Clinical Findings describe the physical examination and the significant findings (item 6).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CARE.ClinicalFindings:Clinical Findings describe the physical examination and the significant findings (item 6).
+  - name: clean
+    input: |
+      # Title
+
+      ## Clinical Findings
+
+      Examination revealed swelling.
+    want: ""

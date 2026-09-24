@@ -1,0 +1,36 @@
+# Item 11: the Discussion gives strengths and limitations, the literature, the rationale for the conclusions, and the lessons.
+extends: occurrence
+message: "The Discussion gives strengths and limitations, the literature, the rationale for the conclusions, and the lessons (item 11)."
+link: https://www.care-statement.org/checklist
+level: error
+scope: discussion
+token: '(?i)\b(?:strengths?|limitations?|literature|rationale|take[- ]aways?|lessons?)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Discussion
+
+      Something else.
+    want: |
+      3:4:CARE.Discussion:The Discussion gives strengths and limitations, the literature, the rationale for the conclusions, and the lessons (item 11).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CARE.Discussion:The Discussion gives strengths and limitations, the literature, the rationale for the conclusions, and the lessons (item 11).
+  - name: clean
+    input: |
+      # Title
+
+      ## Discussion
+
+      One limitation is the short follow-up.
+    want: ""

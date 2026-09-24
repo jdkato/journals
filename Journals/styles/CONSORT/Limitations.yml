@@ -1,6 +1,6 @@
-# Item 28: the trial's limitations.
+# Item 30: the trial's limitations.
 extends: occurrence
-message: "Discussion addresses the trial's limitations (item 28)."
+message: "Discussion addresses the trial's limitations (item 30)."
 link: https://doi.org/10.1371/journal.pmed.1004587
 level: warning
 scope: discussion
@@ -17,7 +17,7 @@ tests:
 
       Something else.
     want: |
-      3:4:CONSORT.Limitations:Discussion addresses the trial's limitations (item 28).
+      3:4:CONSORT.Limitations:Discussion addresses the trial's limitations (item 30).
   - name: absent
     about: "no section at all"
     input: |
@@ -25,7 +25,7 @@ tests:
 
       Body.
     want: |
-      1:1:CONSORT.Limitations:Discussion addresses the trial's limitations (item 28).
+      1:1:CONSORT.Limitations:Discussion addresses the trial's limitations (item 30).
   - name: clean
     input: |
       # Title

@@ -1,0 +1,23 @@
+# Item 2: give 2 to 5 key words, including 'case report'.
+extends: occurrence
+message: "Give 2 to 5 key words, including 'case report' (item 2)."
+link: https://www.care-statement.org/checklist
+level: error
+scope: raw
+token: '(?i)\bkey ?words?\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CARE.Keywords:Give 2 to 5 key words, including 'case report' (item 2).
+  - name: clean
+    input: |
+      # Title
+
+      Keywords: case report, dens invaginatus
+    want: ""

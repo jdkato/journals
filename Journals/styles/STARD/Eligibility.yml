@@ -1,0 +1,36 @@
+# Item 6: methods give the eligibility criteria.
+extends: occurrence
+message: "Methods give the eligibility criteria (item 6)."
+link: https://doi.org/10.1136/bmj.h5527
+level: error
+scope: methods
+token: '(?i)\b(?:eligib(?:le|ility)|inclusion criteria|exclusion criteria|included if|excluded if)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:STARD.Eligibility:Methods give the eligibility criteria (item 6).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STARD.Eligibility:Methods give the eligibility criteria (item 6).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Adults were eligible if they presented with a cough.
+    want: ""

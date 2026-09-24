@@ -1,0 +1,36 @@
+# Item 23a: results give the dates of recruitment and follow-up.
+extends: occurrence
+message: "Results give the dates of recruitment and follow-up (item 23a)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: error
+scope: results
+token: '(?i)\b(?:recruit(?:ed|ment)|enrolled) (?:between|from|during)\b|\b(?:between|from) \w+ \d{4} (?:and|to) \w+ \d{4}\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Results
+
+      Something else.
+    want: |
+      3:4:CONSORT.Recruitment:Results give the dates of recruitment and follow-up (item 23a).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.Recruitment:Results give the dates of recruitment and follow-up (item 23a).
+  - name: clean
+    input: |
+      # Title
+
+      ## Results
+
+      Participants were recruited between March 2022 and May 2023.
+    want: ""

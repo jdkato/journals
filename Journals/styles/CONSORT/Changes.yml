@@ -1,0 +1,36 @@
+# Item 10: methods report changes to the trial after it began, or that there were none.
+extends: occurrence
+message: "Methods report changes to the trial after it began, or that there were none (item 10)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: warning
+scope: methods
+token: '(?i)\b(?:no changes|not prespecified|post hoc|amend(?:ed|ments?)|changes? (?:to|after)|after (?:the trial|commencement|it commenced))\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:CONSORT.Changes:Methods report changes to the trial after it began, or that there were none (item 10).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.Changes:Methods report changes to the trial after it began, or that there were none (item 10).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      There were no changes to the protocol after the trial began.
+    want: ""

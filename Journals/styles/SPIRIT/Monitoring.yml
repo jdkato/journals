@@ -1,0 +1,36 @@
+# Items 28a and 29: methods describe the data monitoring committee and trial monitoring, or explain their absence.
+extends: occurrence
+message: "Methods describe the data monitoring committee and trial monitoring, or explain their absence (items 28a and 29)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: methods
+token: '(?i)\b(?:data monitoring committee|DMC|DSMB|monitoring)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:SPIRIT.Monitoring:Methods describe the data monitoring committee and trial monitoring, or explain their absence (items 28a and 29).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Monitoring:Methods describe the data monitoring committee and trial monitoring, or explain their absence (items 28a and 29).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      An independent data monitoring committee will meet twice a year.
+    want: ""

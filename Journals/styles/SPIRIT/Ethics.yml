@@ -1,0 +1,23 @@
+# Item 30: state the plans for research ethics approval.
+extends: occurrence
+message: "State the plans for research ethics approval (item 30)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: raw
+token: '(?i)\b(?:ethics committee|ethical approval|institutional review board|IRB|REC)\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Ethics:State the plans for research ethics approval (item 30).
+  - name: clean
+    input: |
+      # Title
+
+      The protocol has been approved by the regional ethics committee.
+    want: ""

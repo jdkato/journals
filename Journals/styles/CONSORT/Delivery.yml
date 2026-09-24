@@ -1,0 +1,36 @@
+# Items 24a and 24b: results report how the interventions were delivered and adhered to, and any concomitant care.
+extends: occurrence
+message: "Results report how the interventions were delivered and adhered to, and any concomitant care (items 24a and 24b)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: warning
+scope: results
+token: '(?i)\b(?:adheren(?:ce|t)|fidelity|as intended|delivered|concomitant|co-?interventions?)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Results
+
+      Something else.
+    want: |
+      3:4:CONSORT.Delivery:Results report how the interventions were delivered and adhered to, and any concomitant care (items 24a and 24b).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.Delivery:Results report how the interventions were delivered and adhered to, and any concomitant care (items 24a and 24b).
+  - name: clean
+    input: |
+      # Title
+
+      ## Results
+
+      Adherence was 92 percent, and concomitant care did not differ.
+    want: ""

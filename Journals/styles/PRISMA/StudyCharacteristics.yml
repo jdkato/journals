@@ -1,0 +1,36 @@
+# Item 17: results cite each included study and present its characteristics.
+extends: occurrence
+message: "Results cite each included study and present its characteristics (item 17)."
+link: https://doi.org/10.1136/bmj.n71
+level: error
+scope: results
+token: '(?i)\b(?:characteristics of (?:the )?included studies|study characteristics|table \d+ (?:summari[sz]es|shows|presents)|included studies were)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Results
+
+      Something else.
+    want: |
+      3:4:PRISMA.StudyCharacteristics:Results cite each included study and present its characteristics (item 17).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.StudyCharacteristics:Results cite each included study and present its characteristics (item 17).
+  - name: clean
+    input: |
+      # Title
+
+      ## Results
+
+      Table 1 summarizes the characteristics of the included studies.
+    want: ""

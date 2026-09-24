@@ -1,0 +1,36 @@
+# Item 3: the Introduction gives the rationale for the review in the context of existing knowledge.
+extends: occurrence
+message: "The Introduction gives the rationale for the review in the context of existing knowledge (item 3)."
+link: https://doi.org/10.1136/bmj.n71
+level: error
+scope: introduction
+token: '(?i)\b(?:rationale|existing (?:knowledge|reviews)|previous reviews?|gap)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Introduction
+
+      Something else.
+    want: |
+      3:4:PRISMA.Rationale:The Introduction gives the rationale for the review in the context of existing knowledge (item 3).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.Rationale:The Introduction gives the rationale for the review in the context of existing knowledge (item 3).
+  - name: clean
+    input: |
+      # Title
+
+      ## Introduction
+
+      No previous review has addressed the gap.
+    want: ""

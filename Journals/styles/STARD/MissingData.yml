@@ -1,0 +1,36 @@
+# Item 16: methods say how missing data on either test were handled.
+extends: occurrence
+message: "Methods say how missing data on either test were handled (item 16)."
+link: https://doi.org/10.1136/bmj.h5527
+level: error
+scope: methods
+token: '(?i)\b(?:missing (?:data|values|outcomes|results)|multiple imputation|imput(?:ed|ation)|complete[- ]case|last observation)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:STARD.MissingData:Methods say how missing data on either test were handled (item 16).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STARD.MissingData:Methods say how missing data on either test were handled (item 16).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Missing data were handled by complete-case analysis.
+    want: ""

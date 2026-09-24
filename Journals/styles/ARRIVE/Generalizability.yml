@@ -1,0 +1,36 @@
+# Item 18: the Discussion comments on how the findings may generalize to other species or to humans.
+extends: occurrence
+message: "The Discussion comments on how the findings may generalize to other species or to humans (item 18)."
+link: https://doi.org/10.1371/journal.pbio.3000410
+level: error
+scope: discussion
+token: '(?i)\b(?:generali[sz]\w*|translat\w*|other species|human (?:biology|disease|patients|relevance))\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Discussion
+
+      Something else.
+    want: |
+      3:4:ARRIVE.Generalizability:The Discussion comments on how the findings may generalize to other species or to humans (item 18).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:ARRIVE.Generalizability:The Discussion comments on how the findings may generalize to other species or to humans (item 18).
+  - name: clean
+    input: |
+      # Title
+
+      ## Discussion
+
+      Whether the findings translate to humans is unknown.
+    want: ""

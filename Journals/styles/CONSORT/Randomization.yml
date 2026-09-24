@@ -1,6 +1,6 @@
-# Item 11: how the allocation sequence was generated.
+# Item 17a: how the allocation sequence was generated.
 extends: occurrence
-message: "Methods describe how the allocation sequence was generated (item 11)."
+message: "Methods describe how the allocation sequence was generated (item 17a)."
 link: https://doi.org/10.1371/journal.pmed.1004587
 level: error
 scope: methods
@@ -17,7 +17,7 @@ tests:
 
       Something else.
     want: |
-      3:4:CONSORT.Randomization:Methods describe how the allocation sequence was generated (item 11).
+      3:4:CONSORT.Randomization:Methods describe how the allocation sequence was generated (item 17a).
   - name: absent
     about: "no section at all"
     input: |
@@ -25,7 +25,7 @@ tests:
 
       Body.
     want: |
-      1:1:CONSORT.Randomization:Methods describe how the allocation sequence was generated (item 11).
+      1:1:CONSORT.Randomization:Methods describe how the allocation sequence was generated (item 17a).
   - name: clean
     input: |
       # Title

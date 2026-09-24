@@ -1,0 +1,23 @@
+# Items 21a and 21b: declare conflicts of interest and list the funding sources and the funders' role.
+extends: occurrence
+message: "Declare conflicts of interest and list the funding sources and the funders' role (items 21a and 21b)."
+link: https://doi.org/10.1371/journal.pbio.3000410
+level: error
+scope: raw
+token: '(?i)\b(?:funded by|funding|grant|conflicts? of interest|competing interests?)\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:ARRIVE.Interests:Declare conflicts of interest and list the funding sources and the funders' role (items 21a and 21b).
+  - name: clean
+    input: |
+      # Title
+
+      The authors declare no conflicts of interest; funded by grant 123.
+    want: ""

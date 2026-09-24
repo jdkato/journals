@@ -1,0 +1,23 @@
+# Item 6: say where and how the participant data and code will be accessible.
+extends: occurrence
+message: "Say where and how the participant data and code will be accessible (item 6)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: raw
+token: '(?i)\b(?:data (?:sharing|availability|will be (?:available|shared)|are available)|de-?identified|data dictionary|available (?:on|upon) request|repository)\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.DataSharing:Say where and how the participant data and code will be accessible (item 6).
+  - name: clean
+    input: |
+      # Title
+
+      De-identified data will be shared in a repository.
+    want: ""

@@ -1,0 +1,36 @@
+# Items 20a and 20b: results present each synthesis, with its summary estimate and precision.
+extends: occurrence
+message: "Results present each synthesis, with its summary estimate and precision (items 20a and 20b)."
+link: https://doi.org/10.1136/bmj.n71
+level: error
+scope: results
+token: '(?i)\b(?:pooled|meta-analys[ie]s|summary estimates?|random[- ]effects|fixed[- ]effects|heterogeneity)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Results
+
+      Something else.
+    want: |
+      3:4:PRISMA.SynthesisResults:Results present each synthesis, with its summary estimate and precision (items 20a and 20b).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.SynthesisResults:Results present each synthesis, with its summary estimate and precision (items 20a and 20b).
+  - name: clean
+    input: |
+      # Title
+
+      ## Results
+
+      The pooled estimate was 0.8 (95% CI 0.7 to 0.9).
+    want: ""

@@ -1,0 +1,36 @@
+# Item 11: methods give the settings and locations of the trial.
+extends: occurrence
+message: "Methods give the settings and locations of the trial (item 11)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: error
+scope: methods
+token: '(?i)\b(?:hospitals?|clinics?|cent(?:re|er)s?|sites?|community|countr(?:y|ies)|conducted (?:in|at))\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:CONSORT.Setting:Methods give the settings and locations of the trial (item 11).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.Setting:Methods give the settings and locations of the trial (item 11).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      The trial was conducted at three hospitals in Norway.
+    want: ""

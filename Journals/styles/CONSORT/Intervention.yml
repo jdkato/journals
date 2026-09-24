@@ -1,0 +1,36 @@
+# Item 13: methods describe the intervention and comparator in enough detail to replicate them.
+extends: occurrence
+message: "Methods describe the intervention and comparator in enough detail to replicate them (item 13)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: error
+scope: methods
+token: '(?i)\b(?:intervention|comparator|placebo|control group|usual care|dose|administered)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:CONSORT.Intervention:Methods describe the intervention and comparator in enough detail to replicate them (item 13).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.Intervention:Methods describe the intervention and comparator in enough detail to replicate them (item 13).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      The intervention was 10 mg daily; the comparator was placebo.
+    want: ""

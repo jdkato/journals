@@ -1,0 +1,36 @@
+# Items 7 and 8: methods say how, where, and when eligible participants were identified.
+extends: occurrence
+message: "Methods say how, where, and when eligible participants were identified (items 7 and 8)."
+link: https://doi.org/10.1136/bmj.h5527
+level: error
+scope: methods
+token: '(?i)\b(?:identified (?:from|through|by|at)|referred|presenting with|symptoms|registry|recruited|between \w+ \d{4})\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:STARD.Identification:Methods say how, where, and when eligible participants were identified (items 7 and 8).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STARD.Identification:Methods say how, where, and when eligible participants were identified (items 7 and 8).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Participants were identified from the emergency department between March and June 2025.
+    want: ""

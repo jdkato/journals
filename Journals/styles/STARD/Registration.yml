@@ -1,0 +1,23 @@
+# Item 28: give the registration number and registry name.
+extends: occurrence
+message: "Give the registration number and registry name (item 28)."
+link: https://doi.org/10.1136/bmj.h5527
+level: error
+scope: raw
+token: '\b(?:NCT\d{8}|ISRCTN\d{8}|ACTRN\d{14}|ChiCTR\d+|CTRI/\d{4}/\d{2}/\d+|EudraCT \d{4}-\d{6}-\d{2}|UMIN\d{9}|DRKS\d{8}|IRCT\d+|PACTR\d+|KCT\d{7}|jRCT\w+|TCTR\d+)\b|(?i)\bregist(?:ered|ration)\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STARD.Registration:Give the registration number and registry name (item 28).
+  - name: clean
+    input: |
+      # Title
+
+      Registered as NCT01234567.
+    want: ""

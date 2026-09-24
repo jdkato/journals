@@ -1,0 +1,23 @@
+# Item 33: say how personal information will be handled to protect confidentiality.
+extends: occurrence
+message: "Say how personal information will be handled to protect confidentiality (item 33)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: raw
+token: '(?i)\b(?:confidential\w*|anonymi[sz]\w*|pseudonymi[sz]\w*|de-?identif\w*|personal (?:data|information))\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Confidentiality:Say how personal information will be handled to protect confidentiality (item 33).
+  - name: clean
+    input: |
+      # Title
+
+      Personal data will be pseudonymized and stored securely.
+    want: ""

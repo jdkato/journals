@@ -1,0 +1,36 @@
+# Items 21a and 21b: methods say who will generate the allocation sequence, and the type of randomization.
+extends: occurrence
+message: "Methods say who will generate the allocation sequence, and the type of randomization (items 21a and 21b)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: methods
+token: '(?i)\b(?:random(?:i[sz]ation|ly)|allocation sequence|computer[- ]generated|blocks?|stratif\w*)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:SPIRIT.Randomization:Methods say who will generate the allocation sequence, and the type of randomization (items 21a and 21b).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Randomization:Methods say who will generate the allocation sequence, and the type of randomization (items 21a and 21b).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      A computer-generated sequence with permuted blocks.
+    want: ""

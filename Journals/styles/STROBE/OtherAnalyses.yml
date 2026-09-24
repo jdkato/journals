@@ -1,0 +1,36 @@
+# Item 17: results report other analyses done, such as subgroups, interactions, and sensitivity analyses.
+extends: occurrence
+message: "Results report other analyses done, such as subgroups, interactions, and sensitivity analyses (item 17)."
+link: https://doi.org/10.1371/journal.pmed.0040296
+level: warning
+scope: results
+token: '(?i)\b(?:subgroups?|interactions?|sensitivity analys[ie]s)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Results
+
+      Something else.
+    want: |
+      3:4:STROBE.OtherAnalyses:Results report other analyses done, such as subgroups, interactions, and sensitivity analyses (item 17).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STROBE.OtherAnalyses:Results report other analyses done, such as subgroups, interactions, and sensitivity analyses (item 17).
+  - name: clean
+    input: |
+      # Title
+
+      ## Results
+
+      Sensitivity analyses gave similar estimates.
+    want: ""

@@ -1,0 +1,36 @@
+# Item 17: methods say how harms are defined and will be assessed.
+extends: occurrence
+message: "Methods say how harms are defined and will be assessed (item 17)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: methods
+token: '(?i)\b(?:harms?|adverse events?|side effects?|safety)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:SPIRIT.Harms:Methods say how harms are defined and will be assessed (item 17).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Harms:Methods say how harms are defined and will be assessed (item 17).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Adverse events will be recorded at every visit.
+    want: ""

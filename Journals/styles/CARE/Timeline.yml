@@ -1,0 +1,36 @@
+# Item 7: the Timeline gives the episode of care as dated events, in a figure or table.
+extends: occurrence
+message: "The Timeline gives the episode of care as dated events, in a figure or table (item 7)."
+link: https://www.care-statement.org/checklist
+level: error
+scope: timeline
+token: '(?i)\b(?:day \d+|week \d+|month \d+|\d{4}|table \d+|figure \d+|on (?:admission|presentation))\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Timeline
+
+      Something else.
+    want: |
+      3:4:CARE.Timeline:The Timeline gives the episode of care as dated events, in a figure or table (item 7).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CARE.Timeline:The Timeline gives the episode of care as dated events, in a figure or table (item 7).
+  - name: clean
+    input: |
+      # Title
+
+      ## Timeline
+
+      Figure 1 shows the timeline from presentation.
+    want: ""

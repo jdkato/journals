@@ -1,0 +1,36 @@
+# Items 13a and 13b: methods say whether the readers of each test knew the other test's result.
+extends: occurrence
+message: "Methods say whether the readers of each test knew the other test's result (items 13a and 13b)."
+link: https://doi.org/10.1136/bmj.h5527
+level: error
+scope: methods
+token: '(?i)\bblind|\bmask(?:ed|ing)\b|open[- ]label|\baware of\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:STARD.Blinding:Methods say whether the readers of each test knew the other test's result (items 13a and 13b).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STARD.Blinding:Methods say whether the readers of each test knew the other test's result (items 13a and 13b).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Readers of the index test were blinded to the reference standard.
+    want: ""

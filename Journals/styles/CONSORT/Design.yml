@@ -1,0 +1,36 @@
+# Item 9: methods describe the trial design, allocation ratio, and framework.
+extends: occurrence
+message: "Methods describe the trial design, allocation ratio, and framework (item 9)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: error
+scope: methods
+token: '(?i)\b(?:parallel[- ]group|crossover|cluster|factorial|superiority|non[- ]inferiority|equivalence|allocation ratio|1:1)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:CONSORT.Design:Methods describe the trial design, allocation ratio, and framework (item 9).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.Design:Methods describe the trial design, allocation ratio, and framework (item 9).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      A parallel-group superiority trial with 1:1 allocation.
+    want: ""

@@ -1,7 +1,7 @@
-# Items 19 and 21: the number analyzed in each group and the analysis
+# Items 21b and 22a: the number analyzed in each group and the analysis
 # population.
 extends: occurrence
-message: "Results give the number analyzed in each group and the analysis population (items 19 and 21)."
+message: "Results give the number analyzed in each group and the analysis population (items 21b and 22a)."
 link: https://doi.org/10.1371/journal.pmed.1004587
 level: warning
 scope: results
@@ -18,7 +18,7 @@ tests:
 
       Something else.
     want: |
-      3:4:CONSORT.Analyzed:Results give the number analyzed in each group and the analysis population (items 19 and 21).
+      3:4:CONSORT.Analyzed:Results give the number analyzed in each group and the analysis population (items 21b and 22a).
   - name: absent
     about: "no section at all"
     input: |
@@ -26,7 +26,7 @@ tests:
 
       Body.
     want: |
-      1:1:CONSORT.Analyzed:Results give the number analyzed in each group and the analysis population (items 19 and 21).
+      1:1:CONSORT.Analyzed:Results give the number analyzed in each group and the analysis population (items 21b and 22a).
   - name: clean
     input: |
       # Title

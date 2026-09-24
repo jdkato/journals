@@ -1,0 +1,23 @@
+# Item 32a: say who will obtain informed consent, and how.
+extends: occurrence
+message: "Say who will obtain informed consent, and how (item 32a)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: raw
+token: '(?i)\b(?:informed consent|assent)\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Consent:Say who will obtain informed consent, and how (item 32a).
+  - name: clean
+    input: |
+      # Title
+
+      A research nurse will obtain written informed consent.
+    want: ""

@@ -1,0 +1,36 @@
+# Item 4a: methods say whether randomization was used to allocate units to groups, and how.
+extends: occurrence
+message: "Methods say whether randomization was used to allocate units to groups, and how (item 4a)."
+link: https://doi.org/10.1371/journal.pbio.3000410
+level: error
+scope: methods
+token: '(?i)\b(?:random(?:i[sz]ed|ly|i[sz]ation)|not randomi[sz]ed)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:ARRIVE.Randomization:Methods say whether randomization was used to allocate units to groups, and how (item 4a).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:ARRIVE.Randomization:Methods say whether randomization was used to allocate units to groups, and how (item 4a).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Mice were randomized to groups by coin toss.
+    want: ""

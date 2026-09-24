@@ -1,0 +1,36 @@
+# Item 4: the Introduction states the objectives or questions the review addresses.
+extends: occurrence
+message: "The Introduction states the objectives or questions the review addresses (item 4)."
+link: https://doi.org/10.1136/bmj.n71
+level: error
+scope: introduction
+token: '(?i)\b(?:objectives?|aim(?:ed|s)?|hypothes[ie]s|we (?:tested|assessed|evaluated|compared|examined|investigated|estimated|reviewed))\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Introduction
+
+      Something else.
+    want: |
+      3:4:PRISMA.Objectives:The Introduction states the objectives or questions the review addresses (item 4).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.Objectives:The Introduction states the objectives or questions the review addresses (item 4).
+  - name: clean
+    input: |
+      # Title
+
+      ## Introduction
+
+      We aimed to assess the effect of exercise on pain.
+    want: ""

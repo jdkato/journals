@@ -1,0 +1,36 @@
+# Item 12: the Patient Perspective shares the patient's own view of the treatment.
+extends: occurrence
+message: "The Patient Perspective shares the patient's own view of the treatment (item 12)."
+link: https://www.care-statement.org/checklist
+level: warning
+scope: perspective
+token: '(?i)\b(?:the patient (?:reported|felt|said|stated|described)|in (?:his|her|their) own words|I felt|I was)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Patient Perspective
+
+      Something else.
+    want: |
+      3:4:CARE.Perspective:The Patient Perspective shares the patient's own view of the treatment (item 12).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CARE.Perspective:The Patient Perspective shares the patient's own view of the treatment (item 12).
+  - name: clean
+    input: |
+      # Title
+
+      ## Patient Perspective
+
+      The patient reported that the treatment was tolerable.
+    want: ""

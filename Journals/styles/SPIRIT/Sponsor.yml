@@ -1,0 +1,23 @@
+# Items 3b and 3c: name the trial sponsor, with contact information and its role.
+extends: occurrence
+message: "Name the trial sponsor, with contact information and its role (items 3b and 3c)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: raw
+token: '(?i)\bsponsor\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Sponsor:Name the trial sponsor, with contact information and its role (items 3b and 3c).
+  - name: clean
+    input: |
+      # Title
+
+      The sponsor is the University of Oslo, which has no role in the analysis.
+    want: ""

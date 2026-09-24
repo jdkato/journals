@@ -5,8 +5,12 @@ conventions, the IMRaD section structure, the author guidelines of
 [Nature](https://www.nature.com/nature/for-authors/formatting-guide) and
 [PLOS ONE](https://journals.plos.org/plosone/s/submission-guidelines), and the
 [CONSORT 2025](https://doi.org/10.1371/journal.pmed.1004587),
-[STROBE](https://doi.org/10.1371/journal.pmed.0040296), and
-[PRISMA 2020](https://doi.org/10.1136/bmj.n71) reporting checklists.
+[STROBE](https://doi.org/10.1371/journal.pmed.0040296),
+[PRISMA 2020](https://doi.org/10.1136/bmj.n71),
+[SPIRIT 2025](https://doi.org/10.1371/journal.pmed.1004589),
+[STARD 2015](https://doi.org/10.1136/bmj.h5527),
+[ARRIVE 2.0](https://doi.org/10.1371/journal.pbio.3000410), and
+[CARE](https://www.care-statement.org/checklist) reporting checklists.
 
 Works on [Markdown](https://docs.vale.sh/formats/markdown),
 [Quarto](https://docs.vale.sh/formats/quarto),
@@ -46,9 +50,13 @@ journal, or a checklist next to it.
 | `IMRaD` | That the standard sections exist, the abstract is within budget and has no citations or abbreviations, and the Discussion mentions limitations. |
 | `Nature` | Title, summary paragraph, subheading, legend, Methods, and reference limits. Superscript citations, `Fig. 1`, `Extended Data Fig. 1`, `1,000`, `37 °C`. |
 | `PLOS` | Title and abstract limits, `[1]` citations, `Fig 1`, `S1 Fig`, no footnotes, exact p-values, Vancouver references, a named ethics committee, and required Methods content. |
-| `CONSORT` | Randomized trials: 19 of the checklist's 30 items. |
-| `STROBE` | Observational studies: 14 of the checklist's 22 items. |
-| `PRISMA` | Systematic reviews: 21 of the checklist's 27 items. |
+| `CONSORT` | Randomized trials: every item of the 2025 checklist but 12b, site eligibility. |
+| `STROBE` | Observational studies: all 22 items. |
+| `PRISMA` | Systematic reviews: every item of the 2020 checklist but 2, the abstract, which has a checklist of its own. |
+| `SPIRIT` | Trial protocols: 33 of the 2025 checklist's 34 items; the protocol's own sections stand in for a manuscript's. |
+| `STARD` | Diagnostic accuracy studies: all 30 items of the 2015 list. |
+| `ARRIVE` | Animal research: the Essential 10 and the Recommended Set of ARRIVE 2.0, 19 rules. |
+| `CARE` | Case reports: all 13 items, read from the sections a CARE report has, such as Patient Information and Timeline. |
 
 Checklist rules look for the things a regex can find, such as a registry
 number, a mention of blinding in Methods, or a limitations paragraph in the
@@ -80,6 +88,19 @@ IMRaD.AbstractCitations = error
 # Cohort study
 [*.myst]
 BasedOnStyles = Journals, IMRaD, STROBE
+
+# Trial protocol, diagnostic accuracy study, animal study, case report
+[protocols/*.md]
+BasedOnStyles = Journals, SPIRIT
+
+[diagnostic/*.md]
+BasedOnStyles = Journals, IMRaD, STARD
+
+[animal/*.md]
+BasedOnStyles = Journals, IMRaD, ARRIVE
+
+[cases/*.md]
+BasedOnStyles = Journals, CARE
 
 # Systematic review
 [*.qmd]

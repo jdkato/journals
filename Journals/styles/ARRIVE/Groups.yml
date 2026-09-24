@@ -1,0 +1,36 @@
+# Item 1a: methods name the groups compared, including the control groups.
+extends: occurrence
+message: "Methods name the groups compared, including the control groups (item 1a)."
+link: https://doi.org/10.1371/journal.pbio.3000410
+level: error
+scope: methods
+token: '(?i)\b(?:control groups?|controls?|vehicle|sham|groups? (?:were|was) compared)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:ARRIVE.Groups:Methods name the groups compared, including the control groups (item 1a).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:ARRIVE.Groups:Methods name the groups compared, including the control groups (item 1a).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Mice were compared with a vehicle control group.
+    want: ""

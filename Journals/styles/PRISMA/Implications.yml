@@ -1,0 +1,36 @@
+# Item 23d: the Discussion gives implications for practice, policy, and future research.
+extends: occurrence
+message: "The Discussion gives implications for practice, policy, and future research (item 23d)."
+link: https://doi.org/10.1136/bmj.n71
+level: error
+scope: discussion
+token: '(?i)\b(?:implications?|future research|for practice|for policy|further (?:trials|research|studies))\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Discussion
+
+      Something else.
+    want: |
+      3:4:PRISMA.Implications:The Discussion gives implications for practice, policy, and future research (item 23d).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.Implications:The Discussion gives implications for practice, policy, and future research (item 23d).
+  - name: clean
+    input: |
+      # Title
+
+      ## Discussion
+
+      The implications for practice are modest, and future research should test the dose.
+    want: ""

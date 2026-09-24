@@ -1,0 +1,36 @@
+# Item 7: the Introduction states the objectives, for benefits and harms.
+extends: occurrence
+message: "The Introduction states the objectives, for benefits and harms (item 7)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: error
+scope: introduction
+token: '(?i)\b(?:objectives?|aim(?:ed|s)?|hypothes[ie]s|we (?:tested|assessed|evaluated|compared|examined|investigated|estimated|reviewed))\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Introduction
+
+      Something else.
+    want: |
+      3:4:CONSORT.Objectives:The Introduction states the objectives, for benefits and harms (item 7).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.Objectives:The Introduction states the objectives, for benefits and harms (item 7).
+  - name: clean
+    input: |
+      # Title
+
+      ## Introduction
+
+      We aimed to compare the two doses.
+    want: ""

@@ -1,0 +1,23 @@
+# Item 29: say where the full study protocol can be accessed.
+extends: occurrence
+message: "Say where the full study protocol can be accessed (item 29)."
+link: https://doi.org/10.1136/bmj.h5527
+level: error
+scope: raw
+token: '(?i)\b(?:protocol (?:is|was|can be) (?:available|accessed)|full (?:study )?protocol|supplementary protocol)\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STARD.Protocol:Say where the full study protocol can be accessed (item 29).
+  - name: clean
+    input: |
+      # Title
+
+      The full study protocol is available as a supplement.
+    want: ""

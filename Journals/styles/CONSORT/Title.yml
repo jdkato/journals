@@ -1,6 +1,6 @@
-# Item 1: the title or abstract identifies the study as a randomized trial.
+# Item 1a: the title or abstract identifies the study as a randomized trial.
 extends: occurrence
-message: "Identify the study as a randomized trial in the title (item 1)."
+message: "Identify the study as a randomized trial in the title (item 1a)."
 link: https://doi.org/10.1371/journal.pmed.1004587
 level: error
 scope: heading.h1
@@ -14,7 +14,7 @@ tests:
 
       Body.
     want: |
-      1:3:CONSORT.Title:Identify the study as a randomized trial in the title (item 1).
+      1:3:CONSORT.Title:Identify the study as a randomized trial in the title (item 1a).
   - name: clean
     input: |
       # A randomized trial of a thing

@@ -1,0 +1,36 @@
+# Item 28b: methods explain any interim analyses and stopping guidelines.
+extends: occurrence
+message: "Methods explain any interim analyses and stopping guidelines (item 28b)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: warning
+scope: methods
+token: '(?i)\b(?:interim analys[ie]s|stopping (?:rules?|guidelines?|boundar(?:y|ies))|no interim)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:SPIRIT.Interim:Methods explain any interim analyses and stopping guidelines (item 28b).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Interim:Methods explain any interim analyses and stopping guidelines (item 28b).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      No interim analyses are planned.
+    want: ""

@@ -1,0 +1,36 @@
+# Items 6a and 6b: methods define the outcome measures, and the primary outcome for a hypothesis test.
+extends: occurrence
+message: "Methods define the outcome measures, and the primary outcome for a hypothesis test (items 6a and 6b)."
+link: https://doi.org/10.1371/journal.pbio.3000410
+level: error
+scope: methods
+token: '(?i)\b(?:outcome measures?|primary outcomes?|endpoints?)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:ARRIVE.Outcomes:Methods define the outcome measures, and the primary outcome for a hypothesis test (items 6a and 6b).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:ARRIVE.Outcomes:Methods define the outcome measures, and the primary outcome for a hypothesis test (items 6a and 6b).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      The primary outcome was infarct volume.
+    want: ""

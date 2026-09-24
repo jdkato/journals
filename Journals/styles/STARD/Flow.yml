@@ -1,0 +1,36 @@
+# Item 19: results show the flow of participants, with a diagram.
+extends: occurrence
+message: "Results show the flow of participants, with a diagram (item 19)."
+link: https://doi.org/10.1136/bmj.h5527
+level: error
+scope: results
+token: '(?i)\b(?:flow (?:diagram|chart)|figure \d+ shows the flow|STARD diagram|were (?:excluded|enrolled|included))\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Results
+
+      Something else.
+    want: |
+      3:4:STARD.Flow:Results show the flow of participants, with a diagram (item 19).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STARD.Flow:Results show the flow of participants, with a diagram (item 19).
+  - name: clean
+    input: |
+      # Title
+
+      ## Results
+
+      Figure 1 shows the flow of participants.
+    want: ""

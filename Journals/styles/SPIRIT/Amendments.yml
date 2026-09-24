@@ -1,0 +1,23 @@
+# Item 31: state how important protocol modifications will be communicated.
+extends: occurrence
+message: "State how important protocol modifications will be communicated (item 31)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: raw
+token: '(?i)\b(?:amendments?|modifications? (?:to|of) the protocol|protocol (?:changes|modifications))\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Amendments:State how important protocol modifications will be communicated (item 31).
+  - name: clean
+    input: |
+      # Title
+
+      Protocol amendments will be communicated to the registry and the ethics committee.
+    want: ""

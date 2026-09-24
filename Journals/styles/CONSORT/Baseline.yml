@@ -1,6 +1,6 @@
-# Item 18: baseline characteristics for each group.
+# Item 25: baseline characteristics for each group.
 extends: occurrence
-message: "Results present baseline characteristics for each group (item 18)."
+message: "Results present baseline characteristics for each group (item 25)."
 link: https://doi.org/10.1371/journal.pmed.1004587
 level: warning
 scope: results
@@ -17,7 +17,7 @@ tests:
 
       Something else.
     want: |
-      3:4:CONSORT.Baseline:Results present baseline characteristics for each group (item 18).
+      3:4:CONSORT.Baseline:Results present baseline characteristics for each group (item 25).
   - name: absent
     about: "no section at all"
     input: |
@@ -25,7 +25,7 @@ tests:
 
       Body.
     want: |
-      1:1:CONSORT.Baseline:Results present baseline characteristics for each group (item 18).
+      1:1:CONSORT.Baseline:Results present baseline characteristics for each group (item 25).
   - name: clean
     input: |
       # Title

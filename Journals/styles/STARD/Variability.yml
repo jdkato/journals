@@ -1,0 +1,36 @@
+# Item 17: methods describe any analyses of variability in accuracy, distinguishing prespecified from exploratory.
+extends: occurrence
+message: "Methods describe any analyses of variability in accuracy, distinguishing prespecified from exploratory (item 17)."
+link: https://doi.org/10.1136/bmj.h5527
+level: warning
+scope: methods
+token: '(?i)\b(?:subgroups?|variability|heterogeneity|by (?:site|reader|sex|age))\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:STARD.Variability:Methods describe any analyses of variability in accuracy, distinguishing prespecified from exploratory (item 17).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STARD.Variability:Methods describe any analyses of variability in accuracy, distinguishing prespecified from exploratory (item 17).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Subgroup analyses by age were prespecified.
+    want: ""

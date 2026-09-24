@@ -1,0 +1,36 @@
+# Item 10a: results give summary statistics for each group with a measure of variability.
+extends: occurrence
+message: "Results give summary statistics for each group with a measure of variability (item 10a)."
+link: https://doi.org/10.1371/journal.pbio.3000410
+level: error
+scope: results
+token: '(?i)\b(?:mean ± SD|mean \(SD\)|median|SD|SEM|95% CI|confidence intervals?|effect sizes?)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Results
+
+      Something else.
+    want: |
+      3:4:ARRIVE.Results:Results give summary statistics for each group with a measure of variability (item 10a).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:ARRIVE.Results:Results give summary statistics for each group with a measure of variability (item 10a).
+  - name: clean
+    input: |
+      # Title
+
+      ## Results
+
+      Infarct volume was 32 mm3 (SD 6) in the treated group.
+    want: ""

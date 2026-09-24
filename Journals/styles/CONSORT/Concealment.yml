@@ -1,6 +1,6 @@
-# Item 12a: how allocation was concealed until assignment.
+# Item 18: how allocation was concealed until assignment.
 extends: occurrence
-message: "Methods describe how allocation was concealed until assignment (item 12a)."
+message: "Methods describe how allocation was concealed until assignment (item 18)."
 link: https://doi.org/10.1371/journal.pmed.1004587
 level: error
 scope: methods
@@ -17,7 +17,7 @@ tests:
 
       Something else.
     want: |
-      3:4:CONSORT.Concealment:Methods describe how allocation was concealed until assignment (item 12a).
+      3:4:CONSORT.Concealment:Methods describe how allocation was concealed until assignment (item 18).
   - name: absent
     about: "no section at all"
     input: |
@@ -25,7 +25,7 @@ tests:
 
       Body.
     want: |
-      1:1:CONSORT.Concealment:Methods describe how allocation was concealed until assignment (item 12a).
+      1:1:CONSORT.Concealment:Methods describe how allocation was concealed until assignment (item 18).
   - name: clean
     input: |
       # Title

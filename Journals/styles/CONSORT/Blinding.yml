@@ -1,6 +1,6 @@
-# Item 13: who was blinded, or that the trial was open label.
+# Item 20a: who was blinded, or that the trial was open label.
 extends: occurrence
-message: "Methods say who was blinded, or that the trial was open label (item 13)."
+message: "Methods say who was blinded, or that the trial was open label (item 20a)."
 link: https://doi.org/10.1371/journal.pmed.1004587
 level: error
 scope: methods
@@ -17,7 +17,7 @@ tests:
 
       Something else.
     want: |
-      3:4:CONSORT.Blinding:Methods say who was blinded, or that the trial was open label (item 13).
+      3:4:CONSORT.Blinding:Methods say who was blinded, or that the trial was open label (item 20a).
   - name: absent
     about: "no section at all"
     input: |
@@ -25,7 +25,7 @@ tests:
 
       Body.
     want: |
-      1:1:CONSORT.Blinding:Methods say who was blinded, or that the trial was open label (item 13).
+      1:1:CONSORT.Blinding:Methods say who was blinded, or that the trial was open label (item 20a).
   - name: clean
     input: |
       # Title

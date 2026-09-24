@@ -1,0 +1,36 @@
+# Item 23b: results say why the trial ended or was stopped.
+extends: occurrence
+message: "Results say why the trial ended or was stopped (item 23b)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: warning
+scope: results
+token: '(?i)\b(?:trial (?:was )?(?:stopped|ended|terminated|completed)|stopped early|reached (?:its|the) (?:planned|target))\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Results
+
+      Something else.
+    want: |
+      3:4:CONSORT.Stopped:Results say why the trial ended or was stopped (item 23b).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.Stopped:Results say why the trial ended or was stopped (item 23b).
+  - name: clean
+    input: |
+      # Title
+
+      ## Results
+
+      The trial ended when the planned sample size was reached.
+    want: ""

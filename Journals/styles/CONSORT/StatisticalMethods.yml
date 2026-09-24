@@ -1,0 +1,36 @@
+# Item 21a: methods give the statistical methods used to compare groups.
+extends: occurrence
+message: "Methods give the statistical methods used to compare groups (item 21a)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: error
+scope: methods
+token: '(?i)\b(?:t[- ]tests?|regression|mixed[- ]effects|ANOVA|chi[- ]squared?|Cox|Kaplan|Mann[- ]Whitney|Wilcoxon|Fisher|logistic|linear models?|generali[sz]ed|Bayesian|hazard ratios?|odds ratios?|confidence intervals?)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:CONSORT.StatisticalMethods:Methods give the statistical methods used to compare groups (item 21a).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.StatisticalMethods:Methods give the statistical methods used to compare groups (item 21a).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Groups were compared by logistic regression.
+    want: ""

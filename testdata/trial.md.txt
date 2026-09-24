@@ -22,16 +22,29 @@ fixtures/trial.md:5:168:IMRaD.AbstractCitations:The abstract stands alone; cite 
 fixtures/trial.md:5:193:Journals.UnitSpacing:Put a space between the number and the unit: '12mmHg'.
 fixtures/trial.md:5:201:Journals.PValueSpacing:Space the operator: 'p = 0.03', not 'p=0.000'.
 fixtures/trial.md:5:201:Journals.PValueZero:Report 'p=0.000' as 'p < 0.001'; a p-value is never zero.
+fixtures/trial.md:7:4:CONSORT.Background:The Introduction gives the scientific background and rationale (item 6).
+fixtures/trial.md:7:4:CONSORT.Objectives:The Introduction states the objectives, for benefits and harms (item 7).
 fixtures/trial.md:9:12:PLOS.Citations:PLOS cites by number in square brackets, not '(Smith et al., 2020)'.
 fixtures/trial.md:9:33:Journals.Prove:Results show or support; 'proves' claims more than data can.
 fixtures/trial.md:9:60:Journals.Wordy:Use 'to' instead of 'in order to'.
 fixtures/trial.md:9:94:Journals.Hype:Let the result carry the weight; cut 'groundbreaking'.
 fixtures/trial.md:9:118:Journals.Positional:Cite the figure by number, not by position: 'figure below'.
-fixtures/trial.md:11:4:CONSORT.Blinding:Methods say who was blinded, or that the trial was open label (item 13).
-fixtures/trial.md:11:4:CONSORT.Concealment:Methods describe how allocation was concealed until assignment (item 12a).
-fixtures/trial.md:11:4:CONSORT.Eligibility:Methods state the eligibility criteria for participants (item 6a).
-fixtures/trial.md:11:4:CONSORT.Randomization:Methods describe how the allocation sequence was generated (item 11).
-fixtures/trial.md:11:4:CONSORT.SampleSize:Methods say how the sample size was determined (item 16).
+fixtures/trial.md:11:4:CONSORT.Blinding:Methods say who was blinded, or that the trial was open label (item 20a).
+fixtures/trial.md:11:4:CONSORT.BlindingMethod:Methods say how blinding was achieved and how similar the interventions were (item 20b).
+fixtures/trial.md:11:4:CONSORT.Changes:Methods report changes to the trial after it began, or that there were none (item 10).
+fixtures/trial.md:11:4:CONSORT.Concealment:Methods describe how allocation was concealed until assignment (item 18).
+fixtures/trial.md:11:4:CONSORT.Design:Methods describe the trial design, allocation ratio, and framework (item 9).
+fixtures/trial.md:11:4:CONSORT.Eligibility:Methods state the eligibility criteria for participants (item 12a).
+fixtures/trial.md:11:4:CONSORT.Implementation:Methods say who enrolled and who assigned participants, and whether they had access to the sequence (item 19).
+fixtures/trial.md:11:4:CONSORT.Interim:Methods explain interim analyses and stopping guidelines, or that there were none (item 16b).
+fixtures/trial.md:11:4:CONSORT.Intervention:Methods describe the intervention and comparator in enough detail to replicate them (item 13).
+fixtures/trial.md:11:4:CONSORT.MissingData:Methods say how missing data were handled (item 21c).
+fixtures/trial.md:11:4:CONSORT.Randomization:Methods describe how the allocation sequence was generated (item 17a).
+fixtures/trial.md:11:4:CONSORT.RandomizationType:Methods give the type of randomization and any restriction, such as blocking (item 17b).
+fixtures/trial.md:11:4:CONSORT.SampleSize:Methods say how the sample size was determined (item 16a).
+fixtures/trial.md:11:4:CONSORT.Setting:Methods give the settings and locations of the trial (item 11).
+fixtures/trial.md:11:4:CONSORT.StatisticalMethods:Methods give the statistical methods used to compare groups (item 21a).
+fixtures/trial.md:11:4:CONSORT.Subgroups:Methods describe additional analyses, distinguishing prespecified from post hoc (items 21d and 28).
 fixtures/trial.md:11:4:PLOS.Alpha:Methods state the threshold for significance (alpha).
 fixtures/trial.md:11:4:PLOS.SampleSize:Methods give the sample sizes and how they were determined.
 fixtures/trial.md:11:4:PLOS.Software:Methods name the software package and its version.
@@ -43,8 +56,12 @@ fixtures/trial.md:13:138:Journals.UnitSymbols:Write the unit as '°C', not 'degr
 fixtures/trial.md:13:152:Journals.Wordy:Use 'use' instead of 'utilize'.
 fixtures/trial.md:13:160:Journals.Acronyms:Spell out 'SPSS' on first use.
 fixtures/trial.md:13:187:Journals.Ranges:Use an en dash in a range: '18-65'.
-fixtures/trial.md:15:4:CONSORT.Analyzed:Results give the number analyzed in each group and the analysis population (items 19 and 21).
-fixtures/trial.md:15:4:CONSORT.Baseline:Results present baseline characteristics for each group (item 18).
+fixtures/trial.md:15:4:CONSORT.Analyzed:Results give the number analyzed in each group and the analysis population (items 21b and 22a).
+fixtures/trial.md:15:4:CONSORT.Baseline:Results present baseline characteristics for each group (item 25).
+fixtures/trial.md:15:4:CONSORT.Delivery:Results report how the interventions were delivered and adhered to, and any concomitant care (items 24a and 24b).
+fixtures/trial.md:15:4:CONSORT.Losses:Results give losses and exclusions after randomization for each group, with reasons (item 22b).
+fixtures/trial.md:15:4:CONSORT.Recruitment:Results give the dates of recruitment and follow-up (item 23a).
+fixtures/trial.md:15:4:CONSORT.Stopped:Results say why the trial ended or was stopped (item 23b).
 fixtures/trial.md:17:1:PLOS.FigureLabel:Cite a figure as 'Fig ', not 'Figure '.
 fixtures/trial.md:17:33:PLOS.FigureLabel:Cite a figure as 'Fig ', not 'Fig. '.
 fixtures/trial.md:17:67:Journals.Symbols:Use '±', not '+/-'.
@@ -55,7 +72,8 @@ fixtures/trial.md:17:109:PLOS.FigureLabel:Cite a figure as 'Fig ', not 'Figure '
 fixtures/trial.md:17:136:PLOS.PValues:Report the exact p-value at or above 0.001, not 'p < 0.05'.
 fixtures/trial.md:17:151:Journals.PValueCase:Inconsistent case for the p-value: 'P = 0.0'.
 fixtures/trial.md:17:166:Journals.LabelCase:Capitalize a numbered label: 'table 1'.
-fixtures/trial.md:19:4:CONSORT.Limitations:Discussion addresses the trial's limitations (item 28).
+fixtures/trial.md:19:4:CONSORT.Interpretation:The Discussion interprets the results against other evidence, balancing benefits and harms (item 29).
+fixtures/trial.md:19:4:CONSORT.Limitations:Discussion addresses the trial's limitations (item 30).
 fixtures/trial.md:19:4:IMRaD.Limitations:The Discussion names the study's limitations.
 fixtures/trial.md:21:15:Journals.Hype:Let the result carry the weight; cut 'unprecedented'.
 fixtures/trial.md:21:33:Journals.Intensifiers:Intensifier 'clearly' adds nothing a number would not.

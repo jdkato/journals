@@ -1,0 +1,36 @@
+# Item 9: therapeutic Intervention gives the type, administration, and any changes of treatment.
+extends: occurrence
+message: "Therapeutic Intervention gives the type, administration, and any changes of treatment (item 9)."
+link: https://www.care-statement.org/checklist
+level: error
+scope: treatment
+token: '(?i)\b(?:\d+ ?mg|doses?|dosage|daily|surgery|surgical|administered|treated with|therapy)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Therapeutic Intervention
+
+      Something else.
+    want: |
+      3:4:CARE.Treatment:Therapeutic Intervention gives the type, administration, and any changes of treatment (item 9).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CARE.Treatment:Therapeutic Intervention gives the type, administration, and any changes of treatment (item 9).
+  - name: clean
+    input: |
+      # Title
+
+      ## Therapeutic Intervention
+
+      The patient was treated with 500 mg amoxicillin daily.
+    want: ""

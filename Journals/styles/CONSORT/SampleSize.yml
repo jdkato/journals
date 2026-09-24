@@ -1,6 +1,6 @@
-# Item 16: how the sample size was determined.
+# Item 16a: how the sample size was determined.
 extends: occurrence
-message: "Methods say how the sample size was determined (item 16)."
+message: "Methods say how the sample size was determined (item 16a)."
 link: https://doi.org/10.1371/journal.pmed.1004587
 level: error
 scope: methods
@@ -17,7 +17,7 @@ tests:
 
       Something else.
     want: |
-      3:4:CONSORT.SampleSize:Methods say how the sample size was determined (item 16).
+      3:4:CONSORT.SampleSize:Methods say how the sample size was determined (item 16a).
   - name: absent
     about: "no section at all"
     input: |
@@ -25,7 +25,7 @@ tests:
 
       Body.
     want: |
-      1:1:CONSORT.SampleSize:Methods say how the sample size was determined (item 16).
+      1:1:CONSORT.SampleSize:Methods say how the sample size was determined (item 16a).
   - name: clean
     input: |
       # Title

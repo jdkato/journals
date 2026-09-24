@@ -1,0 +1,36 @@
+# Item 26: methods give the plans for data entry, coding, security, and storage.
+extends: occurrence
+message: "Methods give the plans for data entry, coding, security, and storage (item 26)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: methods
+token: '(?i)\b(?:data (?:entry|management|storage|security)|double (?:data )?entry|range checks?|database)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:SPIRIT.DataManagement:Methods give the plans for data entry, coding, security, and storage (item 26).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.DataManagement:Methods give the plans for data entry, coding, security, and storage (item 26).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Data will be entered twice into a secure database with range checks.
+    want: ""

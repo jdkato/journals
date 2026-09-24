@@ -1,0 +1,36 @@
+# Item 20: the Discussion gives a cautious overall interpretation against other evidence.
+extends: occurrence
+message: "The Discussion gives a cautious overall interpretation against other evidence (item 20)."
+link: https://doi.org/10.1371/journal.pmed.0040296
+level: error
+scope: discussion
+token: '(?i)\b(?:consistent with|in (?:line|keeping) with|other (?:studies|evidence)|previous studies|multiplicity|cautious)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Discussion
+
+      Something else.
+    want: |
+      3:4:STROBE.Interpretation:The Discussion gives a cautious overall interpretation against other evidence (item 20).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STROBE.Interpretation:The Discussion gives a cautious overall interpretation against other evidence (item 20).
+  - name: clean
+    input: |
+      # Title
+
+      ## Discussion
+
+      The findings are consistent with previous studies.
+    want: ""

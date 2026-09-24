@@ -1,0 +1,36 @@
+# Item 24a: methods say who will be blinded after assignment.
+extends: occurrence
+message: "Methods say who will be blinded after assignment (item 24a)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: methods
+token: '(?i)\bblind|\bmask(?:ed|ing)\b|open[- ]label|\baware of\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:SPIRIT.Blinding:Methods say who will be blinded after assignment (item 24a).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Blinding:Methods say who will be blinded after assignment (item 24a).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Outcome assessors will be blinded.
+    want: ""

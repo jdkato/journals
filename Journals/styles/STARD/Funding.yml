@@ -1,0 +1,23 @@
+# Item 30: state the sources of funding and the role of the funders.
+extends: occurrence
+message: "State the sources of funding and the role of the funders (item 30)."
+link: https://doi.org/10.1136/bmj.h5527
+level: error
+scope: raw
+token: '(?i)\b(?:funded by|funding|grant|conflicts? of interest|competing interests?)\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STARD.Funding:State the sources of funding and the role of the funders (item 30).
+  - name: clean
+    input: |
+      # Title
+
+      Funded by grant 123; the funder had no role.
+    want: ""

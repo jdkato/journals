@@ -1,0 +1,36 @@
+# Items 16a to 16c: methods describe steps to reduce pain and distress, adverse events, and humane endpoints.
+extends: occurrence
+message: "Methods describe steps to reduce pain and distress, adverse events, and humane endpoints (items 16a to 16c)."
+link: https://doi.org/10.1371/journal.pbio.3000410
+level: warning
+scope: methods
+token: '(?i)\b(?:analgesi\w*|humane endpoints?|distress|suffering|adverse events?|monitored)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:ARRIVE.Welfare:Methods describe steps to reduce pain and distress, adverse events, and humane endpoints (items 16a to 16c).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:ARRIVE.Welfare:Methods describe steps to reduce pain and distress, adverse events, and humane endpoints (items 16a to 16c).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Analgesia was given after surgery, and humane endpoints were defined.
+    want: ""

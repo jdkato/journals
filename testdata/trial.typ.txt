@@ -16,29 +16,47 @@ fixtures/trial.typ:9:156:Journals.Significant:'significant' without a statistic 
 fixtures/trial.typ:9:200:Journals.UnitSpacing:Put a space between the number and the unit: '12mmHg'.
 fixtures/trial.typ:9:208:Journals.PValueSpacing:Space the operator: 'p = 0.03', not 'p=0.000'.
 fixtures/trial.typ:9:208:Journals.PValueZero:Report 'p=0.000' as 'p < 0.001'; a p-value is never zero.
+fixtures/trial.typ:11:3:CONSORT.Background:The Introduction gives the scientific background and rationale (item 6).
+fixtures/trial.typ:11:3:CONSORT.Objectives:The Introduction states the objectives, for benefits and harms (item 7).
 fixtures/trial.typ:13:12:Journals.Prove:Results show or support; 'proves' claims more than data can.
 fixtures/trial.typ:13:39:Journals.Wordy:Use 'to' instead of 'in order to'.
 fixtures/trial.typ:13:73:Journals.Hype:Let the result carry the weight; cut 'groundbreaking'.
 fixtures/trial.typ:13:97:Journals.Positional:Cite the figure by number, not by position: 'figure below'.
-fixtures/trial.typ:15:3:CONSORT.Blinding:Methods say who was blinded, or that the trial was open label (item 13).
-fixtures/trial.typ:15:3:CONSORT.Concealment:Methods describe how allocation was concealed until assignment (item 12a).
-fixtures/trial.typ:15:3:CONSORT.Eligibility:Methods state the eligibility criteria for participants (item 6a).
-fixtures/trial.typ:15:3:CONSORT.Randomization:Methods describe how the allocation sequence was generated (item 11).
-fixtures/trial.typ:15:3:CONSORT.SampleSize:Methods say how the sample size was determined (item 16).
+fixtures/trial.typ:15:3:CONSORT.Blinding:Methods say who was blinded, or that the trial was open label (item 20a).
+fixtures/trial.typ:15:3:CONSORT.BlindingMethod:Methods say how blinding was achieved and how similar the interventions were (item 20b).
+fixtures/trial.typ:15:3:CONSORT.Changes:Methods report changes to the trial after it began, or that there were none (item 10).
+fixtures/trial.typ:15:3:CONSORT.Concealment:Methods describe how allocation was concealed until assignment (item 18).
+fixtures/trial.typ:15:3:CONSORT.Design:Methods describe the trial design, allocation ratio, and framework (item 9).
+fixtures/trial.typ:15:3:CONSORT.Eligibility:Methods state the eligibility criteria for participants (item 12a).
+fixtures/trial.typ:15:3:CONSORT.Implementation:Methods say who enrolled and who assigned participants, and whether they had access to the sequence (item 19).
+fixtures/trial.typ:15:3:CONSORT.Interim:Methods explain interim analyses and stopping guidelines, or that there were none (item 16b).
+fixtures/trial.typ:15:3:CONSORT.Intervention:Methods describe the intervention and comparator in enough detail to replicate them (item 13).
+fixtures/trial.typ:15:3:CONSORT.MissingData:Methods say how missing data were handled (item 21c).
+fixtures/trial.typ:15:3:CONSORT.Randomization:Methods describe how the allocation sequence was generated (item 17a).
+fixtures/trial.typ:15:3:CONSORT.RandomizationType:Methods give the type of randomization and any restriction, such as blocking (item 17b).
+fixtures/trial.typ:15:3:CONSORT.SampleSize:Methods say how the sample size was determined (item 16a).
+fixtures/trial.typ:15:3:CONSORT.Setting:Methods give the settings and locations of the trial (item 11).
+fixtures/trial.typ:15:3:CONSORT.StatisticalMethods:Methods give the statistical methods used to compare groups (item 21a).
+fixtures/trial.typ:15:3:CONSORT.Subgroups:Methods describe additional analyses, distinguishing prespecified from post hoc (items 21d and 28).
 fixtures/trial.typ:17:45:Journals.UnitSpacing:Put a space between the number and the unit: '5mg'.
 fixtures/trial.typ:17:52:Journals.UnitSpacing:Put a space between the number and the unit: '10mg'.
 fixtures/trial.typ:17:69:Journals.UnitSymbols:Write the unit as '°C', not 'degrees C'.
 fixtures/trial.typ:17:83:Journals.Wordy:Use 'use' instead of 'utilize'.
 fixtures/trial.typ:17:91:Journals.Acronyms:Spell out 'SPSS' on first use.
 fixtures/trial.typ:17:118:Journals.Ranges:Use an en dash in a range: '18-65'.
-fixtures/trial.typ:21:3:CONSORT.Analyzed:Results give the number analyzed in each group and the analysis population (items 19 and 21).
-fixtures/trial.typ:21:3:CONSORT.Baseline:Results present baseline characteristics for each group (item 18).
+fixtures/trial.typ:21:3:CONSORT.Analyzed:Results give the number analyzed in each group and the analysis population (items 21b and 22a).
+fixtures/trial.typ:21:3:CONSORT.Baseline:Results present baseline characteristics for each group (item 25).
+fixtures/trial.typ:21:3:CONSORT.Delivery:Results report how the interventions were delivered and adhered to, and any concomitant care (items 24a and 24b).
+fixtures/trial.typ:21:3:CONSORT.Losses:Results give losses and exclusions after randomization for each group, with reasons (item 22b).
+fixtures/trial.typ:21:3:CONSORT.Recruitment:Results give the dates of recruitment and follow-up (item 23a).
+fixtures/trial.typ:21:3:CONSORT.Stopped:Results say why the trial ended or was stopped (item 23b).
 fixtures/trial.typ:23:47:Journals.Symbols:Use '±', not '+/-'.
 fixtures/trial.typ:23:59:Journals.Symbols:Use '×', not 'x'.
 fixtures/trial.typ:23:96:Journals.PValueCase:Inconsistent case for the p-value: 'P = 0.0'.
 fixtures/trial.typ:23:111:Journals.LabelCase:Capitalize a numbered label: 'table 1'.
 fixtures/trial.typ:27:38:Journals.Placeholder:Placeholder left in the manuscript: 'TODO'.
-fixtures/trial.typ:30:3:CONSORT.Limitations:Discussion addresses the trial's limitations (item 28).
+fixtures/trial.typ:30:3:CONSORT.Interpretation:The Discussion interprets the results against other evidence, balancing benefits and harms (item 29).
+fixtures/trial.typ:30:3:CONSORT.Limitations:Discussion addresses the trial's limitations (item 30).
 fixtures/trial.typ:30:3:IMRaD.Limitations:The Discussion names the study's limitations.
 fixtures/trial.typ:32:15:Journals.Hype:Let the result carry the weight; cut 'unprecedented'.
 fixtures/trial.typ:32:33:Journals.Intensifiers:Intensifier 'clearly' adds nothing a number would not.

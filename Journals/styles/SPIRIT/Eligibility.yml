@@ -1,0 +1,36 @@
+# Item 14a: methods give the eligibility criteria for participants.
+extends: occurrence
+message: "Methods give the eligibility criteria for participants (item 14a)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: methods
+token: '(?i)\b(?:eligib(?:le|ility)|inclusion criteria|exclusion criteria|included if|excluded if)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:SPIRIT.Eligibility:Methods give the eligibility criteria for participants (item 14a).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Eligibility:Methods give the eligibility criteria for participants (item 14a).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Adults are eligible if they have had back pain for 12 weeks.
+    want: ""

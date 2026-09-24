@@ -1,0 +1,36 @@
+# Item 15c: methods give the strategies for improving and monitoring adherence.
+extends: occurrence
+message: "Methods give the strategies for improving and monitoring adherence (item 15c)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: warning
+scope: methods
+token: '(?i)\b(?:adheren(?:ce|t)|compliance|pill counts?|tablet return|sessions attended)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:SPIRIT.Adherence:Methods give the strategies for improving and monitoring adherence (item 15c).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Adherence:Methods give the strategies for improving and monitoring adherence (item 15c).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Adherence will be monitored by tablet return.
+    want: ""

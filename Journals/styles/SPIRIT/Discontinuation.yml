@@ -1,0 +1,36 @@
+# Item 15b: methods give the criteria for discontinuing or modifying the allocated intervention.
+extends: occurrence
+message: "Methods give the criteria for discontinuing or modifying the allocated intervention (item 15b)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: warning
+scope: methods
+token: '(?i)\b(?:discontinu\w*|withdraw\w*|stop(?:ping)? (?:the )?(?:intervention|treatment)|dose (?:reduction|modification|change))\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:SPIRIT.Discontinuation:Methods give the criteria for discontinuing or modifying the allocated intervention (item 15b).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Discontinuation:Methods give the criteria for discontinuing or modifying the allocated intervention (item 15b).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      The intervention will be discontinued on request or for harm.
+    want: ""

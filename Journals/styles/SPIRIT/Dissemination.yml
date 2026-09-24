@@ -1,0 +1,23 @@
+# Item 8: state how the results will be communicated to participants, professionals, and the public.
+extends: occurrence
+message: "State how the results will be communicated to participants, professionals, and the public (item 8)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: raw
+token: '(?i)\b(?:disseminat\w*|plain[- ]language summar(?:y|ies)|results will be (?:published|communicated|shared|reported))\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Dissemination:State how the results will be communicated to participants, professionals, and the public (item 8).
+  - name: clean
+    input: |
+      # Title
+
+      Results will be published, and a plain-language summary sent to participants.
+    want: ""

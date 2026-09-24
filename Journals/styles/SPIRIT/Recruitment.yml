@@ -1,0 +1,36 @@
+# Item 20: methods give the strategies for achieving adequate enrollment.
+extends: occurrence
+message: "Methods give the strategies for achieving adequate enrollment (item 20)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: methods
+token: '(?i)\brecruit\w*'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:SPIRIT.Recruitment:Methods give the strategies for achieving adequate enrollment (item 20).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Recruitment:Methods give the strategies for achieving adequate enrollment (item 20).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Participants will be recruited through clinic referrals.
+    want: ""

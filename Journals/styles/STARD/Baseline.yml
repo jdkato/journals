@@ -1,0 +1,36 @@
+# Item 20: results give the baseline demographic and clinical characteristics.
+extends: occurrence
+message: "Results give the baseline demographic and clinical characteristics (item 20)."
+link: https://doi.org/10.1136/bmj.h5527
+level: error
+scope: results
+token: '(?i)\b(?:baseline|demographic|characteristics|mean age|median age)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Results
+
+      Something else.
+    want: |
+      3:4:STARD.Baseline:Results give the baseline demographic and clinical characteristics (item 20).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STARD.Baseline:Results give the baseline demographic and clinical characteristics (item 20).
+  - name: clean
+    input: |
+      # Title
+
+      ## Results
+
+      Table 1 gives the baseline characteristics.
+    want: ""

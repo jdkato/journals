@@ -1,0 +1,36 @@
+# Item 22b: results give losses and exclusions after randomization for each group, with reasons.
+extends: occurrence
+message: "Results give losses and exclusions after randomization for each group, with reasons (item 22b)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: error
+scope: results
+token: '(?i)\b(?:lost to follow[- ]up|withdr(?:ew|awn|awal)|discontinued|excluded after|dropped out)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Results
+
+      Something else.
+    want: |
+      3:4:CONSORT.Losses:Results give losses and exclusions after randomization for each group, with reasons (item 22b).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.Losses:Results give losses and exclusions after randomization for each group, with reasons (item 22b).
+  - name: clean
+    input: |
+      # Title
+
+      ## Results
+
+      Three participants were lost to follow-up in each group.
+    want: ""

@@ -1,0 +1,36 @@
+# Item 10a: methods describe the index test in enough detail to replicate it.
+extends: occurrence
+message: "Methods describe the index test in enough detail to replicate it (item 10a)."
+link: https://doi.org/10.1136/bmj.h5527
+level: error
+scope: methods
+token: '(?i)\bindex test\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:STARD.IndexTest:Methods describe the index test in enough detail to replicate it (item 10a).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STARD.IndexTest:Methods describe the index test in enough detail to replicate it (item 10a).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      The index test was a rapid antigen swab.
+    want: ""

@@ -1,0 +1,36 @@
+# Items 21d and 28: methods describe additional analyses, distinguishing prespecified from post hoc.
+extends: occurrence
+message: "Methods describe additional analyses, distinguishing prespecified from post hoc (items 21d and 28)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: warning
+scope: methods
+token: '(?i)\b(?:subgroups?|sensitivity analys[ie]s|post hoc|pre-?specified)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:CONSORT.Subgroups:Methods describe additional analyses, distinguishing prespecified from post hoc (items 21d and 28).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.Subgroups:Methods describe additional analyses, distinguishing prespecified from post hoc (items 21d and 28).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Subgroup analyses by age were prespecified.
+    want: ""

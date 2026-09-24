@@ -1,0 +1,36 @@
+# Item 2: the abstract summarizes the design, methods, results, and conclusions, with the accuracy measures.
+extends: occurrence
+message: "The abstract summarizes the design, methods, results, and conclusions, with the accuracy measures (item 2)."
+link: https://doi.org/10.1136/bmj.h5527
+level: error
+scope: abstract
+token: '(?i)\b(?:sensitivity|specificity|AUC|accuracy)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Abstract
+
+      Something else.
+    want: |
+      3:4:STARD.Abstract:The abstract summarizes the design, methods, results, and conclusions, with the accuracy measures (item 2).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STARD.Abstract:The abstract summarizes the design, methods, results, and conclusions, with the accuracy measures (item 2).
+  - name: clean
+    input: |
+      # Title
+
+      ## Abstract
+
+      Sensitivity was 92 percent and specificity 88 percent.
+    want: ""

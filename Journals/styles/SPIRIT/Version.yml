@@ -1,0 +1,23 @@
+# Item 2: give the protocol version date and identifier.
+extends: occurrence
+message: "Give the protocol version date and identifier (item 2)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: raw
+token: '(?i)\bversion\s*\d|\bprotocol (?:version|date)\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Version:Give the protocol version date and identifier (item 2).
+  - name: clean
+    input: |
+      # Title
+
+      Protocol version 2.1, dated 4 March 2026.
+    want: ""

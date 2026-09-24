@@ -13,3 +13,12 @@ legends: 'doc(section:has(> h1:contains("legend"), > h2:contains("legend")))'
 
 # The paragraph after the title: Nature's summary paragraph.
 lead: text & doc(h1 + p)
+
+# The sections of a case report, for CARE.
+patient: 'doc(section:has(> h1:contains("patient information"), > h2:contains("patient information")))'
+findings: 'doc(section:has(> h1:contains("clinical findings"), > h2:contains("clinical findings")))'
+timeline: 'doc(section:has(> h1:contains("timeline"), > h2:contains("timeline")))'
+diagnosis: 'doc(section:has(> h1:contains("diagnostic"), > h2:contains("diagnostic")))'
+treatment: 'doc(section:has(> h1:contains("therapeutic"), > h2:contains("therapeutic")))'
+followup: 'doc(section:has(> h1:contains("follow"), > h2:contains("follow")))'
+perspective: 'doc(section:has(> h1:contains("perspective"), > h2:contains("perspective")))'

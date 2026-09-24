@@ -1,0 +1,36 @@
+# Item 24c: methods say when unblinding is permissible, and how.
+extends: occurrence
+message: "Methods say when unblinding is permissible, and how (item 24c)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: warning
+scope: methods
+token: '(?i)\bunblind\w*|\bemergency (?:unmasking|code)|\breveal(?:ing)? (?:the )?allocation\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:SPIRIT.Unblinding:Methods say when unblinding is permissible, and how (item 24c).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Unblinding:Methods say when unblinding is permissible, and how (item 24c).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Unblinding is permitted in a medical emergency.
+    want: ""

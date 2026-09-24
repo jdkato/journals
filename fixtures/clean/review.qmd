@@ -11,23 +11,23 @@ We reviewed randomized trials of exercise for adults with poor sleep. Thirty tri
 
 ## Introduction
 
-Earlier reviews [1] disagreed on whether exercise improves sleep.
+Earlier reviews [1] disagreed on whether exercise improves sleep. No previous review has addressed the gap. We aimed to assess the effect of exercise on pain.
 
 ## Methods
 
-The protocol is on the Open Science Framework (OSF). Inclusion criteria were randomized trials of exercise in adults; trials in children were excluded. We searched MEDLINE, Embase, and CENTRAL from inception to 1 March 2024; the full search strategy for MEDLINE is in S1 Appendix. Two reviewers screened records independently and extracted data in duplicate. Risk of bias was assessed with RoB 2. The effect measure was the standardized mean difference. We pooled results in a random-effects meta-analysis and explored heterogeneity with I². Publication bias was assessed with a funnel plot. Certainty of evidence was rated with GRADE.
+The protocol is on the Open Science Framework (OSF). Inclusion criteria were randomized trials of exercise in adults; trials in children were excluded. We searched MEDLINE, Embase, and CENTRAL from inception to 1 March 2024; the full search strategy for MEDLINE is in S1 Appendix. Two reviewers screened records independently and extracted data in duplicate. Risk of bias was assessed with RoB 2. The effect measure was the standardized mean difference. We pooled results in a random-effects meta-analysis and explored heterogeneity with I². Publication bias was assessed with a funnel plot. Certainty of evidence was rated with GRADE. Sensitivity analyses excluded studies at high risk of bias.
 
 ## Results
 
-The flow diagram is Fig 1: 1,240 records were screened and 30 trials were included. Five trials that looked eligible were excluded because they lacked a control group. Exercise improved sleep quality (standardized mean difference 0.4). Heterogeneity was moderate (I² = 45%). The funnel plot was symmetric, and certainty was moderate.
+The flow diagram is Fig 1: 1,240 records were screened and 30 trials were included. Five trials that looked eligible were excluded because they lacked a control group. Exercise improved sleep quality (standardized mean difference 0.4). Heterogeneity was moderate (I² = 45%). The funnel plot was symmetric, and certainty was moderate. Table 1 summarizes the characteristics of the included studies, and the forest plot shows the estimate for each study.
 
 ## Discussion
 
-Exercise improves sleep quality in adults. One limitation of the evidence is short follow-up, and a limitation of the review is the English-only search.
+Exercise improves sleep quality in adults. One limitation of the evidence is short follow-up, and a limitation of the review is the English-only search. The results are consistent with previous reviews. The implications for practice are modest, and future research should test the dose.
 
 ## Funding, competing interests, and data availability
 
-Funded by a research council, which had no role in the review. Competing interests: none. Extracted data are available on OSF.
+Funded by a research council, which had no role in the review. Competing interests: none. Extracted data are available on OSF. There were no amendments to the registered protocol.
 
 ## References
 

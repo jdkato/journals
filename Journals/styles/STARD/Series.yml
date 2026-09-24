@@ -1,0 +1,36 @@
+# Item 9: methods say whether participants formed a consecutive, random, or convenience series.
+extends: occurrence
+message: "Methods say whether participants formed a consecutive, random, or convenience series (item 9)."
+link: https://doi.org/10.1136/bmj.h5527
+level: error
+scope: methods
+token: '(?i)\b(?:consecutive|random(?:ly)? (?:selected|sample)|convenience)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:STARD.Series:Methods say whether participants formed a consecutive, random, or convenience series (item 9).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STARD.Series:Methods say whether participants formed a consecutive, random, or convenience series (item 9).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      A consecutive series was enrolled.
+    want: ""

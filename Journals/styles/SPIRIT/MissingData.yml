@@ -1,0 +1,36 @@
+# Item 27c: methods say how missing data will be handled.
+extends: occurrence
+message: "Methods say how missing data will be handled (item 27c)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: methods
+token: '(?i)\b(?:missing (?:data|values|outcomes|results)|multiple imputation|imput(?:ed|ation)|complete[- ]case|last observation)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:SPIRIT.MissingData:Methods say how missing data will be handled (item 27c).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.MissingData:Methods say how missing data will be handled (item 27c).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Missing outcomes will be handled by multiple imputation.
+    want: ""

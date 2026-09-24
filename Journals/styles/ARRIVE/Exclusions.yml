@@ -1,0 +1,36 @@
+# Items 3a and 3b: methods give the inclusion and exclusion criteria, and whether they were set in advance.
+extends: occurrence
+message: "Methods give the inclusion and exclusion criteria, and whether they were set in advance (items 3a and 3b)."
+link: https://doi.org/10.1371/journal.pbio.3000410
+level: error
+scope: methods
+token: '(?i)\b(?:exclu(?:ded|sion)\w*|inclusion criteria|no animals were excluded|outliers?)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:ARRIVE.Exclusions:Methods give the inclusion and exclusion criteria, and whether they were set in advance (items 3a and 3b).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:ARRIVE.Exclusions:Methods give the inclusion and exclusion criteria, and whether they were set in advance (items 3a and 3b).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      No animals were excluded.
+    want: ""

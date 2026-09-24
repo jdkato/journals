@@ -1,0 +1,23 @@
+# Item 20: state if and where the study data are available.
+extends: occurrence
+message: "State if and where the study data are available (item 20)."
+link: https://doi.org/10.1371/journal.pbio.3000410
+level: error
+scope: raw
+token: '(?i)\b(?:data (?:sharing|availability|will be (?:available|shared)|are available)|de-?identified|data dictionary|available (?:on|upon) request|repository)\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:ARRIVE.DataAccess:State if and where the study data are available (item 20).
+  - name: clean
+    input: |
+      # Title
+
+      The data are available in a repository.
+    want: ""

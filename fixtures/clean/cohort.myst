@@ -10,11 +10,11 @@ Smoking is associated with fracture. We followed 5,000 adults for ten years. Smo
 
 ## Introduction
 
-Earlier studies [1] disagreed on the size of the association.
+Earlier studies [1] disagreed on the size of the association. The rationale is the lack of cohort evidence. We aimed to estimate the association.
 
 ## Methods
 
-Adults aged 60 years or older registered with a general practice were eligible and were recruited between March 2009 and March 2010; follow-up ran to 2019. The exposure was current smoking, the outcome was hip fracture, and confounders were age, sex, and body mass. Smoking was measured by questionnaire, and fractures came from hospital records. Recall bias was limited by using records. The study size of 5,000 gave 80% power to detect a hazard ratio of 1.3. Cox regression was adjusted for the confounders, and missing data were imputed. The protocol was approved by the University Ethics Committee.
+Adults aged 60 years or older registered with a general practice were eligible and were recruited between March 2009 and March 2010; follow-up ran to 2019. The exposure was current smoking, the outcome was hip fracture, and confounders were age, sex, and body mass. Smoking was measured by questionnaire, and fractures came from hospital records. Recall bias was limited by using records. The study size of 5,000 gave 80% power to detect a hazard ratio of 1.3. Cox regression was adjusted for the confounders, and missing data were imputed. The protocol was approved by the University Ethics Committee. A prospective cohort study. Age was analyzed as a continuous variable and in quartiles.
 
 ```{note}
 The analysis code is on request.
@@ -22,11 +22,11 @@ The analysis code is on request.
 
 ## Results
 
-Of 6,200 eligible adults, 5,000 were included and 4,800 completed follow-up. Baseline characteristics are in Table 1. The adjusted hazard ratio for hip fracture was 1.4 (95% CI 1.1 to 1.8).
+Of 6,200 eligible adults, 5,000 were included and 4,800 completed follow-up. Baseline characteristics are in Table 1. The adjusted hazard ratio for hip fracture was 1.4 (95% CI 1.1 to 1.8). There were 214 outcome events over 5,010 person-years. Sensitivity analyses gave similar estimates.
 
 ## Discussion
 
-Smoking was associated with hip fracture. One limitation is residual confounding. The results apply to adults in primary care.
+Smoking was associated with hip fracture. One limitation is residual confounding. The results apply to adults in primary care. We found a higher risk in the exposed group, and the findings are consistent with previous studies.
 
 ## Funding
 

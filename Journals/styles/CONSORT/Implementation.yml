@@ -1,0 +1,36 @@
+# Item 19: methods say who enrolled and who assigned participants, and whether they had access to the sequence.
+extends: occurrence
+message: "Methods say who enrolled and who assigned participants, and whether they had access to the sequence (item 19)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: warning
+scope: methods
+token: '(?i)\b(?:enrol(?:led|ment)|assigned|allocation sequence|had (?:no )?access)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:CONSORT.Implementation:Methods say who enrolled and who assigned participants, and whether they had access to the sequence (item 19).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.Implementation:Methods say who enrolled and who assigned participants, and whether they had access to the sequence (item 19).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      A nurse enrolled participants; a central service assigned them, with no access to the sequence.
+    want: ""

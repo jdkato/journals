@@ -2,12 +2,16 @@ fixtures/cohort.myst:1:1:STROBE.Funding:Give the source of funding and the funde
 fixtures/cohort.myst:5:3:STROBE.Title:Indicate the study's design with a common term in the title (item 1).
 fixtures/cohort.myst:9:12:Journals.Intensifiers:Intensifier 'very' adds nothing a number would not.
 fixtures/cohort.myst:9:51:Journals.DataPlural:'data' is plural in a manuscript: 'data are', not 'data was'.
+fixtures/cohort.myst:11:4:STROBE.Background:The Introduction explains the scientific background and rationale (item 2).
+fixtures/cohort.myst:11:4:STROBE.Objectives:The Introduction states the objectives, including any hypotheses (item 3).
 fixtures/cohort.myst:13:9:Journals.Prove:Results show or support; 'proves' claims more than data can.
 fixtures/cohort.myst:13:27:Journals.Wordy:Use 'some' instead of 'a number of'.
 fixtures/cohort.myst:15:4:STROBE.Bias:Methods describe efforts to address potential sources of bias (item 9).
 fixtures/cohort.myst:15:4:STROBE.DataSources:Methods give the sources of data and the methods of measurement (item 8).
+fixtures/cohort.myst:15:4:STROBE.Design:Methods state the key elements of the study design (item 4).
 fixtures/cohort.myst:15:4:STROBE.Eligibility:Methods give the eligibility criteria and how participants were selected (item 6).
 fixtures/cohort.myst:15:4:STROBE.MissingData:Methods explain how missing data were addressed (item 12c).
+fixtures/cohort.myst:15:4:STROBE.Quantitative:Methods explain how quantitative variables were handled, including any groupings (item 11).
 fixtures/cohort.myst:15:4:STROBE.Setting:Methods describe the setting, locations, and dates (item 5).
 fixtures/cohort.myst:15:4:STROBE.StatisticalMethods:Methods describe the statistical methods, including those for confounding (item 12).
 fixtures/cohort.myst:15:4:STROBE.StudySize:Methods explain how the study size was arrived at (item 10).
@@ -15,10 +19,14 @@ fixtures/cohort.myst:15:4:STROBE.Variables:Methods define the outcomes, exposure
 fixtures/cohort.myst:20:26:Journals.Placeholder:Placeholder left in the manuscript: 'TODO'.
 fixtures/cohort.myst:23:4:STROBE.DescriptiveData:Results give the characteristics of participants (item 14).
 fixtures/cohort.myst:23:4:STROBE.MainResults:Results give adjusted estimates with their precision, such as a confidence interval (item 16).
+fixtures/cohort.myst:23:4:STROBE.OtherAnalyses:Results report other analyses done, such as subgroups, interactions, and sensitivity analyses (item 17).
+fixtures/cohort.myst:23:4:STROBE.OutcomeData:Results report the numbers of outcome events or summary measures (item 15).
 fixtures/cohort.myst:23:4:STROBE.Participants:Results report the numbers of participants at each stage (item 13).
 fixtures/cohort.myst:25:26:Journals.PValueSpacing:Space the operator: 'p = 0.03', not 'p<0.05'.
 fixtures/cohort.myst:27:4:IMRaD.Limitations:The Discussion names the study's limitations.
 fixtures/cohort.myst:27:4:STROBE.Generalizability:Discussion addresses the generalizability of the results (item 21).
+fixtures/cohort.myst:27:4:STROBE.Interpretation:The Discussion gives a cautious overall interpretation against other evidence (item 20).
+fixtures/cohort.myst:27:4:STROBE.KeyResults:The Discussion summarizes the key results with reference to the objectives (item 18).
 fixtures/cohort.myst:27:4:STROBE.Limitations:Discussion addresses the study's limitations, including sources of bias (item 19).
 fixtures/cohort.myst:29:9:Journals.Intensifiers:Intensifier 'clearly' adds nothing a number would not.
 fixtures/cohort.myst:33:33:Journals.Ranges:Use an en dash in a range: '1-2'.

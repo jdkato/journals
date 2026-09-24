@@ -1,0 +1,23 @@
+# Item 13: state that the patient gave informed consent.
+extends: occurrence
+message: "State that the patient gave informed consent (item 13)."
+link: https://www.care-statement.org/checklist
+level: error
+scope: raw
+token: '(?i)\binformed consent\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CARE.Consent:State that the patient gave informed consent (item 13).
+  - name: clean
+    input: |
+      # Title
+
+      The patient gave written informed consent for publication.
+    want: ""

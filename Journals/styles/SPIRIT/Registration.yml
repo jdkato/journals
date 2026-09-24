@@ -1,0 +1,23 @@
+# Item 4: give the trial registry and registration number, or the intended registry.
+extends: occurrence
+message: "Give the trial registry and registration number, or the intended registry (item 4)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: raw
+token: '\b(?:NCT\d{8}|ISRCTN\d{8}|ACTRN\d{14}|ChiCTR\d+|CTRI/\d{4}/\d{2}/\d+|EudraCT \d{4}-\d{6}-\d{2}|UMIN\d{9}|DRKS\d{8}|IRCT\d+|PACTR\d+|KCT\d{7}|jRCT\w+|TCTR\d+)\b|(?i)\bwill be registered\b'
+min: 1
+
+tests:
+  - name: fires
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Registration:Give the trial registry and registration number, or the intended registry (item 4).
+  - name: clean
+    input: |
+      # Title
+
+      Registered as NCT01234567.
+    want: ""

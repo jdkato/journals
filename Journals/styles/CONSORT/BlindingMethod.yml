@@ -1,0 +1,36 @@
+# Item 20b: methods say how blinding was achieved and how similar the interventions were.
+extends: occurrence
+message: "Methods say how blinding was achieved and how similar the interventions were (item 20b)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: warning
+scope: methods
+token: '(?i)\b(?:identical|matching placebo|indistinguishable|similar in appearance|blinding was (?:achieved|maintained))\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:CONSORT.BlindingMethod:Methods say how blinding was achieved and how similar the interventions were (item 20b).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.BlindingMethod:Methods say how blinding was achieved and how similar the interventions were (item 20b).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Tablets were identical in appearance.
+    want: ""

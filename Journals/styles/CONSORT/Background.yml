@@ -1,0 +1,36 @@
+# Item 6: the Introduction gives the scientific background and rationale.
+extends: occurrence
+message: "The Introduction gives the scientific background and rationale (item 6)."
+link: https://doi.org/10.1371/journal.pmed.1004587
+level: error
+scope: introduction
+token: '(?i)\b(?:background|rationale|previous (?:trials|studies)|evidence)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Introduction
+
+      Something else.
+    want: |
+      3:4:CONSORT.Background:The Introduction gives the scientific background and rationale (item 6).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CONSORT.Background:The Introduction gives the scientific background and rationale (item 6).
+  - name: clean
+    input: |
+      # Title
+
+      ## Introduction
+
+      The rationale is the gap in the evidence.
+    want: ""

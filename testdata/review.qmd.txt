@@ -1,3 +1,4 @@
+fixtures/review.qmd:1:1:PRISMA.Amendments:Describe any amendments to the registered protocol, or that there were none (item 24c).
 fixtures/review.qmd:1:1:PRISMA.Availability:Say which data, code, and materials are available and where (item 27).
 fixtures/review.qmd:1:1:PRISMA.Certainty:Assess and report the certainty of evidence for each outcome (items 15 and 22).
 fixtures/review.qmd:1:1:PRISMA.Conflicts:Declare competing interests (item 26).
@@ -11,17 +12,26 @@ fixtures/review.qmd:6:3:PRISMA.Title:Identify the report as a systematic review 
 fixtures/review.qmd:10:43:Journals.SentenceNumeral:Spell out a number that starts a sentence, or recast it: '30'.
 fixtures/review.qmd:10:72:Journals.DataPlural:'data' is plural in a manuscript: 'data are', not 'data was'.
 fixtures/review.qmd:10:107:Journals.Significant:'significant' without a statistic in the sentence: give the test, or say 'large'.
+fixtures/review.qmd:12:4:PRISMA.Objectives:The Introduction states the objectives or questions the review addresses (item 4).
+fixtures/review.qmd:12:4:PRISMA.Rationale:The Introduction gives the rationale for the review in the context of existing knowledge (item 3).
 fixtures/review.qmd:14:13:Journals.Intensifiers:Intensifier 'very' adds nothing a number would not.
 fixtures/review.qmd:16:4:PRISMA.DataCollection:Methods describe how data were collected from reports (item 9).
+fixtures/review.qmd:16:4:PRISMA.DataItems:Methods list the outcomes and other variables for which data were sought (items 10a and 10b).
 fixtures/review.qmd:16:4:PRISMA.EffectMeasures:Methods specify the effect measure for each outcome (item 12).
 fixtures/review.qmd:16:4:PRISMA.Eligibility:Methods specify the inclusion and exclusion criteria (item 5).
 fixtures/review.qmd:16:4:PRISMA.InformationSources:Methods name the sources searched and the date last searched (item 6).
 fixtures/review.qmd:16:4:PRISMA.SearchStrategy:Methods present the full search strategy for at least one source (item 7).
 fixtures/review.qmd:16:4:PRISMA.SelectionProcess:Methods say how many reviewers screened each record and whether they worked independently (item 8).
+fixtures/review.qmd:16:4:PRISMA.Sensitivity:Methods describe any sensitivity analyses, and Results present them (items 13f and 20d).
 fixtures/review.qmd:16:4:PRISMA.Synthesis:Methods describe the synthesis methods (item 13).
 fixtures/review.qmd:20:4:PRISMA.Excluded:Results cite the studies that looked eligible but were excluded, and say why (item 16b).
 fixtures/review.qmd:20:4:PRISMA.FlowDiagram:Results describe the search and selection, ideally with a flow diagram (item 16a).
+fixtures/review.qmd:20:4:PRISMA.IndividualResults:Results present summary statistics and an effect estimate for each study (item 19).
+fixtures/review.qmd:20:4:PRISMA.StudyCharacteristics:Results cite each included study and present its characteristics (item 17).
+fixtures/review.qmd:20:4:PRISMA.SynthesisResults:Results present each synthesis, with its summary estimate and precision (items 20a and 20b).
 fixtures/review.qmd:24:4:IMRaD.Limitations:The Discussion names the study's limitations.
+fixtures/review.qmd:24:4:PRISMA.Implications:The Discussion gives implications for practice, policy, and future research (item 23d).
+fixtures/review.qmd:24:4:PRISMA.Interpretation:The Discussion gives a general interpretation of the results in the context of other evidence (item 23a).
 fixtures/review.qmd:24:4:PRISMA.Limitations:Discussion addresses the limitations of the evidence and of the review process (items 23b and 23c).
 fixtures/review.qmd:26:10:Journals.Intensifiers:Intensifier 'clearly' adds nothing a number would not.
 fixtures/review.qmd:26:30:Journals.Prove:Results show or support; 'proves' claims more than data can.

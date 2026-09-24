@@ -1,0 +1,36 @@
+# Item 22: methods say how the allocation will be concealed until assignment.
+extends: occurrence
+message: "Methods say how the allocation will be concealed until assignment (item 22)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: methods
+token: '(?i)\b(?:conceal\w*|opaque|sealed envelopes?|central(?:ly)? (?:randomi[sz]\w*|allocat\w*)|web[- ]based (?:randomi[sz]\w*|allocat\w*))\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:SPIRIT.Concealment:Methods say how the allocation will be concealed until assignment (item 22).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Concealment:Methods say how the allocation will be concealed until assignment (item 22).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Allocation will be concealed by central web-based randomization.
+    want: ""

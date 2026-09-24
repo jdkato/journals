@@ -1,0 +1,36 @@
+# Item 25: results report any adverse events from performing the tests.
+extends: occurrence
+message: "Results report any adverse events from performing the tests (item 25)."
+link: https://doi.org/10.1136/bmj.h5527
+level: warning
+scope: results
+token: '(?i)\b(?:adverse events?|complications?|no harms?|harms?)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Results
+
+      Something else.
+    want: |
+      3:4:STARD.AdverseEvents:Results report any adverse events from performing the tests (item 25).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STARD.AdverseEvents:Results report any adverse events from performing the tests (item 25).
+  - name: clean
+    input: |
+      # Title
+
+      ## Results
+
+      There were no adverse events from either test.
+    want: ""

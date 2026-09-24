@@ -1,0 +1,36 @@
+# Items 10a and 10b: methods list the outcomes and other variables for which data were sought.
+extends: occurrence
+message: "Methods list the outcomes and other variables for which data were sought (items 10a and 10b)."
+link: https://doi.org/10.1136/bmj.n71
+level: error
+scope: methods
+token: '(?i)\b(?:data items|extracted (?:data|the following)|variables (?:sought|extracted)|outcomes (?:sought|extracted)|sought data)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:PRISMA.DataItems:Methods list the outcomes and other variables for which data were sought (items 10a and 10b).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:PRISMA.DataItems:Methods list the outcomes and other variables for which data were sought (items 10a and 10b).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      We extracted the following data items: setting, sample size, and outcomes.
+    want: ""

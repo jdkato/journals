@@ -1,0 +1,36 @@
+# Item 1b: methods define the experimental unit.
+extends: occurrence
+message: "Methods define the experimental unit (item 1b)."
+link: https://doi.org/10.1371/journal.pbio.3000410
+level: warning
+scope: methods
+token: '(?i)\b(?:experimental unit|per (?:animal|cage|litter)|n\s*=\s*\d+ (?:animals|mice|rats|cages))\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:ARRIVE.ExperimentalUnit:Methods define the experimental unit (item 1b).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:ARRIVE.ExperimentalUnit:Methods define the experimental unit (item 1b).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      The experimental unit was the cage.
+    want: ""

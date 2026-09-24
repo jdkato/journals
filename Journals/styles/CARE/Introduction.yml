@@ -1,0 +1,36 @@
+# Item 4: the Introduction says why the case is unique, with references to the literature.
+extends: occurrence
+message: "The Introduction says why the case is unique, with references to the literature (item 4)."
+link: https://www.care-statement.org/checklist
+level: error
+scope: introduction
+token: '(?i)\b(?:unique|rare|first (?:reported|case)|adds to|literature)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Introduction
+
+      Something else.
+    want: |
+      3:4:CARE.Introduction:The Introduction says why the case is unique, with references to the literature (item 4).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:CARE.Introduction:The Introduction says why the case is unique, with references to the literature (item 4).
+  - name: clean
+    input: |
+      # Title
+
+      ## Introduction
+
+      This is the first reported case in the literature.
+    want: ""

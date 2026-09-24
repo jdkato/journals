@@ -1,0 +1,36 @@
+# Item 22: results give the time interval and any interventions between the index test and the reference standard.
+extends: occurrence
+message: "Results give the time interval and any interventions between the index test and the reference standard (item 22)."
+link: https://doi.org/10.1136/bmj.h5527
+level: warning
+scope: results
+token: '(?i)\b(?:interval between|within \d+ (?:days|hours|weeks)|same day|time between)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Results
+
+      Something else.
+    want: |
+      3:4:STARD.Interval:Results give the time interval and any interventions between the index test and the reference standard (item 22).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:STARD.Interval:Results give the time interval and any interventions between the index test and the reference standard (item 22).
+  - name: clean
+    input: |
+      # Title
+
+      ## Results
+
+      Both tests were done on the same day.
+    want: ""

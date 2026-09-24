@@ -1,0 +1,36 @@
+# Item 27a: methods give the statistical methods for comparing groups.
+extends: occurrence
+message: "Methods give the statistical methods for comparing groups (item 27a)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: methods
+token: '(?i)\b(?:t[- ]tests?|regression|mixed[- ]effects|ANOVA|chi[- ]squared?|Cox|Kaplan|Mann[- ]Whitney|Wilcoxon|Fisher|logistic|linear models?|generali[sz]ed|Bayesian|hazard ratios?|odds ratios?|confidence intervals?)\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Methods
+
+      Something else.
+    want: |
+      3:4:SPIRIT.StatisticalMethods:Methods give the statistical methods for comparing groups (item 27a).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.StatisticalMethods:Methods give the statistical methods for comparing groups (item 27a).
+  - name: clean
+    input: |
+      # Title
+
+      ## Methods
+
+      Groups will be compared by logistic regression.
+    want: ""

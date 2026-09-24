@@ -1,0 +1,36 @@
+# Item 9b: the Introduction explains the choice of comparator.
+extends: occurrence
+message: "The Introduction explains the choice of comparator (item 9b)."
+link: https://doi.org/10.1371/journal.pmed.1004589
+level: error
+scope: introduction
+token: '(?i)\b(?:comparator|placebo|usual care|standard care|control (?:arm|group|condition))\b'
+min: 1
+
+tests:
+  - name: fires
+    about: "the section is there and says nothing about it"
+    input: |
+      # Title
+
+      ## Introduction
+
+      Something else.
+    want: |
+      3:4:SPIRIT.Comparator:The Introduction explains the choice of comparator (item 9b).
+  - name: absent
+    about: "no section at all"
+    input: |
+      # Title
+
+      Body.
+    want: |
+      1:1:SPIRIT.Comparator:The Introduction explains the choice of comparator (item 9b).
+  - name: clean
+    input: |
+      # Title
+
+      ## Introduction
+
+      Usual care is the comparator because no active treatment is established.
+    want: ""
