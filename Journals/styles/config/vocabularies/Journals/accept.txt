@@ -45,8 +45,6 @@ homoscedasticity
 interquartile
 multicollinearity
 overfitting
-quantile
-quantiles
 underfitting
 
 # Latin
